@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My Note Book - db</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbmysql-load-file-outfile.html">在这里详述 db/mysql load file outfile。</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-12-04T00:00:00">
+        <i class="icon-calendar"></i>三 04 十二月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>{{{
+LOAD DATA INFILE 'data.txt' INTO TABLE tbl_name
+  FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+  LINES TERMINATED BY '\r\n'
+  IGNORE 1 LINES;</p>
+<p>select * from driver into outfile "a.txt" fields terminated by ',' enclosed by '"'; 
+}}}</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbmysql-load-file-outfile.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbpostgresql-zheng-ze-biao-da-shi.html">在这里详述 db/Postgresql 正则表达式</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-11-21T00:00:00">
+        <i class="icon-calendar"></i>四 21 十一月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>在postgresql中使用正则表达式时需要使用关键字“~”，以表示该关键字之前的内容需匹配之后的正则表达式，若匹配规则不需要区分大小写，可以使用组合关键字“~*”；</p>
+<p>相反，若需要查询不匹配这则表达式的记录，只需在该关键字前加否定关键字“！”即可。若正则表达式包含转义字符，则需在表达式前加关键字“E”。
+例如：</p>
+<p>{{{
+select * from user where email ~ '^[A-H]' --匹配email地址以A-H开头的记录<br />
+select * from user where email ~* '^[a-h]' --匹配email地址以A-H和a-h开头的记录<br />
+}}}</p>
+<p>至于正则表达式的匹配公式是通用的，可以参照下表。</p>
+<p>{{{
+字符  描述
+\   将下一个字符标记为一个特殊字符、或一个原义字符、或一个 后向引用、或一个八进制转义符。例如，'n' 匹配字符 "n"。'\n' 匹配一个换行符。序列 '\' 匹配 "\" 而 "(" 则匹配 "("。
+^   匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline ...</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbpostgresql-zheng-ze-biao-da-shi.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/mysqlzhong-zeng-jia-yuan-cheng-biao-federatedzhi-chi.html">mysql中增加远程表federated支持</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-10-29T00:00:00">
+        <i class="icon-calendar"></i>二 29 十月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>在my.cnf中[mysqld]下增加一行</p>
+<p>{{{
+federated
+}}}
+重启mysql</p>
+<p>{{{#!highlight sql
+CREATE TABLE federated_table (</p>
+<p>id    int(20) NOT NULL auto_increment,</p>
+<p>name  varchar(32) NOT NULL default '',</p>
+<p>other int(20) NOT NULL default '0',</p>
+<p>PRIMARY KEY (id),</p>
+<p>KEY name (name),</p>
+<p>KEY other_key (other)</p>
+<p>)</p>
+<p>ENGINE=FEDERATED</p>
+<p>DEFAULT CHARSET=latin1</p>
+<p>CONNECTION='mysql://root:password@remote_host:9306 ...</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/mysqlzhong-zeng-jia-yuan-cheng-biao-federatedzhi-chi.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/mysql-mysqldump-dao-chu-csv-shu-ju.html">mysql mysqldump 导出 csv 数据</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-20T00:00:00">
+        <i class="icon-calendar"></i>二 20 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ul>
+<li>导出本地数据库数据到本地文件
+ {{{#!highlight sql
+  mysql -A service_db -h your_host -utest -ptest</li>
+</ul>
+<p>mysql&gt; select * from t_apps where created&gt;'2012-07-02 00:00:00' into outfile /tmp/apps.csv
+ }}}</p>
+<ul>
+<li>
+<p>导出远程数据库数据到本地文件
+ {{{#!highlight sql
+  mysql -A service_db -h your_host -utest -ptest -ss -e "SELECT * from t_apps limit 300;" | sed 's/\t/","/g;s/^/"/;s/$/"/;s/\n ...</p></li></ul>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/mysql-mysqldump-dao-chu-csv-shu-ju.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/redis-and-hiredis-install.html">redis and hiredis install</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-15T00:00:00">
+        <i class="icon-calendar"></i>四 15 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>=== Redis安装步骤 ===</p>
+<ol>
+<li>
+<p>redis server安装
+    {{{
+    wget http://redis.googlecode.com/files/redis-2.4.6.tar.gz #下载文件
+    tar xzf redis-2.4.6.tar.gz
+    cd redis-2.4.6
+    make
+    cp src/redis-server src/redis-cli /usr/bin/ #方便在终端在任何地方直接运行
+    cp redis.conf /etc/
+    ufw allow 6379 #ubuntu下开启端口
+    }}}</p>
+<p>修改/etc/redis.conf,让server以守护进程在后台执行。
+daemonize yes ...</p></li></ol>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/redis-and-hiredis-install.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/describe-dbdebian-7-intall-postgresql92-here.html">Describe db/debian 7 intall postgresql9.2 here.</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-07-28T00:00:00">
+        <i class="icon-calendar"></i>日 28 七月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>{{{
+apt-get install python-software-properties
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - 
+add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" 
+apt-get update 
+apt-get install postgresql
+}}}</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/describe-dbdebian-7-intall-postgresql92-here.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/pgsqlwang-ji-mi-ma-postgresql.html">pgsql忘记密码 postgresql</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-06-01T00:00:00">
+        <i class="icon-calendar"></i>六 01 六月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>找到数据库簇目录,里面有pg_hba.conf文件,打开编辑,你将看到类似以下的一行:
+{{{
+host all all 127.0.0.1/32 md5
+}}}
+后面的也许不是md5,也许是别的.
+将最后的一项改为trust,即如下:
+{{{
+host all all 127.0.0.1/32 trust
+}}}
+重新启动数据库服务器.
+进入PostgreSQL安装目录的bin目录.执行命令.
+{{{
+psql -d template1 -U pgsql -c "alter role pgsql password 'liuyou@163.com1';"
+}}}
+如果服务器响应"ALTER ROLE",说明成功.
+然后把pg_hba.conf恢复原样.
+重新启动数据库服务器 ...</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/pgsqlwang-ji-mi-ma-postgresql.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/sqlyu-ju-fen-zu.html">sql语句分组</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-06-01T00:00:00">
+        <i class="icon-calendar"></i>六 01 六月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>比如数据如下</p>
+<p>字段为
+id ,v_name,v_value
+{{{
+v_name v_value
+aa aa1 
+aa aa2
+aa aa3
+bb bb1 
+bb bb2
+bb bb3
+}}}
+按v_name分组
+如aa这一组,假设aa3为最新
+bb这一组,假设bb1为最新
+怎么样查询后使得记录为
+{{{
+aa aa3
+bb bb1 
+}}}
+{{{
+select
+t.v_name,
+(select v_value from test where v_name=t.v_name ORDER BY id DESC limit 1) as v_value
+FROM 
+(select ...</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/sqlyu-ju-fen-zu.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/postgresql-zhan-shi-shou-fei-jiao-ben.html">postgresql一站式收费脚本</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2012-11-27T00:00:00">
+        <i class="icon-calendar"></i>二 27 十一月 2012
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>不考虑其它条件，粗略计算。plpythonu 存储过程。
+{{{#!highlight python
+-- Function: jisuan(date, integer)</p>
+<p>-- DROP FUNCTION jisuan(date, integer);</p>
+<p>CREATE OR REPLACE FUNCTION jisuan(dt date, pagesize integer)
+  RETURNS text AS
+$BODY$</p>
+<p>import pickle, datetime, math
+startdt = datetime.datetime.now()
+wd_citys = {}</p>
+<p>for row in plpy.execute('select g.bm,cc."CityID",g.sjdw as ...</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/postgresql-zhan-shi-shou-fei-jiao-ben.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://liugehao.github.io/postgresqlan-zhuang-plphpyu-yan.html">postgresql安装plphp语言</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2012-11-27T00:00:00">
+        <i class="icon-calendar"></i>二 27 十一月 2012
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>ubuntu 下postgresql用python写存储过程，直接安装
+{{{
+apt-get install postgresql-plpython-9.1 #python2
+apt-get install postgresql-plpython3-9.1 #python3
+}}}
+== 用php写存储过程 ==
+php的话只能编译安装。</p>
+<p>{{{#!highlight bash</p>
+<h1>php安装</h1>
+<p>wget http://cn2.php.net/get/php-5.4.9.tar.bz2/from/this/mirror 
+tar jxf mirror
+cd php-5.4.9
+./configure --prefix=/usr/local/php5.4.9 --enable-embed #必须embed
+make -j ...</p>
+                        <a class="btn primary xsmall" href="http://liugehao.github.io/postgresqlan-zhuang-plphpyu-yan.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+        <div class="pagination">
+        <ul>
+                        <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+                        <li class="active"><a href="http://liugehao.github.io/category/db.html">1</a></li>
+                        <li class=""><a href="http://liugehao.github.io/category/db2.html">2</a></li>
+                        <li class="next"><a href="http://liugehao.github.io/category/db2.html">Next &rarr;</a></li>
+        </ul>
+        </div>
+
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

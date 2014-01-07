@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>postgresql一站式收费脚本</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to postgresql一站式收费脚本">
+                                        postgresql一站式收费脚本
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2012-11-27T00:00:00">
+        <i class="icon-calendar"></i>二 27 十一月 2012
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/db.html"><i class="icon-folder-open"></i>db</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>不考虑其它条件，粗略计算。plpythonu 存储过程。
+{{{#!highlight python
+-- Function: jisuan(date, integer)</p>
+<p>-- DROP FUNCTION jisuan(date, integer);</p>
+<p>CREATE OR REPLACE FUNCTION jisuan(dt date, pagesize integer)
+  RETURNS text AS
+$BODY$</p>
+<p>import pickle, datetime, math
+startdt = datetime.datetime.now()
+wd_citys = {}</p>
+<p>for row in plpy.execute('select g.bm,cc."CityID",g.sjdw as sjdw from gs g left join county cc on cc."CountyID" = g.szd::int'):
+    wd_citys[row['bm']] = (row['sjdw'], row['CityID'])</p>
+<p>je = {}
+plan = plpy.prepare("select szzl,szjg,xzzl,xzjg,shi1,shi2,category from jgsz  where category =1 and ssrq &lt; $1 order by ssrq asc", ['date',])</p>
+<p>for row in plpy.execute(plan, [datetime.datetime.strptime(dt,'%Y-%m-%d'),]):
+    if je.has_key(row['shi1']):
+        if je[row['shi1']].has_key(row['shi2']):
+        je[row['shi1']]['shi2'] = (row['szzl'], row['szjg'], row['xzzl'], row['xzjg'])
+        else:
+        je[row['shi1']]['shi2'] = (row['szzl'], row['szjg'], row['xzzl'], row['xzjg'])
+    else:
+        je[row['shi1']] = {row['shi2']:(row['szzl'], row['szjg'], row['xzzl'], row['xzjg'])}</p>
+<p>plan = plpy.prepare("""  select t.docid1,coalesce(g1."GS",g2."GS",g3."GS",g4."GS",0) as gs from tb_scan_je t left join wdtmfw g1 on g1.qsh3 = t.docid3 and t.docid1 between g1.qsh1 and g1.zzh1 left join wdtmfw g2 on g2.zzh3 = t.docid3 and t.docid1 between g2.qsh1 and g2.zzh1 left join gstmfw g3 on g3.qsh2 = t.docid2 and t.docid1 between g3.qsh1 and g3.zzh1 left join gstmfw g4 on g4.zzh2 = t.docid2 and t.docid1 between g4.qsh1 and g4.zzh1 where t.dt = $1 limit $2 offset $3""", ['date','int','int'])
+plan1 = plpy.prepare("select scan_site::int as site,scan_type as lb,obj_wei as zl from tb_scan where doc_idint = $1 order by scan_time asc", ['bigint',])
+plan2 = plpy.prepare("""INSERT INTO je( doc_id, fjfb, fjcs, djfb, djcs, zl, je, dt)    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);""", ['bigint','int','int','int','int','numeric(5,2)','numeric(5,2)','date'])
+plan3 = plpy.prepare("insert into log (doc_id,log) values ($1 ,$2)",['bigint','text'])
+plan4 = plpy.prepare("select count(1) as co from tb_scan_je where dt=$1",['date'])
+result = plpy.execute(plan4, [dt])
+result = result[0]['co']
+pages = int(math.ceil(float(result) / pagesize))
+for i in range(pages):
+    tmp1 = datetime.datetime.now() - startdt
+    plpy.info('第'+str(i)+'轮查询：%s' % tmp1.seconds)
+    for row in plpy.execute(plan, [dt, pagesize, pagesize * i]):
+        tmp = {'doc_id':row['docid1'], 'fjfb':row['gs'], 'fjcs':0, 'djfb':0, 'djcs':0, 'zl':0, 'je':0,'dt':dt}
+        try:
+            for srow in plpy.execute(plan1, [row['docid1'],]):
+                if srow['zl'] !='' and srow['zl'] &gt; tmp['zl']:
+                    tmp['zl'] = srow['zl']
+                if srow['lb'] == '10' or srow['lb'] == '13':
+                    tmp['djfb'] = srow['site']
+                    break
+                if srow['lb'] in ('03', '17', '18', '44', '96', '97'):
+                    tmp['djfb'] = srow['site']</p>
+<div class="highlight"><pre>        <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="n">and</span> <span class="n">wd_citys</span><span class="p">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">])</span><span class="o">:</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wd_citys</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djfb</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="n">and</span> <span class="n">wd_citys</span><span class="p">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djfb</span><span class="err">&#39;</span><span class="p">])</span><span class="o">:</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wd_citys</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djfb</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">je</span><span class="p">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">])</span><span class="o">:</span>
+            <span class="k">if</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]].</span><span class="n">has_key</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">])</span><span class="o">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">je</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">zl</span><span class="err">&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">je</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">and</span> <span class="n">je</span><span class="p">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">])</span><span class="o">:</span>
+            <span class="k">if</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">]].</span><span class="n">has_key</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">])</span><span class="o">:</span>
+                <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">je</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">zl</span><span class="err">&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">je</span><span class="p">[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nl">try:</span>
+            <span class="n">plpy</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">plan2</span><span class="p">,[</span><span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">doc_id</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjfb</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">fjcs</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djfb</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">djcs</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">zl</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="err">&#39;</span><span class="n">je</span><span class="err">&#39;</span><span class="p">],</span> <span class="n">dt</span><span class="p">])</span>
+        <span class="nl">except:</span>
+            <span class="n">plpy</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="n">str</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">+</span><span class="n">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="err">&#39;</span><span class="n">docid1</span><span class="err">&#39;</span><span class="p">]))</span>
+    <span class="nl">except:</span>
+        <span class="n">plpy</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="n">str</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">+</span><span class="n">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="err">&#39;</span><span class="n">docid1</span><span class="err">&#39;</span><span class="p">]))</span>
+
+<span class="n">plpy</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">plan3</span> <span class="p">,</span> <span class="p">[</span><span class="n">startdt</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y%m%d&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+
+
+<p>proctime = datetime.datetime.now() - startdt
+plpy.execute("insert into log values(0,'%s')"% proctime.seconds)
+return str(proctime.seconds)</p>
+<p>$BODY$
+  LANGUAGE plpythonu VOLATILE
+  COST 100;
+ALTER FUNCTION jisuan(date, integer)
+  OWNER TO postgres;
+}}}</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "postgresql-zhan-shi-shou-fei-jiao-ben.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

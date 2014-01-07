@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/tmp.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-08-07T00:00:00+02:00</updated><entry><title>Describe tmp/weighttp here.</title><link href="http://liugehao.github.io/describe-tmpweighttp-here.html" rel="alternate"></link><updated>2013-08-07T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-08-07:describe-tmpweighttp-here.html</id><summary type="html">&lt;p&gt;{{{
+./waf configure
+checking for libary ev :not found&lt;/p&gt;
+&lt;p&gt;http://dist.schmorp.de/libev/
+wget http://dist.schmorp.de/libev/libev-4.15.tar.gz
+tar -zxf libev-4.15.tar.gz
+cd libev-4.15 
+./configure
+make &amp;amp;&amp;amp; make install&lt;/p&gt;
+&lt;p&gt;./waf build&lt;/p&gt;
+&lt;p&gt;./waf install #root&lt;/p&gt;
+&lt;p&gt;[root@localhost lib]# weighttp
+weighttp: error while loading shared libraries: libev.so.4: cannot open shared object file: No such file or directory&lt;/p&gt;
+&lt;p&gt;[root@localhost libev-4.15]# find / -name libev.so.4
+/usr/local/lib/libev.so.4&lt;/p&gt;
+&lt;p&gt;ln -s /usr/local/lib/libev.so.4 /usr/lib/libev.so.4&lt;/p&gt;
+&lt;p&gt;or &lt;/p&gt;
+&lt;p&gt;vi /etc/ld.so.conf.d/local.conf
+add a line
+/usr/local/lib&lt;/p&gt;
+&lt;p&gt;k/v:10,000,000
+weighttp -n 500000 -c 200 -k -t 2 http://localhost:8080/?kv4.c
+finished in 3 sec, 855 millisec and 335 microsec, 129690 req/s, 55473 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 219000732 bytes total, 125500732 bytes http, 93500000 bytes data&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 405 millisec and 360 microsec, 146827 req/s, 62803 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 219000000 bytes total, 125500000 bytes http, 93500000 bytes data&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 904 millisec and 48 microsec, 128072 req/s, 54780 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 499998 succeeded, 2 failed, 0 errored
+status codes: 499998 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 218999124 bytes total, 125499498 bytes http, 93499626 bytes data&lt;/p&gt;
+&lt;p&gt;k/v:15,000,000&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 8 millisec and 936 microsec, 166171 req/s, 71239 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 499997 succeeded, 3 failed, 0 errored
+status codes: 499997 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 219498683 bytes total, 125499247 bytes http, 93999436 bytes data&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 912 millisec and 640 microsec, 127790 req/s, 54785 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 219500000 bytes total, 125500000 bytes http, 94000000 bytes data&lt;/p&gt;
+&lt;p&gt;hello.c 
+inished in 3 sec, 500 millisec and 846 microsec, 142822 req/s, 36683 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 131504736 bytes total, 124504736 bytes http, 7000000 bytes data&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 529 millisec and 817 microsec, 141650 req/s, 36380 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 131500000 bytes total, 124500000 bytes http, 7000000 bytes data&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 139 millisec and 163 microsec, 159278 req/s, 40908 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 131500000 bytes total, 124500000 bytes http, 7000000 bytes data&lt;/p&gt;
+&lt;p&gt;finished in 3 sec, 548 millisec and 549 microsec, 140902 req/s, 36188 kbyte/s
+requests: 500000 total, 500000 started, 500000 done, 500000 succeeded, 0 failed, 0 errored
+status codes: 500000 2xx, 0 3xx, 0 4xx, 0 5xx
+traffic: 131500000 bytes total, 124500000 bytes http, 7000000 bytes data&lt;/p&gt;
+&lt;p&gt;}}}&lt;/p&gt;</summary></entry></feed>

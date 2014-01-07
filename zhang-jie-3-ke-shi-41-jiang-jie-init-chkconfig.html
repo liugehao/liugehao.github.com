@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>章节3 课时 41 讲解init-chkconfig</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 章节3 课时 41 讲解init-chkconfig">
+                                        章节3 课时 41 讲解init-chkconfig
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-26T00:00:00">
+        <i class="icon-calendar"></i>一 26 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>ls /sbin/init //初始化程序 ,桌面，图标，输入法加载，...
+{{{
+/etc/inittab //init主配置文件
+  /etc/rc.d/rc.sysinit //首先访问
+  /etc/rc.d/rc X
+    /etc/rc.d/rcX.d/Sxxxx start(软链接/etc/rc.d/init.d/xxxx)
+    /etc/rc.d/rc.local (系统开机运行程序放置位置，profile是bash启动运行程序配置）
+  minigetty /dev/tty1-6
+     login -&gt; bash
+         /etc/profile ~/.bash_profile</p>
+<p>init 5: gdm (图型界面)</p>
+<p>init 运行级别　，init $1 第一个参数如果不写，默认为９，
+id:5:initdefault:  //默认进入系统　设置６不停重启　0开机后立即关机</p>
+<p>si::sysinit:/etc/init.d/rcS（rc.sysinit ）　//默认执行
+ －》mount -a //用到/etc/fstab 如果此处出错，rc.sysinit出错，检测文件系统
+ －》mount -o rw,remount /dev/sda2 /  //加载文件系统，scsi驱动等</p>
+<p>echo -en "\033[0;31m" aa //设成红色
+echo -en "\033[0;3４m" Ｂlue Hat　//蓝色</p>
+<p>1:2345:respawn:/sbin/getty 38400 tty1
+2:23:respawn:/sbin/getty 38400 tty2
+3:23:respawn:/sbin/getty 38400 tty3
+4:23:respawn:/sbin/getty 38400 tty4
+5:23:respawn:/sbin/getty 38400 tty5
+6:23:respawn:/sbin/getty 38400 tty6</p>
+<p>12:23:respawn:/usr/bin/top 一直执行top,如果停止，会重新启动</p>
+<p>respawn 进程被杀掉后会重新启动
+x:5:respawn:/etc/X11/prefdm -nodaemon //运行级别５(init 5 )以respawn 方式运行prefdm ，显示图型界面</p>
+<p>init 3 (./rc 3)
+/etc/rc.d/rc3.d/S<em> 
+如果K开头的脚本开启了，init关闭K开闲脚本，启动Ｓ开关不脚本。
+ls /etc/rc.d/rc3.d/</em>sshd /etc/rc.d/rc5.d/*sshd
+/etc/rc.d/rc3.dK25sshd /etc/rc.d/rc5.d/S55sshd</p>
+<p>ls /etc/rc.d/rc3.d/<em>sshd /etc/rc.d/rc5.d/</em>sshd
+/etc/rc.d/rc3.dK25sshd --&gt;../init.d/sshd
+/etc/rc.d/rc5.d/S55sshd --&gt;../init.d/sshd
+软链接，Ｋ开头，默认关闭，Ｓ开头默认开启</p>
+<p>开启关闭 执行　/etc/rc.d/rc 3 
+时运行/etc/rc.d/rc3.d/K开头脚本 stop
+/etc/rc.d/rc3.d/S开头脚本 start</p>
+<p>pf::pwoerfail 有ups时停电延时关机，
+pr:12345:pwoerkwait　如果来电，停止关机</p>
+<p>更改/etc/inittab 使其生效　init q</p>
+<p>h}}}
+chkconfig 更改状态
+{{{
+/etc/init.d/mysql8
+服务启动脚本支持chkconfig 必须有如下２行，虽然是注释</p>
+<h1>chkconfig: - 55 45</h1>
+<h1>description: mysql database server.</h1>
+<ul>
+<li>默认关闭　启动顺序５５，关闭顺序４５</li>
+</ul>
+<h1>chkconfig: 35 55 45</h1>
+<p>35是指运行级别为３，５时开启</p>
+<p>chkconfig --add mysql8 //添加到启动列表　会添加软件链接/etc/rc.d/rc3.d/S55mysql8
+chkconfig mysql8 off //默认不启动　会添加软件链接/etc/rc.d/rc3.d/L55mysql8
+}}}</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "zhang-jie-3-ke-shi-41-jiang-jie-init-chkconfig.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

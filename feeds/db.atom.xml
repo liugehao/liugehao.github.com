@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/db.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-12-04T00:00:00+01:00</updated><entry><title>在这里详述 db/mysql load file outfile。</title><link href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbmysql-load-file-outfile.html" rel="alternate"></link><updated>2013-12-04T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-12-04:zai-zhe-li-xiang-shu-dbmysql-load-file-outfile.html</id><summary type="html">&lt;p&gt;{{{
+LOAD DATA INFILE 'data.txt' INTO TABLE tbl_name
+  FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+  LINES TERMINATED BY '\r\n'
+  IGNORE 1 LINES;&lt;/p&gt;
+&lt;p&gt;select * from driver into outfile "a.txt" fields terminated by ',' enclosed by '"'; 
+}}}&lt;/p&gt;</summary></entry><entry><title>在这里详述 db/Postgresql 正则表达式</title><link href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbpostgresql-zheng-ze-biao-da-shi.html" rel="alternate"></link><updated>2013-11-21T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-11-21:zai-zhe-li-xiang-shu-dbpostgresql-zheng-ze-biao-da-shi.html</id><summary type="html">&lt;p&gt;在postgresql中使用正则表达式时需要使用关键字“~”，以表示该关键字之前的内容需匹配之后的正则表达式，若匹配规则不需要区分大小写，可以使用组合关键字“~*”；&lt;/p&gt;
+&lt;p&gt;相反，若需要查询不匹配这则表达式的记录，只需在该关键字前加否定关键字“！”即可。若正则表达式包含转义字符，则需在表达式前加关键字“E”。
+例如：&lt;/p&gt;
+&lt;p&gt;{{{
+select * from user where email ~ '^[A-H]' --匹配email地址以A-H开头的记录&lt;br /&gt;
+select * from user where email ~* '^[a-h]' --匹配email地址以A-H和a-h开头的记录&lt;br /&gt;
+}}}&lt;/p&gt;
+&lt;p&gt;至于正则表达式的匹配公式是通用的，可以参照下表。&lt;/p&gt;
+&lt;p&gt;{{{
+字符  描述
+\   将下一个字符标记为一个特殊字符、或一个原义字符、或一个 后向引用、或一个八进制转义符。例如，'n' 匹配字符 "n"。'\n' 匹配一个换行符。序列 '\' 匹配 "\" 而 "(" 则匹配 "("。
+^   匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 '\n' 或 '\r' 之后的位置。
+$   匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 '\n' 或 '\r' 之前的位置。
+&lt;em&gt;   匹配前面的子表达式零次或多次。例如，zo&lt;/em&gt; 能匹配 "z" 以及 "zoo"。 * 等价于{0,}。
++   匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 "zo" 以及 "zoo"，但不能匹配 "z"。+ 等价于 {1,}。
+?   匹配前面的子表达式零次或一次。例如，"do(es)?" 可以匹配 "do" 或 "does" 中的"do" 。? 等价于 {0,1}。
+{n} n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。
+{n,}    n 是一个非负整数。至少匹配n 次。例如，'o{2,}' 不能匹配 "Bob" 中的 'o'，但能匹配 "foooood" 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o&lt;em&gt;'。
+{n,m}   m 和 n 均为非负整数，其中n &amp;lt;= m。最少匹配 n 次且最多匹配 m 次。刘， "o{1,3}" 将匹配 "fooooood" 中的前三个 o。'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。
+?   当该字符紧跟在任何一个其他限制符 (&lt;/em&gt;, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 "oooo"，'o+?' 将匹配单个 "o"，而 'o+' 将匹配所有 'o'。
+.   匹配除 "\n" 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '[.\n]' 的模式。
+(pattern)   匹配pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在Visual Basic Scripting Edition 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 '(' 或 ')'。
+(?:pattern) 匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 "或" 字符 (|) 来组合一个模式的各个部分是很有用。例如， 'industr(?:y|ies) 就是一个比 'industry|industries' 更简略的表达式。
+(?=pattern) 正向预查，在任何匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如， 'Windows (?=95|98|NT|2000)' 能匹配 "Windows 2000" 中的 "Windows" ，但不能匹配 "Windows 3.1" 中的 "Windows"。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。
+(?!pattern) 负向预查，在任何不匹配Negative lookahead matches the search string at any point where a string not matching pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如'Windows (?!95|98|NT|2000)' 能匹配 "Windows 3.1" 中的 "Windows"，但不能匹配 "Windows 2000" 中的 "Windows"。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始
+x|y 匹配 x 或 y。例如，'z|food' 能匹配 "z" 或 "food"。'(z|f)ood' 则匹配 "zood" 或 "food"。
+[xyz]   字符集合。匹配所包含的任意一个字符。例如， '[abc]' 可以匹配 "plain" 中的 'a'。
+[^xyz]  负值字符集合。匹配未包含的任意字符。例如， '[^abc]' 可以匹配 "plain" 中的'p'。
+[a-z]   字符范围。匹配指定范围内的任意字符。例如，'[a-z]' 可以匹配 'a' 到 'z' 范围内的任意小写字母字符。
+[^a-z]  负值字符范围。匹配任何不在指定范围内的任意字符。例如，'[^a-z]' 可以匹配任何不在 'a' 到 'z' 范围内的任意字符。
+\b  匹配一个单词边界，也就是指单词和空格间的位置。例如， 'er\b' 可以匹配"never" 中的 'er'，但不能匹配 "verb" 中的 'er'。
+\B  匹配非单词边界。'er\B' 能匹配 "verb" 中的 'er'，但不能匹配 "never" 中的 'er'。
+\cx 匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。 x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 'c' 字符。
+\d  匹配一个数字字符。等价于 [0-9]。
+\D  匹配一个非数字字符。等价于 [^0-9]。
+\f  匹配一个换页符。等价于 \x0c 和 \cL。
+\n  匹配一个换行符。等价于 \x0a 和 \cJ。
+\r  匹配一个回车符。等价于 \x0d 和 \cM。
+\s  匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。
+\S  匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。
+\t  匹配一个制表符。等价于 \x09 和 \cI。
+\v  匹配一个垂直制表符。等价于 \x0b 和 \cK。
+\w  匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'。
+\W  匹配任何非单词字符。等价于 '[^A-Za-z0-9_]'。
+\xn 匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如， '\x41' 匹配 "A"。'\x041' 则等价于 '\x04' &amp;amp; "1"。正则表达式中可以使用 ASCII 编码。.
+\num    匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，'(.)\1' 匹配两个连续的相同字符。
+\n  标识一个八进制转义值或一个后向引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为后向引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。
+\nm 标识一个八进制转义值或一个后向引用。如果 \nm 之前至少有is preceded by at least nm 个获取得子表达式，则 nm 为后向引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的后向引用。如果前面的条件都不满足，若  n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。
+\nml    如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。
+\un 匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。
+}}}&lt;/p&gt;</summary></entry><entry><title>mysql中增加远程表federated支持</title><link href="http://liugehao.github.io/mysqlzhong-zeng-jia-yuan-cheng-biao-federatedzhi-chi.html" rel="alternate"></link><updated>2013-10-29T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-10-29:mysqlzhong-zeng-jia-yuan-cheng-biao-federatedzhi-chi.html</id><summary type="html">&lt;p&gt;在my.cnf中[mysqld]下增加一行&lt;/p&gt;
+&lt;p&gt;{{{
+federated
+}}}
+重启mysql&lt;/p&gt;
+&lt;p&gt;{{{#!highlight sql
+CREATE TABLE federated_table (&lt;/p&gt;
+&lt;p&gt;id    int(20) NOT NULL auto_increment,&lt;/p&gt;
+&lt;p&gt;name  varchar(32) NOT NULL default '',&lt;/p&gt;
+&lt;p&gt;other int(20) NOT NULL default '0',&lt;/p&gt;
+&lt;p&gt;PRIMARY KEY (id),&lt;/p&gt;
+&lt;p&gt;KEY name (name),&lt;/p&gt;
+&lt;p&gt;KEY other_key (other)&lt;/p&gt;
+&lt;p&gt;)&lt;/p&gt;
+&lt;p&gt;ENGINE=FEDERATED&lt;/p&gt;
+&lt;p&gt;DEFAULT CHARSET=latin1&lt;/p&gt;
+&lt;p&gt;CONNECTION='mysql://root:password@remote_host:9306/federated/test_table';
+}}}&lt;/p&gt;</summary></entry><entry><title>mysql mysqldump 导出 csv 数据</title><link href="http://liugehao.github.io/mysql-mysqldump-dao-chu-csv-shu-ju.html" rel="alternate"></link><updated>2013-08-20T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-08-20:mysql-mysqldump-dao-chu-csv-shu-ju.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;导出本地数据库数据到本地文件
+ {{{#!highlight sql
+  mysql -A service_db -h your_host -utest -ptest&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mysql&amp;gt; select * from t_apps where created&amp;gt;'2012-07-02 00:00:00' into outfile /tmp/apps.csv
+ }}}&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;导出远程数据库数据到本地文件
+ {{{#!highlight sql
+  mysql -A service_db -h your_host -utest -ptest -ss -e "SELECT * from t_apps limit 300;" | sed 's/\t/","/g;s/^/"/;s/$/"/;s/\n//g' &amp;gt; apps.csv
+ }}}
+ (sed部分可略,尤其是处理包含汉字的数据时. 如果内容包含中文,可在select语句前加入set names utf8;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用mysqldump导出远程或本地数据到本地文件
+ {{{#!highlight sql
+  mysqldump -h your_host -utest -ptest -w "id&amp;lt;300" service_db t_apps &amp;gt; tt.sql
+ }}}
+ 如果只导数据加上 -t or --no-create- info ;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果只导结构加上 -d or --no-data;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mysqldump不能指定导出的列,变通方法如下:
+ {{{#!highlight sql
+  mysql -u USERNAME --password=PASSWORD --database=DATABASE --execute='SELECT &lt;code&gt;FIELD&lt;/code&gt;, &lt;code&gt;FIELD&lt;/code&gt; FROM &lt;code&gt;TABLE&lt;/code&gt; LIMIT 0, 10000 '  &amp;gt; file.csv
+ }}}
+ -X 导出xml&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>redis and hiredis install</title><link href="http://liugehao.github.io/redis-and-hiredis-install.html" rel="alternate"></link><updated>2013-08-15T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-08-15:redis-and-hiredis-install.html</id><summary type="html">&lt;p&gt;=== Redis安装步骤 ===&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;redis server安装
+    {{{
+    wget http://redis.googlecode.com/files/redis-2.4.6.tar.gz #下载文件
+    tar xzf redis-2.4.6.tar.gz
+    cd redis-2.4.6
+    make
+    cp src/redis-server src/redis-cli /usr/bin/ #方便在终端在任何地方直接运行
+    cp redis.conf /etc/
+    ufw allow 6379 #ubuntu下开启端口
+    }}}&lt;/p&gt;
+&lt;p&gt;修改/etc/redis.conf,让server以守护进程在后台执行。
+daemonize yes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动redis服务
+    {{{
+    redis-server /etc/redis.conf
+    }}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检测redis服务是否正常启动
+    {{{
+    ps -ef | grep redis
+    }}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;=== Hiredis install ===
+    Hiredis客户端下载地址：https://github.com/redis/hiredis&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Hiredis&lt;/span&gt;&lt;span class="err"&gt;安装步骤：&lt;/span&gt;
+&lt;span class="p"&gt;{{{&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;antirez&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;hiredis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;cc6a7f&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt;
+
+
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hiredis&lt;/span&gt;
+&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="n"&gt;libhiredis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hiredis&lt;/span&gt; &lt;span class="err"&gt;#将动态连接库&lt;/span&gt;&lt;span class="n"&gt;libhiredis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="err"&gt;至&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hiredis&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hiredis&lt;/span&gt;
+&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="n"&gt;hiredis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hiredis&lt;/span&gt;
+&lt;span class="p"&gt;}}}&lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;&amp;#39;&amp;#39;注意６４位系统的&lt;/span&gt;&lt;span class="n"&gt;lib64&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;rehl6&lt;/span&gt;&lt;span class="mf"&gt;.4&lt;/span&gt;&lt;span class="err"&gt;上按这方法报错未定义方法。&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;=== 连接hiredis服务器 ===
+ 1. 连接
+    {{{
+    #include &lt;stdio.h&gt;
+    #include &lt;hiredis/hiredis.h&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;redisContext&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;redisConnect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6379&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//redis server默认端口&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;err&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;connection error: %s&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;发送命令至服务器 
+    {{{
+    redisReply *reply = redisCommand(conn, "set key value");
+    }}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭Reply对象
+    {{{
+    freeReplyObject(reply);
+    }}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭连接
+    {{{
+    redisFree(conn);
+    }}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;'''具体一些其他的API可以看文件的README.md '''&lt;/p&gt;</summary></entry><entry><title>Describe db/debian 7 intall postgresql9.2 here.</title><link href="http://liugehao.github.io/describe-dbdebian-7-intall-postgresql92-here.html" rel="alternate"></link><updated>2013-07-28T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-07-28:describe-dbdebian-7-intall-postgresql92-here.html</id><summary type="html">&lt;p&gt;{{{
+apt-get install python-software-properties
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - 
+add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" 
+apt-get update 
+apt-get install postgresql
+}}}&lt;/p&gt;</summary></entry><entry><title>pgsql忘记密码 postgresql</title><link href="http://liugehao.github.io/pgsqlwang-ji-mi-ma-postgresql.html" rel="alternate"></link><updated>2013-06-01T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-06-01:pgsqlwang-ji-mi-ma-postgresql.html</id><summary type="html">&lt;p&gt;找到数据库簇目录,里面有pg_hba.conf文件,打开编辑,你将看到类似以下的一行:
+{{{
+host all all 127.0.0.1/32 md5
+}}}
+后面的也许不是md5,也许是别的.
+将最后的一项改为trust,即如下:
+{{{
+host all all 127.0.0.1/32 trust
+}}}
+重新启动数据库服务器.
+进入PostgreSQL安装目录的bin目录.执行命令.
+{{{
+psql -d template1 -U pgsql -c "alter role pgsql password 'liuyou@163.com1';"
+}}}
+如果服务器响应"ALTER ROLE",说明成功.
+然后把pg_hba.conf恢复原样.
+重新启动数据库服务器.
+这样,数据库中的默认管理员帐户"postgres"的密码就改为"12345678"了. &lt;/p&gt;</summary></entry><entry><title>sql语句分组</title><link href="http://liugehao.github.io/sqlyu-ju-fen-zu.html" rel="alternate"></link><updated>2013-06-01T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-06-01:sqlyu-ju-fen-zu.html</id><summary type="html">&lt;p&gt;比如数据如下&lt;/p&gt;
+&lt;p&gt;字段为
+id ,v_name,v_value
+{{{
+v_name v_value
+aa aa1 
+aa aa2
+aa aa3
+bb bb1 
+bb bb2
+bb bb3
+}}}
+按v_name分组
+如aa这一组,假设aa3为最新
+bb这一组,假设bb1为最新
+怎么样查询后使得记录为
+{{{
+aa aa3
+bb bb1 
+}}}
+{{{
+select
+t.v_name,
+(select v_value from test where v_name=t.v_name ORDER BY id DESC limit 1) as v_value
+FROM 
+(select v_name from test group by v_name) AS t 
+}}}&lt;/p&gt;</summary></entry><entry><title>postgresql一站式收费脚本</title><link href="http://liugehao.github.io/postgresql-zhan-shi-shou-fei-jiao-ben.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-27:postgresql-zhan-shi-shou-fei-jiao-ben.html</id><summary type="html">&lt;p&gt;不考虑其它条件，粗略计算。plpythonu 存储过程。
+{{{#!highlight python
+-- Function: jisuan(date, integer)&lt;/p&gt;
+&lt;p&gt;-- DROP FUNCTION jisuan(date, integer);&lt;/p&gt;
+&lt;p&gt;CREATE OR REPLACE FUNCTION jisuan(dt date, pagesize integer)
+  RETURNS text AS
+$BODY$&lt;/p&gt;
+&lt;p&gt;import pickle, datetime, math
+startdt = datetime.datetime.now()
+wd_citys = {}&lt;/p&gt;
+&lt;p&gt;for row in plpy.execute('select g.bm,cc."CityID",g.sjdw as sjdw from gs g left join county cc on cc."CountyID" = g.szd::int'):
+    wd_citys[row['bm']] = (row['sjdw'], row['CityID'])&lt;/p&gt;
+&lt;p&gt;je = {}
+plan = plpy.prepare("select szzl,szjg,xzzl,xzjg,shi1,shi2,category from jgsz  where category =1 and ssrq &amp;lt; $1 order by ssrq asc", ['date',])&lt;/p&gt;
+&lt;p&gt;for row in plpy.execute(plan, [datetime.datetime.strptime(dt,'%Y-%m-%d'),]):
+    if je.has_key(row['shi1']):
+        if je[row['shi1']].has_key(row['shi2']):
+        je[row['shi1']]['shi2'] = (row['szzl'], row['szjg'], row['xzzl'], row['xzjg'])
+        else:
+        je[row['shi1']]['shi2'] = (row['szzl'], row['szjg'], row['xzzl'], row['xzjg'])
+    else:
+        je[row['shi1']] = {row['shi2']:(row['szzl'], row['szjg'], row['xzzl'], row['xzjg'])}&lt;/p&gt;
+&lt;p&gt;plan = plpy.prepare("""  select t.docid1,coalesce(g1."GS",g2."GS",g3."GS",g4."GS",0) as gs from tb_scan_je t left join wdtmfw g1 on g1.qsh3 = t.docid3 and t.docid1 between g1.qsh1 and g1.zzh1 left join wdtmfw g2 on g2.zzh3 = t.docid3 and t.docid1 between g2.qsh1 and g2.zzh1 left join gstmfw g3 on g3.qsh2 = t.docid2 and t.docid1 between g3.qsh1 and g3.zzh1 left join gstmfw g4 on g4.zzh2 = t.docid2 and t.docid1 between g4.qsh1 and g4.zzh1 where t.dt = $1 limit $2 offset $3""", ['date','int','int'])
+plan1 = plpy.prepare("select scan_site::int as site,scan_type as lb,obj_wei as zl from tb_scan where doc_idint = $1 order by scan_time asc", ['bigint',])
+plan2 = plpy.prepare("""INSERT INTO je( doc_id, fjfb, fjcs, djfb, djcs, zl, je, dt)    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);""", ['bigint','int','int','int','int','numeric(5,2)','numeric(5,2)','date'])
+plan3 = plpy.prepare("insert into log (doc_id,log) values ($1 ,$2)",['bigint','text'])
+plan4 = plpy.prepare("select count(1) as co from tb_scan_je where dt=$1",['date'])
+result = plpy.execute(plan4, [dt])
+result = result[0]['co']
+pages = int(math.ceil(float(result) / pagesize))
+for i in range(pages):
+    tmp1 = datetime.datetime.now() - startdt
+    plpy.info('第'+str(i)+'轮查询：%s' % tmp1.seconds)
+    for row in plpy.execute(plan, [dt, pagesize, pagesize * i]):
+        tmp = {'doc_id':row['docid1'], 'fjfb':row['gs'], 'fjcs':0, 'djfb':0, 'djcs':0, 'zl':0, 'je':0,'dt':dt}
+        try:
+            for srow in plpy.execute(plan1, [row['docid1'],]):
+                if srow['zl'] !='' and srow['zl'] &amp;gt; tmp['zl']:
+                    tmp['zl'] = srow['zl']
+                if srow['lb'] == '10' or srow['lb'] == '13':
+                    tmp['djfb'] = srow['site']
+                    break
+                if srow['lb'] in ('03', '17', '18', '44', '96', '97'):
+                    tmp['djfb'] = srow['site']&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;wd_citys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;has_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wd_citys&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;wd_citys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;has_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wd_citys&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;has_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]].&lt;/span&gt;&lt;span class="n"&gt;has_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;zl&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;has_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]].&lt;/span&gt;&lt;span class="n"&gt;has_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;zl&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="nl"&gt;try:&lt;/span&gt;
+            &lt;span class="n"&gt;plpy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plan2&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;doc_id&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;fjcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djfb&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;djcs&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;zl&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;je&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;dt&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="nl"&gt;except:&lt;/span&gt;
+            &lt;span class="n"&gt;plpy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;docid1&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+    &lt;span class="nl"&gt;except:&lt;/span&gt;
+        &lt;span class="n"&gt;plpy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;docid1&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+
+&lt;span class="n"&gt;plpy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plan3&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;startdt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%Y%m%d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;proctime = datetime.datetime.now() - startdt
+plpy.execute("insert into log values(0,'%s')"% proctime.seconds)
+return str(proctime.seconds)&lt;/p&gt;
+&lt;p&gt;$BODY$
+  LANGUAGE plpythonu VOLATILE
+  COST 100;
+ALTER FUNCTION jisuan(date, integer)
+  OWNER TO postgres;
+}}}&lt;/p&gt;</summary></entry><entry><title>postgresql安装plphp语言</title><link href="http://liugehao.github.io/postgresqlan-zhuang-plphpyu-yan.html" rel="alternate"></link><updated>2012-11-27T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-27:postgresqlan-zhuang-plphpyu-yan.html</id><summary type="html">&lt;p&gt;ubuntu 下postgresql用python写存储过程，直接安装
+{{{
+apt-get install postgresql-plpython-9.1 #python2
+apt-get install postgresql-plpython3-9.1 #python3
+}}}
+== 用php写存储过程 ==
+php的话只能编译安装。&lt;/p&gt;
+&lt;p&gt;{{{#!highlight bash&lt;/p&gt;
+&lt;h1&gt;php安装&lt;/h1&gt;
+&lt;p&gt;wget http://cn2.php.net/get/php-5.4.9.tar.bz2/from/this/mirror 
+tar jxf mirror
+cd php-5.4.9
+./configure --prefix=/usr/local/php5.4.9 --enable-embed #必须embed
+make -j 8
+make install&lt;/p&gt;
+&lt;p&gt;安装plphp&lt;/p&gt;
+&lt;p&gt;git clone http://github.com/commandprompt/PL-php.git
+cd PL-php
+./configure --with-php=/usr/local/php5.4.9
+make
+make install&lt;/p&gt;
+&lt;p&gt;}}}
+{{{#!highlight sql&lt;/p&gt;
+&lt;h1&gt;psql template1&lt;/h1&gt;
+&lt;p&gt;INSERT INTO pg_pltemplate VALUES
+('plphp', 't', 't','plphp_call_handler','plphp_call_handler', 'plphp_validator', '$libdir/plphp.so', NULL);&lt;/p&gt;
+&lt;p&gt;CREATE FUNCTION plphp_call_handler() RETURNS LANGUAGE_HANDLER AS '$libdir/plphp.so' LANGUAGE C;&lt;/p&gt;
+&lt;p&gt;create or replace function php2(dt int,dt1 int)
+returns text as
+$body$
+  $t = array(1,3,4);
+  return $dt+$dt1;&lt;/p&gt;
+&lt;p&gt;$body$
+language plphp;&lt;/p&gt;
+&lt;p&gt;select php2(3,4);&lt;/p&gt;
+&lt;p&gt;}}}
+使用文档 https://public.commandprompt.com/projects/plphp/documents&lt;/p&gt;</summary></entry><entry><title>postgresql 导入导出压缩分割</title><link href="http://liugehao.github.io/postgresql-dao-ru-dao-chu-ya-suo-fen-ge.html" rel="alternate"></link><updated>2012-11-15T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-15:postgresql-dao-ru-dao-chu-ya-suo-fen-ge.html</id><summary type="html">&lt;p&gt;用pg_dump导出，再导入，大文件用压缩的。
+{{{
+pg_dump dbname | gzip &amp;gt; filename.gz&lt;/p&gt;
+&lt;p&gt;Reload with:&lt;/p&gt;
+&lt;p&gt;gunzip -c filename.gz | psql dbname
+}}}
+或者文档分割：
+{{{
+pg_dump dbname | split -b 1m - filename&lt;/p&gt;
+&lt;p&gt;Reload with:&lt;/p&gt;
+&lt;p&gt;cat filename* | psql dbname
+}}}&lt;/p&gt;</summary></entry><entry><title>postgresql 进程管理</title><link href="http://liugehao.github.io/postgresql-jin-cheng-guan-li.html" rel="alternate"></link><updated>2012-11-15T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-15:postgresql-jin-cheng-guan-li.html</id><summary type="html">&lt;p&gt;虽然可以使用 kill -9 来强制删除用户进程，但是不建议这么去做。&lt;/p&gt;
+&lt;p&gt;因为：对于执行update的语句来说，kill掉进程，可能会导致Postgres进入到recovery mode&lt;/p&gt;
+&lt;p&gt;而在recovery mode下，会锁表，不允许链接数据库。&lt;/p&gt;
+&lt;p&gt;通常情况下：使用如下语句&lt;/p&gt;
+&lt;p&gt;{{{#!highlight sql
+=# select datname,procpid,query_start,current_query,waiting,client_addr from pg_stat_activity where waiting='t';
+}}}&lt;/p&gt;
+&lt;p&gt;来查看有哪些SQL正在执行。&lt;/p&gt;
+&lt;p&gt;通过命令：
+{{{#!highlight sql
+=# select pg_cancel_backend(线程id);
+}}}
+来kill掉指定的SQL语句。&lt;/p&gt;
+&lt;p&gt;（这个函数只能 kill  Select 查询，而updae,delete DML不生效）&lt;/p&gt;
+&lt;p&gt;使用
+{{{#!highlight sql
+=# select  pg_terminate_backend(pid int)
+}}}
+可以kill 各种DML(SELECT,UPDATE,DELETE,DROP)操作&lt;/p&gt;</summary></entry><entry><title>mysql更改目录不能启动</title><link href="http://liugehao.github.io/mysqlgeng-gai-mu-lu-bu-neng-qi-dong.html" rel="alternate"></link><updated>2012-11-13T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-13:mysqlgeng-gai-mu-lu-bu-neng-qi-dong.html</id><summary type="html">&lt;p&gt;执行操作
+{{{&lt;/p&gt;
+&lt;h1&gt;cp -Rp /var/lib/mysql /data&lt;/h1&gt;
+&lt;h1&gt;vi /etc/mysql/my.cnf&lt;/h1&gt;
+&lt;p&gt;datadir = /data/mysql&lt;/p&gt;
+&lt;h1&gt;service mysql start&lt;/h1&gt;
+&lt;p&gt;start: Job failed to start
+}}}&lt;/p&gt;
+&lt;p&gt;出错，查看日志
+{{{&lt;/p&gt;
+&lt;h1&gt;tail -n 100 /var/log/syslog&lt;/h1&gt;
+&lt;p&gt;Nov 13 16:21:18 ubuntu1204 kernel: [ 1480.661013] type=1400 audit(1352794878.342:128): apparmor="DENIED" operation="mknod" parent=1 profile="/usr/sbin/mysqld" name="/data/mysql/ubuntu1204.lower-test" pid=3436 comm="mysqld" requested_mask="c" denied_mask="c" fsuid=0 ouid=0
+Nov 13 16:21:18 ubuntu1204 kernel: [ 1480.661125] type=1400 audit(1352794878.342:129): apparmor="DENIED" operation="mknod" parent=1 profile="/usr/sbin/mysqld" name="/data/mysql/ubuntu1204.lower-test" pid=3436 comm="mysqld" requested_mask="c" denied_mask="c" fsuid=0 ouid=0
+Nov 13 16:21:18 ubuntu1204 kernel: [ 1480.664373] type=1400 audit(1352794878.346:130): apparmor="DENIED" operation="open" parent=1 profile="/usr/sbin/mysqld" name="/data/mysql/mysql/plugin.frm" pid=3436 comm="mysqld" requested_mask="r" denied_mask="r" fsuid=111 ouid=111
+Nov 13 16:21:18 ubuntu1204 kernel: [ 1480.690690] type=1400 audit(1352794878.370:131): apparmor="DENIED" operation="open" parent=1 profile="/usr/sbin/mysqld" name="/data/mysql/ibdata1" pid=3436 comm="mysqld" requested_mask="rw" denied_mask="rw" fsuid=111 ouid=111
+Nov 13 16:21:18 ubuntu1204 kernel: [ 1480.694115] init: mysql main process (3436) terminated with status 1
+Nov 13 16:21:18 ubuntu1204 kernel: [ 1480.694150] init: mysql main process ended, respawning
+Nov 13 16:21:19 ubuntu1204 kernel: [ 1481.666854] init: mysql post-start process (3437) terminated with status 1
+Nov 13 16:21:19 ubuntu1204 kernel: [ 1481.723300] init: mysql main process (3474) terminated with status 1
+Nov 13 16:21:19 ubuntu1204 kernel: [ 1481.723332] init: mysql respawning too fast, stopped&lt;/p&gt;
+&lt;p&gt;}}}
+== 解决办法 ==
+更改 /var/lib/mysql 为/data/mysql&lt;/p&gt;
+&lt;p&gt;原来是 apparmor 做了限制。AppArmor 是内核的一个安全增强模块，对程序存取资源进行限制。
+{{{&lt;/p&gt;
+&lt;h1&gt;vi /etc/apparmor.d/usr.sbin.mysqld&lt;/h1&gt;
+&lt;p&gt;/usr/sbin/mysqld {
+  #include &lt;abstractions/base&gt;
+  #include &lt;abstractions/nameservice&gt;
+  #include &lt;abstractions/user-tmp&gt;
+  #include &lt;abstractions/mysql&gt;
+  #include &lt;abstractions/winbind&gt;&lt;/p&gt;
+&lt;p&gt;capability dac_override,
+  capability sys_resource,
+  capability setgid,
+  capability setuid,&lt;/p&gt;
+&lt;p&gt;network tcp,&lt;/p&gt;
+&lt;p&gt;/etc/hosts.allow r,
+  /etc/hosts.deny r,&lt;/p&gt;
+&lt;p&gt;/etc/mysql/&lt;em&gt;.pem r,
+  /etc/mysql/conf.d/ r,
+  /etc/mysql/conf.d/&lt;/em&gt; r,
+  /etc/mysql/&lt;em&gt;.cnf r,
+  /usr/lib/mysql/plugin/ r,
+  /usr/lib/mysql/plugin/&lt;/em&gt;.so&lt;em&gt; mr,
+  /usr/sbin/mysqld mr,
+  /usr/share/mysql/&lt;strong&gt; r,
+  /var/log/mysql.log rw,
+  /var/log/mysql.err rw,
+  /data/mysql/ r,
+  /data/mysql/&lt;/strong&gt; rwk,
+  /var/log/mysql/ r,
+  /var/log/mysql/&lt;/em&gt; rw,
+  /var/run/mysqld/mysqld.pid w,
+  /var/run/mysqld/mysqld.sock w,
+  /run/mysqld/mysqld.pid w,
+  /run/mysqld/mysqld.sock w,&lt;/p&gt;
+&lt;p&gt;/sys/devices/system/cpu/ r,&lt;/p&gt;
+&lt;p&gt;# Site-specific additions and overrides. See local/README for details.
+  #include &lt;local/usr.sbin.mysqld&gt;
+}&lt;/p&gt;
+&lt;h1&gt;service mysql start&lt;/h1&gt;
+&lt;p&gt;mysql start/running, process 3516
+}}}&lt;/p&gt;</summary></entry><entry><title>postgresql更改密码</title><link href="http://liugehao.github.io/postgresqlgeng-gai-mi-ma.html" rel="alternate"></link><updated>2012-11-07T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-07:postgresqlgeng-gai-mi-ma.html</id><summary type="html">&lt;p&gt;{{{
+su - postgres
+psql
+alter role postgres password 'new password';
+}}}&lt;/p&gt;
+&lt;p&gt;???下面的不好用???
+{{{
+alter user postgres with password 'new password'
+}}}&lt;/p&gt;</summary></entry><entry><title>SQLSTATE[HY000] [2003] Can't connect to MySQL server on 'servername' (99)</title><link href="http://liugehao.github.io/sqlstatehy000-2003-cant-connect-to-mysql-server-on-servername-99.html" rel="alternate"></link><updated>2012-10-29T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-10-29:sqlstatehy000-2003-cant-connect-to-mysql-server-on-servername-99.html</id><summary type="html">&lt;p&gt;php，mysql压力测试，mysql服务器无压力，php出现以下错误：
+{{{ 
+SQLSTATE[HY000] [2003] Can't connect to MySQL server on 'servername' (99)
+}}}&lt;/p&gt;
+&lt;p&gt;99:Cannot assign requested address [不能分配请求地址]&lt;/p&gt;
+&lt;p&gt;客户端频繁的连服务器，由于每次连接都在很短的时间内结束，导致很多的TIME_WAIT，以至于用光了可用的端 口号，所以新的连接没办法绑定端口，即“Cannot assign requested address”。是客户端的问题不是服务器端的问题。通过netstat，的确看到很多TIME_WAIT状态的连接。
+从网上找了解决办法：
+执行命令修改如下2个内核参数&lt;br /&gt;
+{{{
+sysctl -w net.ipv4.tcp_timestamps=1  开启对于TCP时间戳的支持,若该项设置为0，则下面一项设置不起作用
+sysctl -w net.ipv4.tcp_tw_recycle=1  表示开启TCP连接中TIME-WAIT sockets的快速回收
+}}}&lt;/p&gt;
+&lt;p&gt;有关内核级别的keepalive和time_wait的优化调整 
+{{{&lt;/p&gt;
+&lt;h1&gt;vi /etc/sysctl&lt;/h1&gt;
+&lt;p&gt;net.ipv4.tcp_tw_reuse = 1 
+net.ipv4.tcp_tw_recycle = 1 
+net.ipv4.tcp_keepalive_time = 1800 
+net.ipv4.tcp_fin_timeout = 30 
+net.core.netdev_max_backlog =8096 &lt;/p&gt;
+&lt;h1&gt;修改完记的使用sysctl -p 让它生效&lt;/h1&gt;
+&lt;p&gt;}}}
+以上参数的注解 /proc/sys/net/ipv4/tcp_tw_reuse 该文件表示是否允许重新应用处于TIME-WAIT状态的socket用于新的TCP连接。&lt;/p&gt;
+&lt;p&gt;修改内核参数，快速回收time_wait sockets：
+{{{
+[root@centos ~]# echo "net.ipv4.tcp_tw_reuse = 1" &amp;gt;&amp;gt; /etc/sysctl.conf&lt;/p&gt;
+&lt;h1&gt;表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；&lt;/h1&gt;
+&lt;p&gt;[root@centos ~]# echo "net.ipv4.tcp_tw_recycle = 1" &amp;gt;&amp;gt; /etc/sysctl.conf&lt;/p&gt;
+&lt;h1&gt;表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭。&lt;/h1&gt;
+&lt;p&gt;[root@centos ~]# sysctl -p
+}}}&lt;/p&gt;
+&lt;p&gt;== 重点在这里，参考 ==
+修改/etc/sysctl.conf ,改完sysctl -p&lt;/p&gt;
+&lt;p&gt;其中一台mysql服务器配置16G：
+{{{
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmmax = 68719476736
+kernel.shmall = 4294967296
+kernel.shmmni = 4096
+kernel.sem = 250 32000 100 128
+fs.file-max = 65536
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_keepalive_time = 1200
+net.ipv4.ip_local_port_range = 1024 65536
+net.ipv4.tcp_max_syn_backlog = 262144
+net.ipv4.tcp_max_tw_buckets = 8000
+}}}
+我的桌面机器，测试连接mysql测试机，php-fpm:
+{{{
+fs.file-max = 805916
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_tw_recycle = 1
+}}}&lt;/p&gt;
+&lt;p&gt;== 参考 ==&lt;/p&gt;
+&lt;p&gt;场景：使用libcurl 向本机的nginx 发请求，每隔一段时间，会出“Couldn't connect to server”，此时使用telnet 也会有错，Couldn't connect to server，同时观察netstat 发现很多TIME_WAIT。&lt;/p&gt;
+&lt;p&gt;分析：客户端频繁的连服务器，由于每次连接都在很短的时间内结束，导致很多的TIME_WAIT，以至于用光了可用的端口号，所以新的连接没办法绑定端口，即“Cannot assign requested address”&lt;/p&gt;
+&lt;p&gt;解决：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在程序中设置立即关闭不经历TIME_WAIT，以重用端口
+{{{
+int bReuseaddr=1;
+setsockopt(s,SOL_SOCKET ,SO_REUSEADDR,(const char*)&amp;amp;bReuseaddr,sizeof(int));
+}}}&lt;/li&gt;
+&lt;li&gt;修改内核参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;vi /etc/sysctl.conf 在末尾添加以下内容：
+{{{
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
+}}}
+net.ipv4.tcp_syncookies = 1 表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；&lt;/p&gt;
+&lt;p&gt;net.ipv4.tcp_tw_reuse = 1 表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；&lt;/p&gt;
+&lt;p&gt;net.ipv4.tcp_tw_recycle = 1 表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭。&lt;/p&gt;
+&lt;p&gt;使配置生效： /sbin/sysctl -p&lt;/p&gt;</summary></entry><entry><title>在这里详述 db/Warning: mysql_connect() [function.mysql-connect]: mysqlnd cannot connect to MySQL 4.1+ using the old insecure authentication.。</title><link href="http://liugehao.github.io/zai-zhe-li-xiang-shu-dbwarning-mysql_connect-functionmysql-connect-mysqlnd-cannot-connect-to-mysql-41-using-the-old-insecure-authentication.html" rel="alternate"></link><updated>2012-09-21T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-09-21:zai-zhe-li-xiang-shu-dbwarning-mysql_connect-functionmysql-connect-mysqlnd-cannot-connect-to-mysql-41-using-the-old-insecure-authentication.html</id><summary type="html">&lt;p&gt;{{{
+Warning: mysql_connect() [function.mysql-connect]: mysqlnd cannot connect to MySQL 4.1+ using the old insecure authentication. Please use an administration tool to reset your password with the command SET PASSWORD = PASSWORD('your_existing_password'). This will store a new, and more secure, hash value in mysql.user. If this user is used in other scripts executed by PHP 5.2 or earlier you might need to remove the old-passwords flag from your my.cnf file in path/to/the/file/where/connection/script/is/written/
+}}}
+更改my.cnf
+{{{
+old_passwords = 0
+}}}&lt;/p&gt;</summary></entry><entry><title>redhat5安装oracle 10g</title><link href="http://liugehao.github.io/redhat5an-zhuang-oracle-10g.html" rel="alternate"></link><updated>2012-09-14T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-09-14:redhat5an-zhuang-oracle-10g.html</id><summary type="html">&lt;ol&gt;
+&lt;li&gt;打开安装文件 database/install/oraparam.ini，操作如下：
+  {{{&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;修改&lt;/h1&gt;
+&lt;p&gt;Linux=redhat-3,SuSE-9,redhat-4,redhat-5,UnitedLinux-1.0,asianux-1,asianux-2]&lt;/p&gt;
+&lt;h1&gt;增加：&lt;/h1&gt;
+&lt;p&gt;[Linux-redhat-5.0-optional]
+TEMP_SPACE=80
+SWAP_SPACE=150
+MIN_DISPLAY_COLORS=256
+}}}&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;增加用户
+  {{{
+groupadd -g 499 oinstall;
+groupadd -g 502 dba;
+useradd  -u 499 -p oracle -g oinstall -G dba oracle;}}}&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更改及应用内核
+  {{{
+echo "# " &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "# Required for Oracle 10g " &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "# " &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "kernel.shmall = 2097152" &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "kernel.shmmax = 2147483648" &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "kernel.shmmni = 4096" &amp;gt;&amp;gt; /etc/sysctl.conf 
+echo "kernel.sem = 250 32000 100 128" &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "fs.file-max = 65536" &amp;gt;&amp;gt; /etc/sysctl.conf
+echo "net.ipv4.ip_local_port_range = 1024 65000" &amp;gt;&amp;gt; /etc/sysctl.conf
+/sbin/sysctl -p}}} &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更改环境变量
+  {{{
+echo "ORACLE_BASE=/oracle/home" &amp;gt;&amp;gt; /home/oracle/.bash_profile
+echo "ORACLE_HOME=/oracle/home/OraHome_1" &amp;gt;&amp;gt; /home/oracle/.bash_profile 
+echo "export ORACLE_HOME ORACLE_BASE" &amp;gt;&amp;gt; /home/oracle/.bash_profile 
+echo "PATH=$PATH:$ORACLE_HOME/bin" &amp;gt;&amp;gt; /home/oracle/.bash_profile 
+echo "export PATH"
+}}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置网络
+  {{{
+echo "128.165.101.107 test-server.my-domain.us test-server" &amp;gt;&amp;gt; /etc/hosts;
+/etc/init.d/network restart
+}}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装
+  {{{
+./runInstaller
+}}}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;参照oracle官网 http://www.oracle.com/technetwork/articles/saternos-kickstart-098543.html&lt;/p&gt;</summary></entry></feed>

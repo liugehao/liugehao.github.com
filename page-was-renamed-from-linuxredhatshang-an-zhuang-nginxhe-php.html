@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>## page was renamed from linux/redhat上安装nginx和php</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to ## page was renamed from linux/redhat上安装nginx和php">
+                                        ## page was renamed from linux/redhat上安装nginx和php
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-01-14T00:00:00">
+        <i class="icon-calendar"></i>一 14 一月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>= redhat上安装nginx和php,mysql =
+支持oracle,先安装下面２个包，从oracle网站下载相应版本。
+{{{
+oracle-instantclient-basic-10.2.0.3-1.x86_64.rpm
+oracle-instantclient-devel-10.2.0.3-1.x86_64.rpm 
+}}}</p>
+<p>http://vladgh.com/blog/install-nginx-and-php-533-php-fpm-mysql-and-apc
+{{{
+yum install pcre-devel
+./configure    --prefix=/opt/nginx    --conf-path=/etc/nginx/nginx.conf    --pid-path=/var/run/nginx.pid    --lock-path=/var/lock/nginx.lock    --http-log-path=/var/log/nginx/access.log    --error-log-path=/var/log/nginx/error.log    --http-client-body-temp-path=/var/lib/nginx/body    --http-proxy-temp-path=/var/lib/nginx/proxy    --http-fastcgi-temp-path=/var/lib/nginx/fastcgi    --http-uwsgi-temp-path=/var/lib/nginx/uwsgi    --http-scgi-temp-path=/var/lib/nginx/scgi    --with-http_ssl_module    --with-http_stub_status_module    --user=apache    --group=apache    --without-mail_pop3_module    --without-mail_imap_module    --without-mail_smtp_module</p>
+<p>yum install libXpm-devel libX11-devel libXdmcp-devel xorg-x11-proto-devel mesa-ligGl-devel freetype-devel</p>
+<p>./configure    --prefix=/opt/php5    --with-config-file-path=/opt/php5/etc    --with-config-file-scan-dir=/opt/php5/etc/conf.d    --with-curl    --with-pear    --with-gd    --with-jpeg-dir    --with-png-dir    --with-zlib    --with-xpm-dir    --with-freetype-dir    --with-mhash    --with-mysql        --with-pdo-mysql    --with-openssl    --with-xmlrpc    --with-xsl    --with-bz2    --with-gettext    --with-fpm-user=apache    --with-fpm-group=apache    --disable-debug    --enable-fpm    --enable-exif    --enable-wddx    --enable-zip    --enable-bcmath    --enable-calendar    --enable-ftp    --enable-mbstring    --enable-soap    --enable-sockets    --enable-sqlite-utf8    --enable-shmop    --enable-dba    --enable-sysvsem    --enable-sysvshm    --enable-sysvmsg --with-apxs2=/usr/local/apache/bin/apxs  --with-oci8=instantclient,/usr/lib/oracle/11.2/client64/lib --with-iconv</p>
+<h1>php5.4.10 不支持 --enable-sqlite-utf8</h1>
+<p>rpm -ivh libX11-devel-1.0.3-11.el5.x86_64.rpm \
+libXpm-devel-3.5.5-3.x86_64.rpm \
+libX11-devel-1.0.3-11.el5.x86_64.rpm \
+libXdmcp-devel-1.0.1-2.1.x86_64.rpm \
+xorg-x11-proto-devel-7.1-13.el5.x86_64.rpm \
+mesa-libGL-devel-6.5.1-7.8.el5.x86_64.rpm \
+freetype-devel-2.2.1-21.el5_3.x86_64.rpm</p>
+<p>mkdir /var/lib/nginx/
+mkdir /var/lib/nginx/body
+vi /etc/nginx/nginx.conf</p>
+<h1>user  root;</h1>
+<p>worker_processes  4;</p>
+<h1>error_log  logs/error.log;</h1>
+<h1>error_log  logs/error.log  notice;</h1>
+<h1>error_log  logs/error.log  info;</h1>
+<h1>pid        logs/nginx.pid;</h1>
+<p>events {
+    worker_connections  4096;
+}</p>
+<p>http {
+    include       mime.types;
+    default_type  application/octet-stream;</p>
+<div class="highlight"><pre><span class="cp">#log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span>
+<span class="cp">#                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span>
+<span class="cp">#                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;</span>
+
+<span class="cp">#access_log  logs/access.log  main;</span>
+<span class="n">client_max_body_size</span> <span class="mi">20</span><span class="n">m</span><span class="p">;</span>
+<span class="n">sendfile</span>        <span class="n">on</span><span class="p">;</span>
+<span class="cp">#tcp_nopush     on;</span>
+
+<span class="cp">#keepalive_timeout  0;</span>
+<span class="cp">#keepalive_timeout  650;</span>
+<span class="cp">#client_header_buffer_size 128k;</span>
+<span class="cp">#large_client_header_buffers 4 128k;</span>
+
+<span class="n">gzip</span>  <span class="n">on</span><span class="p">;</span>
+<span class="n">include</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span><span class="o">/*</span><span class="p">;</span>
+
+<span class="cp"># HTTPS server</span>
+<span class="cp">#</span>
+<span class="cp">#server {</span>
+<span class="cp">#    listen       443;</span>
+<span class="cp">#    server_name  localhost;</span>
+
+<span class="cp">#    ssl                  on;</span>
+<span class="cp">#    ssl_certificate      cert.pem;</span>
+<span class="cp">#    ssl_certificate_key  cert.key;</span>
+
+<span class="cp">#    ssl_session_timeout  5m;</span>
+
+<span class="cp">#    ssl_protocols  SSLv2 SSLv3 TLSv1;</span>
+<span class="cp">#    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;</span>
+<span class="cp">#    ssl_prefer_server_ciphers   on;</span>
+
+<span class="cp">#    location / {</span>
+<span class="cp">#        root   html;</span>
+<span class="cp">#        index  index.html index.htm;</span>
+<span class="cp">#    }</span>
+<span class="cp">#}</span>
+</pre></div>
+
+
+<p>}</p>
+<p>mkdir /opt/nginx/sites-enabled
+vi /opt/nginx/sites-enabled/default
+server {
+    listen       80 default;
+    #charset koi8-r;</p>
+<div class="highlight"><pre><span class="n">access_log</span>  <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="k">default</span><span class="p">.</span><span class="n">access</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+<span class="n">error_log</span>  <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="k">default</span><span class="p">.</span><span class="n">error</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+
+<span class="n">root</span>   <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="p">;</span>
+<span class="n">index</span>  <span class="n">index</span><span class="p">.</span><span class="n">php</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">index</span><span class="p">.</span><span class="n">htm</span> <span class="n">login</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+
+<span class="cp">#error_page  404              /404.html;</span>
+
+<span class="cp"># redirect server error pages to the static page /50x.html</span>
+<span class="cp">#</span>
+<span class="n">error_page</span>   <span class="mi">500</span> <span class="mi">503</span> <span class="mi">504</span>  <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
+<span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="p">.</span><span class="n">html</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="cp"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span>
+<span class="cp">#</span>
+<span class="cp">#location ~ \.php$ {</span>
+<span class="cp">#    proxy_pass   http:</span><span class="c1">//127.0.0.1;</span>
+<span class="cp">#}</span>
+
+<span class="cp"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span>
+<span class="cp">#</span>
+<span class="n">location</span> <span class="o">~*</span> <span class="p">.(</span><span class="n">jpg</span><span class="o">|</span><span class="n">gif</span><span class="o">|</span><span class="n">png</span><span class="o">|</span><span class="n">js</span><span class="o">|</span><span class="n">css</span><span class="p">)</span><span class="err">$</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">expires</span> <span class="n">max</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+<span class="n">location</span> <span class="o">~</span> <span class="err">\</span><span class="p">.</span><span class="n">php</span><span class="err">$</span> <span class="p">{</span>
+
+    <span class="n">fastcgi_pass</span>   <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">9000</span><span class="p">;</span>
+    <span class="n">fastcgi_index</span>  <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+    <span class="n">fastcgi_param</span>  <span class="n">SCRIPT_FILENAME</span>  <span class="err">$</span><span class="n">document_root</span><span class="err">$</span><span class="n">fastcgi_script_name</span><span class="p">;</span>
+    <span class="n">fastcgi_read_timeout</span> <span class="mi">500</span><span class="p">;</span>
+    <span class="n">include</span>        <span class="n">fastcgi_params</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># deny access to .htaccess files, if Apache&#39;s document root</span>
+<span class="cp"># concurs with nginx&#39;s one</span>
+<span class="cp">#</span>
+<span class="cp">#location ~ /\.ht {</span>
+<span class="cp">#    deny  all;</span>
+<span class="cp">#}</span>
+</pre></div>
+
+
+<p>}</p>
+<p>vi /etc/init.d/nginx</p>
+<h1>!/bin/sh</h1>
+<h1></h1>
+<h1>nginx - this script starts and stops the nginx daemin</h1>
+<h1></h1>
+<h1>chkconfig:   - 85 15</h1>
+<h1>description:  Nginx is an HTTP(S) server, HTTP(S) reverse \</h1>
+<h1>proxy and IMAP/POP3 proxy server</h1>
+<h1>processname: nginx</h1>
+<h1>config:      /opt/nginx/conf/nginx.conf</h1>
+<h1>pidfile:     /opt/nginx/logs/nginx.pid</h1>
+<h1>Source function library.</h1>
+<p>. /etc/rc.d/init.d/functions</p>
+<h1>Source networking configuration.</h1>
+<p>. /etc/sysconfig/network</p>
+<h1>Check that networking is up.</h1>
+<p>[ "$NETWORKING" = "no" ] &amp;&amp; exit 0</p>
+<p>nginx="/opt/nginx/sbin/nginx"
+prog=$(basename $nginx)</p>
+<p>NGINX_CONF_FILE="/etc/nginx/nginx.conf "</p>
+<p>lockfile=/var/run/nginx.pid</p>
+<p>start() {
+    [ -x $nginx ] || exit 5
+    [ -f $NGINX_CONF_FILE ] || exit 6
+    echo -n $"Starting $prog: "
+    daemon $nginx -c $NGINX_CONF_FILE
+    retval=$?
+    echo
+    [ $retval -eq 0 ] &amp;&amp; touch $lockfile
+    return $retval
+}</p>
+<p>stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog -QUIT
+    retval=$?
+    echo
+    [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile
+    return $retval
+}</p>
+<p>restart() {
+    configtest || return $?
+    stop
+    start
+}</p>
+<p>reload() {
+    configtest || return $?
+    echo -n $"Reloading $prog: "
+    killproc $nginx -HUP
+    RETVAL=$?
+    echo
+}</p>
+<p>force_reload() {
+    restart
+}</p>
+<p>configtest() {
+  $nginx -t -c $NGINX_CONF_FILE
+}</p>
+<p>rh_status() {
+    status $prog
+}</p>
+<p>rh_status_q() {
+    rh_status &gt;/dev/null 2&gt;&amp;1
+}</p>
+<p>case "$1" in
+    start)
+        rh_status_q &amp;&amp; exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart|configtest)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+            ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}"
+        exit 2
+esac</p>
+<p>chmod +x /etc/init.d/nginx
+/sbin/chkconfig nginx on
+/sbin/chkconfig --list nginx</p>
+<p>php-fpm.conf 中的pid设置必须打开和脚本中的一致
+vi /etc/init.d/php-fpm</p>
+<h1>! /bin/sh</h1>
+<h3>BEGIN INIT INFO</h3>
+<h1>Provides:          php-fpm</h1>
+<h1>Required-Start:    $remote_fs $network</h1>
+<h1>Required-Stop:     $remote_fs $network</h1>
+<h1>Default-Start:     2 3 4 5</h1>
+<h1>Default-Stop:      0 1 6</h1>
+<h1>Short-Description: starts php-fpm</h1>
+<h1>Description:       starts the PHP FastCGI Process Manager daemon</h1>
+<h3>END INIT INFO</h3>
+<p>prefix=/opt/php5
+exec_prefix=${prefix}</p>
+<p>php_fpm_BIN=${exec_prefix}/sbin/php-fpm
+php_fpm_CONF=${prefix}/etc/php-fpm.conf
+php_fpm_PID=/var/run/php-fpm.pid</p>
+<p>php_opts="--fpm-config $php_fpm_CONF"</p>
+<p>wait_for_pid () {
+    try=0</p>
+<div class="highlight"><pre><span class="k">while</span> <span class="n">test</span> <span class="err">$</span><span class="n">try</span> <span class="o">-</span><span class="n">lt</span> <span class="mi">35</span> <span class="p">;</span> <span class="k">do</span>
+
+    <span class="k">case</span> <span class="s">&quot;$1&quot;</span> <span class="n">in</span>
+        <span class="err">&#39;</span><span class="n">created</span><span class="err">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="s">&quot;$2&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+            <span class="n">try</span><span class="o">=</span><span class="err">&#39;&#39;</span>
+            <span class="k">break</span>
+        <span class="n">fi</span>
+        <span class="p">;;</span>
+
+        <span class="err">&#39;</span><span class="n">removed</span><span class="err">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">f</span> <span class="s">&quot;$2&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+            <span class="n">try</span><span class="o">=</span><span class="err">&#39;&#39;</span>
+            <span class="k">break</span>
+        <span class="n">fi</span>
+        <span class="p">;;</span>
+    <span class="n">esac</span>
+
+    <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="p">.</span>
+    <span class="n">try</span><span class="o">=</span><span class="err">`</span><span class="n">expr</span> <span class="err">$</span><span class="n">try</span> <span class="o">+</span> <span class="mi">1</span><span class="err">`</span>
+    <span class="n">sleep</span> <span class="mi">1</span>
+
+<span class="n">done</span>
+</pre></div>
+
+
+<p>}</p>
+<p>case "$1" in
+    start)
+        echo -n "Starting php-fpm "</p>
+<div class="highlight"><pre>    <span class="err">$</span><span class="n">php_fpm_BIN</span> <span class="err">$</span><span class="n">php_opts</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="s">&quot;$?&quot;</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot; failed&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="n">fi</span>
+
+    <span class="n">wait_for_pid</span> <span class="n">created</span> <span class="err">$</span><span class="n">php_fpm_PID</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$try&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot; failed&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="k">else</span>
+        <span class="n">echo</span> <span class="s">&quot; done&quot;</span>
+    <span class="n">fi</span>
+<span class="p">;;</span>
+
+<span class="n">stop</span><span class="p">)</span>
+    <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;Gracefully shutting down php-fpm &quot;</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">r</span> <span class="err">$</span><span class="n">php_fpm_PID</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot;warning, no pid file found - php-fpm is not running ?&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="n">fi</span>
+
+    <span class="n">kill</span> <span class="o">-</span><span class="n">QUIT</span> <span class="err">`</span><span class="n">cat</span> <span class="err">$</span><span class="n">php_fpm_PID</span><span class="err">`</span>
+
+    <span class="n">wait_for_pid</span> <span class="n">removed</span> <span class="err">$</span><span class="n">php_fpm_PID</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$try&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot; failed. Use force-exit&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="k">else</span>
+        <span class="n">echo</span> <span class="s">&quot; done&quot;</span>
+    <span class="n">fi</span>
+<span class="p">;;</span>
+
+<span class="n">force</span><span class="o">-</span><span class="n">quit</span><span class="p">)</span>
+    <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;Terminating php-fpm &quot;</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">r</span> <span class="err">$</span><span class="n">php_fpm_PID</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot;warning, no pid file found - php-fpm is not running ?&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="n">fi</span>
+
+    <span class="n">kill</span> <span class="o">-</span><span class="n">TERM</span> <span class="err">`</span><span class="n">cat</span> <span class="err">$</span><span class="n">php_fpm_PID</span><span class="err">`</span>
+
+    <span class="n">wait_for_pid</span> <span class="n">removed</span> <span class="err">$</span><span class="n">php_fpm_PID</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;$try&quot;</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot; failed&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="k">else</span>
+        <span class="n">echo</span> <span class="s">&quot; done&quot;</span>
+    <span class="n">fi</span>
+<span class="p">;;</span>
+
+<span class="n">restart</span><span class="p">)</span>
+    <span class="err">$</span><span class="mi">0</span> <span class="n">stop</span>
+    <span class="err">$</span><span class="mi">0</span> <span class="n">start</span>
+<span class="p">;;</span>
+
+<span class="n">reload</span><span class="p">)</span>
+
+    <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s">&quot;Reload service php-fpm &quot;</span>
+
+    <span class="k">if</span> <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">r</span> <span class="err">$</span><span class="n">php_fpm_PID</span> <span class="p">]</span> <span class="p">;</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s">&quot;warning, no pid file found - php-fpm is not running ?&quot;</span>
+        <span class="n">exit</span> <span class="mi">1</span>
+    <span class="n">fi</span>
+
+    <span class="n">kill</span> <span class="o">-</span><span class="n">USR2</span> <span class="err">`</span><span class="n">cat</span> <span class="err">$</span><span class="n">php_fpm_PID</span><span class="err">`</span>
+
+    <span class="n">echo</span> <span class="s">&quot; done&quot;</span>
+<span class="p">;;</span>
+
+<span class="o">*</span><span class="p">)</span>
+    <span class="n">echo</span> <span class="s">&quot;Usage: $0 {start|stop|force-quit|restart|reload}&quot;</span>
+    <span class="n">exit</span> <span class="mi">1</span>
+<span class="p">;;</span>
+</pre></div>
+
+
+<p>esac</p>
+<p>修改php-fpm.conf.default 
+pid = /var/run/php-fpm.pid</p>
+<p>4、编译安装cmakewget http://www.cmake.org/files/v2.8/cmake-2.8.4.tar.gz</p>
+<h1>tar xvzf cmake-2.8.4.tar.gz</h1>
+<h1>cd cmake-2.8.4</h1>
+<h1>./configure</h1>
+<h1>make&amp;make install</h1>
+<p>cd mysql-5.5.11
+cmake . -DCMAKE_INSTALL_PREFIX=/opt/mysql55/  -DMYSQL_DATADIR=/opt/mysql55/data  -DWITH_INNOBASE_STORAGE_ENGINE=1  -DMYSQL_TCP_PORT=3306  -DMYSQL_UNIX_ADDR=/var/run/mysql.sock  -DMYSQL_USER=mysql  -DWITH_DEBUG=0</p>
+<p>make &amp;&amp; make install </p>
+<h1>cd /usr/local/mysql55</h1>
+<h1>chown -R mysql .</h1>
+<h1>chgrp -R mysql .</h1>
+<h1>cp support-files/my-huge.cnf /etc/my.cnf</h1>
+<h1>vi /etc/my.cnf</h1>
+<p>将数据目录和套接字文件修改为实际值.</p>
+<h1>scripts/mysql_install_db –user=mysql</h1>
+<h1>chown -R root .</h1>
+<h1>chown -R mysql data</h1>
+<p>以下命令启动mysql</p>
+<h1>bin/mysqld_safe –user=mysql &amp;</h1>
+<p>以下命令测试</p>
+<h1>bin/mysqladmin version</h1>
+<h1>bin/mysqladmin variables</h1>
+<h1>chkconfig –add mysqld</h1>
+<p>到这里就完成了,现在重启电脑进入终端测试</p>
+<h1>cd /usr/local/mysql</h1>
+<h1>bin/mysqlshow</h1>
+<p>如果可以看到数据说明mysql已经自启动了,现在你可以在终端使用
+service mysqld stop来停止mysql服务
+使用service mysqld start 来启动mysql服务
+}}}</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "page-was-renamed-from-linuxredhatshang-an-zhuang-nginxhe-php.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Describe linux/rhel/redhat笔记 here.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Describe linux/rhel/redhat笔记 here.">
+                                        Describe linux/rhel/redhat笔记 here.
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-13T00:00:00">
+        <i class="icon-calendar"></i>二 13 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>echo "aaa" &gt; tty1　＃输出内容到tty终端</p>
+<p>vi /etc/inittab
+id:3:initdefault  #3默认不启动xwindow,5开机启动xwindow</p>
+<p>1:2345:respawn:/sbin/ningetty tty1 #tty终端数量</p>
+<p>===9 10 课时，系统命令初步 ===
+linux一切皆文件，硬件也抽象成文件形式
+{{{
+cd ~abc 进入abc家目录
+touch a 更改文件时间，如果没有文件则创建
+touch /tmp/{a,b} 创建a,b２个文件
+stat a 查看文件a的时间
+pws 显示当前路径
+ls -F 增加标记。可执行文件加/,可执行文件加*...
+alias ls='ls --color=tty'　增加颜色
+unalias 取消别名
+source .bashrc 升效
+cp -r 文件夹
+rm -i 交互模式，是否删除
+rm -r 删除文件夹
+rm -rf 删除文件夹和文件不询问
+rm -f 不问是否删除
+cp -r 文件夹
+rmdir 删除空文件夹
+pstree 查看进程树</p>
+<p>hostname 查看、更改主机名（不保存，下次重启变回原来主机名）
+/etc/ssconfig/network 主机名信息</p>
+<p>ifconfig 查看更改ＩＰ
+ifconfig eth0 192.168.1.12 (不永久第一次)
+vi /etc/sysconfig/network-scraipts/ifcfg-eth0 网络配置文件</p>
+<p>netconfig 改文件，自动改ifconfig的配置到配置文件，再service network restart 升效</p>
+<p>file /bin/ls ＃file 文件名，查看文件类型
+file p.img
+p.img: Linux rev 1.0 ext4 filesystem data, UUID=c6f89be8-9267-4953-b4f5-ff368c58d9c4 (extents) (huge files)</p>
+<p>使用cifs 需要先安装 cifs-utils包</p>
+<p>mount /dev/cdrom /mnt
+mount -t iso9660 /dev/cdrom /mnt
+mount -t cifs //192.168.0.1/tools /mnt
+mount -t cifs -o username=administrator //192.168.0.1/tools /mnt #win share
+mount 192.168.0.254:/var/ftp/pub /mnt #nfs linux共享。nfs速度快</p>
+<p>cat /dev/cdrom &gt;a.iso 做镜象文件
+mount -t iso9660 -o loop a.iso /mnt #loop 虚拟成一个回环设备</p>
+<p>ls -l 不是文件实际占的大小，文件夹４Ｋ，
+du -s 看文件夹大小，汇总　-h 显示k,m,g</p>
+<p>shutdown -h 16:00 ＃１６点关机
+init 0 关闭服务，然后调halt -p -f 断电。自己用机器，直接init 0关机</p>
+<p>shutdown -r now　会调用
+init 6</p>
+<p>}}}
+=== 用户及组管理初步 ===
+useradd shrek
+添加用户，做下列量系列动作：
+{{{
+/etc/passwd
+/etc/shadow
+/etc/group
+/etc/gshadow</p>
+<p>mkdir /home/shrek
+cp -r /etc/skel/.* /home/shrek
+chown -R shrek:shrek /home/shrek
+}}}</p>
+<p>/etc/passwd
+l:x:1000:1000:liugehao,,,:/home/l:/bin/bash
+用户名:密码(x表示有密码):用户id:组ＩＤ:用户全名注释:家目录:用户所用shell
+/sbin/nologin 表示不允许登录</p>
+<p>/etc/shadow
+l:$6$2WQbK4Hs$Ai12QpRxzKwxurcjkhseUQtnX1H4cN6yEJZBFAcGAc1Cwmyuir.M.xNHerZCptZ.pQaLbutBF7yp3/qVld7Wj1:15913:0:99999:7:::
+用户名：单向加密后的密码：19700101天数:密码最短历史:密码最长历史天数:密码过期天数通知:帐号禁用的unix天数::</p>
+<p>/etc/group
+l:x:1000:
+libvirt-qemu:x:124:libvirt-qemu,l
+组名：是否有组密码：组ＩＤ：用户,用户</p>
+<p>linux 只有２种用户，一种是ＩＤ为０的root,另一种是ＵＩＤ不为０的，把普通用户加到root组，只是某些文件管理权限。</p>
+<p>/etc/gshadow
+组密码文件</p>
+<p>/etc/login.defs
+修改默认密码天数，过期警告天数等</p>
+<p>userdel shrek 删除用户
+userdel -r shrek 彻底删除用户，一并删除主目录，email</p>
+<p>usermod 更改用户主目录,passwd,comment
+usermod -G root,bin,todd shrek 把shrek加入到oot,bin,todd 组。-a append </p>
+<p>id l
+uid=1000(l) gid=1000(l) groups=1000(l),122(kvm),123(libvirt),124(libvirt-qemu),125(vde2-net)</p>
+<p>gpasswd -M l,root,shrek root 多个用户加入到一个组</p>
+<p>usermod -g 切换组ＩＤ，一个用户只有一个组ＩＤ，可以有多个组</p>
+<p>删除/etc/passwd后，单用户模式登录后，用/etc/passwd-恢复，(/etc/shadow)</p>
+<p>Alt-Fx 控制台tty1，
+xwindow 登录或者远程登录后，打开terminal 控制台是pts/1...
+skill -9 pts/3 杀掉pts/3的登录</p>
+<p>查看用户
+users 
+w
+who</p>
+<p>write pts/2 root 给pts2用户发消息
+echo aaaaksdjf &gt; pts/2
+mesg y 打开write
+wall xxxkjfdskfjs 发送给所有人</p>
+<p>last　查看用户登录日志</p>
+<p>lastlog 每个用户最后一次登录时间</p>
+<p>finger shrek 看某个用户的登录时间，信息,email等</p>
+<p>=== １６课时　文本处理及正则表达式　===
+ * 命令 cat tail head less more
+{{{
+tail -f 监视文件，如果文件发生变化，显示发生变化
+cut -d: -f1 /etc/passwd //　-d以冒号为分隔符，　-f显示第一列
+cut -d: -f1 /etc/passwd |grep root //显示第一列，并且第一列中包括root的行
+cut -d: -f7 /etc/passwd　显示shell
+}}}</p>
+<ul>
+<li>grep 
+-v 反向选择
+-R 对目录下文件和子文件夹下文件进行筛选
+-l 只显示文件外
+''正则表达式用单引号
+-c 显示行号
+-A2　显示上下文中下面２行
+-B2　显示上下文中上面２行</li>
+<li>grep 正则
+||. ||表示任何一个字符 ||
+||.＊ ||表示０个或者任意个字符 ||
+||^a ||a开头的行 ||
+||a$ ||表示以a结束的行 ||
+||<good ||表示以good开头的单词 ||
+||sh> ||表示以sh结尾的单词 ||
+||[abc] ||表示当前位置是a,b或者c ||
+||[^abc] ||表示除a b c以外的字符 ||
+||a*||空,a,aa,aaa,.... ||
+||a? ||表示０个或者一个a ||
+||a+ ||表示a,aa,aaa,... ||
+||a{n} ||表示n个a ||</li>
+</ul>
+<p>grep '.{40,}' /usr/share/dict/words　取超过４０字符的单词
+  grep '^i.{18}n$' /usr/share/dict/words 查看i18n的单词
+  查看配置文件，过滤注释行和空行
+  grep -v '^#' /etc/nginx/nginx.conf | grep -v '^$'
+  cut -d: -f2-4 -c1-5 冒号分隔符，显示第二到第四段,1-5个字符
+  -r 反向排序</p>
+<ul>
+<li>
+<p>locate -r '' 正则查找文件</p>
+</li>
+<li>
+<p>sort 
+  -r 反向排序
+  -t:　以冒号分隔符
+  -n 数字形式排序
+  +3 从第二列开始排　//-k3
+  sort -t: -k3nr /etc/passwd   按第三列数字方式排倒序</p>
+</li>
+<li>
+<p>wc 统计
+  -l 行
+  -w 单词
+  -c 字符</p>
+</li>
+<li>
+<p>uniq 统计
+  cut -d: -f7 /etc/passwd |sort | uniq 第７列排序后　distinct。-c 统计行数</p>
+</li>
+<li>
+<p>diff 文件对比,可以生成patch文件
+  patch -p0 &lt; pathch文件　// -p 级别</p>
+</li>
+</ul>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "describe-linuxrhelredhatbi-ji-here.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

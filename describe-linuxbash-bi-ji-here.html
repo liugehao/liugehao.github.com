@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Describe linux/bash 笔记 here.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Describe linux/bash 笔记 here.">
+                                        Describe linux/bash 笔记 here.
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-17T00:00:00">
+        <i class="icon-calendar"></i>六 17 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>=== 命令组合 ===
+ ||管道|| | ||
+ ||&lt;|4&gt;重定向|| &lt; 重定向输入。指定文件读取数据，而不是键盘输入||
+ ||&gt; &gt;&gt; 重定向输出。将输出结果覆盖、追加到指定文件 ||
+ ||2&gt; 2&gt;&gt; 标准错误输出。　结果覆盖、追加到指定文件||
+ ||&amp;&gt; &amp;&gt;&gt; 将标准输出和错误信息覆盖、追加到指定文件 ||</p>
+<p>下面２条相同结果
+{{{
+find / -name shrek &gt; /tmp/find 2&gt;&amp;1
+find / -name shrek &amp;&gt; /tmp/find 
+cat &lt;&lt; EEE
+skjdf
+sfd
+EEE(^D)</p>
+<p>}}}
+ 多条命令的逻辑关系
+ || 逻辑与 ||&amp;&amp; 语名都执行成功。前面成功，执行后面的。如果前面失败，后面的不执行。||
+ ||逻辑或 ||　｜｜ 前面成功不执行后面。前面失败，执行后面的。||
+ ||逻辑分隔||；　按顺序执行多条语句 ||
+===　3 变量 ===</p>
+<p>环境变量，系统变量，用户变量.__env__查看所有变量
+ || 双引号 || " ||　允许引用、转义\ ||
+ ||单引号 ||'|| 不允许引用、转义||
+ ||反撇号 ||` $() ||以命令输出替换||</p>
+<p>|| $? || 前一条命令状态值　０为正常，其它为出错  ||
+ || $０ || 脚本自身程序名  ||
+ || $１－９ || 命令的１－９个参数  ||
+ || $* || 命令行所有参数的内容  ||
+ || $# || 命令行所有参数的个数  ||
+{{{</p>
+<h1>./t.sh abc def //输入 #?２个参数，第一个$1 abc，第二个$2是def #*是abc def</h1>
+<p>}}}</p>
+<p>=== 数值运算及处理 ===
+'''expr''' expr 数值１　运算符　数值２
+'''$[]'''  $[数值１　运算符　数值２]
+{{{
+expr 2 + 3
+expr 2 - 3
+expr 2 * 3  *号是bash通配符，需转义
+expr 2 / 3
+x = 2;y =3;
+echo $[ 3 * 3] 不需转义
+echo $[x * y]
+expr $x * $y
+}}}</p>
+<p>let 变量名++、let 变量名-- 
+{{{
+x = 4
+let x++;echo $x
+let x+=2; echo $x
+}}}
+随机数
+random 变量　
+{{{
+echo $RANDOM 默认范围0-32767
+echo $[RANDOM % 100] 0-100
+}}}
+生成数字序列　
+seq 首数　末数　#从１开始，首数可省略
+{{{</p>
+<h1>seq 3</h1>
+<p>1
+2
+3</p>
+<h1>seq 3 5</h1>
+<p>3
+4
+5
+}}}
+seq 首数 增量 末数
+{{{</p>
+<h1>seq 3 2 10</h1>
+<p>3
+5
+7
+9
+}}}</p>
+<p>小数运算
+将计算交给'''bc'''
+{{{
+echo "34.3 - 3.4" | bc
+echo "scale=4;10/3" | bc #scale　限制小数位数
+}}}</p>
+<p>=== 字符串截取 ===</p>
+<ul>
+<li>目录命令
+  . dirname 路径　不包括文件名或者最后的目录名
+  . basenme 文件名或者最后的路径名
+    {{{
+    #Var1 = "/etc/nginx/nginx.conf"
+    #dirname $Var1
+    /etc/nginx
+    #basename $Var1
+    nginx.conf
+    }}}</li>
+<li>字符串替换
+  . expr substr $var1 开始位置 截取长度 //起始位置从１开始
+  . ${变量名称:起始位置:截取长度}  //起始位置从0开始
+  . 
+{{{</li>
+</ul>
+<h1>Var1 = "0123456739"</h1>
+<h1>expr substr 4 3</h1>
+<p>456</p>
+<h1 Var:4:3="Var:4:3">echo $</h1>
+<p>567</p>
+<h1>echo ${Var::3} //从开头取</h1>
+<p>123
+}}}
+  . ${Var1/3/0} //第一个３替换同成０
+  . ${Var1//3/0}　//所有的３都替换成０
+}}}
+ * 随机字符串
+  . 从/dev/urandom 获取随机字符（有可能乱码），能过/usr/bin/md5sum 生成纯ascii字符，再通过/usr/bin/cut截取固定长度的字符。cat urandom会一直出字符，只取第一行生成md5
+    {{{
+　　　head -1 /dev/urandom | md5sum
+      echo $var1 | cut -b 起始位置-结束位置 //开头字符可省略 cut -b -5；最后８个字符时，cut -b 18-
+      head-1 /dev/urandom |md5sum |cut -b -8 //取８个随机字符
+    }}}</p>
+<p>=== 17 输入输出管道及重定向 ===</p>
+<div class="highlight"><pre><span class="err">过滤器命令</span>
+<span class="err">输入输出重定向</span>
+<span class="err">输入源　输出到屏幕　</span><span class="n">cat</span> <span class="n">ls</span>
+<span class="o">&gt;</span><span class="err">标准正确输出</span>
+<span class="mi">2</span><span class="o">&gt;</span> <span class="err">标准错误输出</span>
+
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">a</span> <span class="err">编写文件　Ｃ</span><span class="n">trl</span><span class="o">+</span><span class="n">d</span><span class="err">结束</span>
+<span class="err">下面２条相同结果</span>
+<span class="p">{{{</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="n">shrek</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">find</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="n">shrek</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">find</span> 
+<span class="p">}}}</span>
+
+<span class="err">编辑器　</span><span class="n">vi</span>
+
+<span class="p">{{{</span>
+<span class="n">cat</span> <span class="o">&lt;&lt;</span> <span class="n">EEE</span>
+<span class="n">skjdf</span>
+<span class="n">sfd</span>
+<span class="n">EEE</span><span class="p">(</span><span class="o">^</span><span class="n">D</span><span class="p">)</span>
+<span class="p">}}}</span>
+<span class="err">写入</span><span class="n">a</span><span class="p">.</span><span class="n">txt</span>
+<span class="p">{{{</span>
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">txt</span> <span class="o">&lt;&lt;&lt;</span><span class="n">EEE</span>
+<span class="n">sdfsd</span>
+<span class="n">sfd</span>
+<span class="n">EEE</span>
+<span class="p">}}}</span>
+<span class="n">tr</span> <span class="s">&quot;a-z&quot;</span> <span class="s">&quot;A-Z&quot;</span> <span class="err">小写变大写</span>
+<span class="p">{{{</span>
+<span class="n">tr</span> <span class="s">&quot;a-z&quot;</span> <span class="s">&quot;A-Z&quot;</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span>
+
+<span class="n">ls</span> <span class="o">/</span><span class="n">etcl</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span><span class="n">grep</span> <span class="err">&#39;</span><span class="o">^</span><span class="n">l</span><span class="err">&#39;</span> <span class="o">|</span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+<span class="p">}}}</span>
+<span class="err">在管道使用的时候，复制一份，</span><span class="n">tee</span> <span class="err">。比如想看下中间结果</span>
+<span class="p">{{{</span>
+<span class="n">l</span><span class="err">@</span><span class="n">x201i</span><span class="o">:~</span><span class="err">$</span> <span class="n">ll</span> <span class="o">|</span><span class="n">grep</span> <span class="err">&#39;</span><span class="o">^</span><span class="p">[</span><span class="o">^</span><span class="n">d</span><span class="p">]</span><span class="err">&#39;</span><span class="o">|</span><span class="n">tee</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">pts</span><span class="o">/</span><span class="mi">1</span> <span class="o">|</span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">total</span> <span class="mi">512304</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">1</span> <span class="n">l</span> <span class="n">l</span>    <span class="mi">221287</span> <span class="n">Nov</span> <span class="mi">16</span>  <span class="mi">2010</span> <span class="n">aliedit</span><span class="p">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">l</span> <span class="n">l</span>      <span class="mi">8942</span> <span class="n">Jun</span> <span class="mi">23</span> <span class="mi">16</span><span class="o">:</span><span class="mi">41</span> <span class="n">examples</span><span class="p">.</span><span class="n">desktop</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">l</span> <span class="n">l</span>      <span class="mi">7307</span> <span class="n">Aug</span>  <span class="mi">5</span> <span class="mi">15</span><span class="o">:</span><span class="mo">02</span> <span class="n">pgadmin</span><span class="p">.</span><span class="n">log</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">l</span> <span class="n">l</span> <span class="mi">524288000</span> <span class="n">Jul</span> <span class="mi">23</span> <span class="mi">08</span><span class="o">:</span><span class="mi">11</span> <span class="n">p</span><span class="p">.</span><span class="n">img</span>
+<span class="mi">5</span>
+<span class="p">}}}</span>
+<span class="err">密码替换</span>
+<span class="p">{{{</span>
+<span class="n">l</span><span class="err">@</span><span class="n">x201i</span><span class="o">:~</span><span class="err">$</span> <span class="n">tr</span> <span class="err">&#39;</span><span class="s">&quot;a-m&quot;&quot;n-z&quot;&quot;A-M&quot;&quot;N-Z&quot;</span><span class="sc">&#39; &#39;</span><span class="s">&quot;N-Z&quot;&quot;A-M&quot;&quot;n-z&quot;&quot;a-m&quot;</span><span class="err">&#39;</span>
+<span class="n">i</span> <span class="n">love</span> <span class="n">you</span> <span class="n">very</span> <span class="n">much</span>
+<span class="n">V</span> <span class="n">YBIR</span> <span class="n">LBH</span> <span class="n">IREL</span> <span class="n">ZHPU</span>
+<span class="p">}}}</span>
+<span class="err">加密文件</span>
+<span class="p">{{{</span>
+<span class="n">tr</span> <span class="err">&#39;</span><span class="s">&quot;a-m&quot;&quot;n-z&quot;&quot;A-M&quot;&quot;N-Z&quot;</span><span class="sc">&#39; &#39;</span><span class="s">&quot;N-Z&quot;&quot;A-M&quot;&quot;n-z&quot;&quot;a-m&quot;</span><span class="err">&#39;</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span><span class="err">　</span><span class="o">&gt;</span> <span class="n">passwd</span><span class="p">.</span><span class="n">bak</span>
+<span class="p">}}}</span>
+<span class="n">passwd</span><span class="err">加密码后邮件发出</span>
+<span class="p">{{{</span>
+<span class="n">tr</span> <span class="err">&#39;</span><span class="s">&quot;a-m&quot;&quot;n-z&quot;&quot;A-M&quot;&quot;N-Z&quot;</span><span class="sc">&#39; &#39;</span><span class="s">&quot;N-Z&quot;&quot;A-M&quot;&quot;n-z&quot;&quot;a-m&quot;</span><span class="err">&#39;</span> <span class="o">|</span><span class="n">mail</span> <span class="o">-</span><span class="n">s</span> <span class="s">&quot;for you &quot;</span> <span class="n">abc</span><span class="err">@</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span>
+<span class="p">}}}</span>
+</pre></div>
+
+
+<p>== 6 条件测试 ==</p>
+<ul>
+<li>
+<p>测试操作规范
+  . 测试的本质
+  　　. 是一条命令
+  　　. 根据　$?　返回前一条命令返回的状态。成功为0,再则不成功
+  . 操作规范
+     . 格式1 test 条件表达式
+     . 格式2: [ 条件表达式 ]
+  . 练习方法
+    . 直接跟 &amp;&amp; echo YES 判断结果
+    . 用法： [ 条件表达式 ] &amp;&amp; echo YES
+    {{{
+        l@x201i:~$ ls -dl /etc/grub/ /boot/grub
+        ls: cannot access /etc/grub/: No such file or directory
+        drwxr-xr-x 5 root root 5120 Jul 30 07:30 /boot/grub
+        l@x201i:~$ [-d "/etc/grub" ] &amp;&amp; echo YES //前面要有空格，-d 是否为目录
+        bash: [-d: command not found
+        l@x201i:~$ [ -d "/etc/grub" ] &amp;&amp; echo YES
+        l@x201i:~$ [ -d "/boot/grub" ] &amp;&amp; echo YES
+        YES</p>
+<p>}}}</p>
+</li>
+<li>
+<p>文件状态检测
+   . 存在及识别
+    . -e: 目标是否存在 (Exist)
+    . -d: 是否为目录 (Directory)
+    . -f: 是否为文件（File)
+  . 权限的检测
+    . -r:　是否有读取的权限(Read)
+    . -w: 是否有写入权限(Write)
+    . -x: 是否有执行权限(eXcute)
+    {{{
+      ls -l /etc/shadow //只有root用户有写入权限，root组也无读取权限。文件所有者可写文件
+      [ -x "/etc/shadow"] &amp;&amp; echo YES
+    }}}</p>
+</li>
+<li>整数值比较、字母匹配
+  . -eq: 等于 (Equal)
+  . -ne: 不等于 (Not Equal)
+  . -gt: 大于　(Greater Than)
+  . -lt: 小于 (Lesser Than)
+  . -ge: 大于或等于 (Greater or Equal)
+  . -le: 小于或等于 (Lesser or Equal)
+  {{{
+        root@x201i:/home/l# who |wc -l
+        3
+        root@x201i:/home/l# [ $(who | wc -l ) -eq 2] &amp;&amp; echo YES
+        bash: [: missing `]' //方括号前附近都要有空格
+        root@x201i:/home/l# [ $(who | wc -l ) -eq 2 ] &amp;&amp; echo YES
+        root@x201i:/home/l# [ $(who | wc -l ) -eq 3 ] &amp;&amp; echo YES
+        YES
+        root@x201i:/home/l#
+  }}}</li>
+<li>字符串匹配
+  . =:  两人个字符串相同
+  . !=: 两个字符串不相同
+  . 字符串可以用&lt;、&gt;，不常用
+  {{{
+    root@x201i:/home/l# echo $USER
+    root
+    root@x201i:/home/l# [ $USER != "root" ] &amp;&amp; echo YES
+    root@x201i:/home/l# [ $USER = "root" ] &amp;&amp; echo YES
+    YES
+  }}}</li>
+</ul>
+<p>== 使用if判断结构 ==</p>
+<ul>
+<li>程序流控制
+  . 执行过程顺序化、自动化</li>
+<li>
+<p>单分支／双分支的if应用
+   . 单分支结构
+   {{{
+     if 条件测试
+         then 命令序列
+     fi
+     //检查目录/opt/mrepo是否存在，不存在则创建
+     BACK_DIR="/opt/mrepo"
+     if [ ! -d $BACK_DIR ] 
+     then
+       mkdir -p $BACK_DIR
+     fi</p>
+<p>//双分支</p>
+<p>if 条件测试
+ then 命令序列1
+ else 命令序列2
+ fi
+ 检查目标主机是否存活，显示检测结果
+ #!/bin/bash
+ ping -c 3 -i 0.2 -W 3 $1 &amp;&gt; /dev/null
+ if [ $? -eq 0 ]
+ then 
+     echo "host $1 is up."
+ else
+     echo "host $1 is down."
+ fi
+   }}}</p>
+</li>
+<li>
+<p>多重分支的应用
+   {{{
+     if 条件测试１
+         then 命令序列１
+     elif 条件测试２
+         then 命令序列２
+     ... ...
+     else
+         命令序列
+     fi</p>
+<p>#!/bin/bash
+ read -p "请输入您的分数（0-100）：" GRADE
+ if [ $GRADE -ge 85 ]  &amp;&amp; [ $GRADE -le 100 ]; then
+     echo "$GRADE 分!优秀"
+ elif [ $GRADE -ge 70 ] &amp;&amp; [ $GRADE -le 84 ]; then
+     echo "$GRADE 分,合格"
+ else
+     echo "$GRADE 分？不合格"
+ fi</p>
+</li>
+</ul>
+<p>}}}</p>
+<p>== 8 使用for循环 ==</p>
+<ul>
+<li>
+<p>for语句结构
+   {{{
+     for 变量名 in 取值列表
+     do
+         命令序列
+     done</p>
+<p>for i in "1st" "2nd" "3rd"
+ do
+   echo $i;
+ done</p>
+<p>逐词输出/etc/host.conf
+ for i in $(cat /etc/host.conf)
+ do
+   echo $i
+ done</p>
+<p>给一个users.txt 每行一个用户名称，初始口令1223456, 首次登录必须改密码,chage 更改密码天数
+ for i in $(cat /root/users.txt)
+ do
+   useradd $i
+   echo "123456" | passwd --stdin $i
+   chage -d 0 $i
+ done</p>
+<p>检测一个ＩＰ范围主机状态192.168.1.1 -192.168.1.10</p>
+<p>IP_PRE="192.168.1."
+ for IP in $(seq 1 10)
+ do
+   ping -c 3 -i 0.2 -W 3 ${IP_PRE}$IP &amp;&gt; /dev/null
+   if [ $? -eq 0 ]; then
+     echo "${IP_PRE}$IP is up."
+   else
+     echo "${IP_PRE}$IP is down."
+   fi
+ done</p>
+<p>}}}</p>
+</li>
+</ul>
+<p>== 9 使用case分支 ==
+ * 服务脚本格式
+    {{{
+    case 变量值 in 
+    模式１）
+        命令序列１
+        ;;
+    模式２）
+        命令序列２
+        ;;
+        ......</p>
+<div class="highlight"><pre><span class="o">*</span><span class="p">)</span>
+    <span class="err">默认命令序列</span>
+<span class="n">esac</span>
+<span class="p">}}}</span>
+<span class="p">{{{</span>
+<span class="k">case</span> <span class="err">控制参数</span> <span class="n">in</span>
+<span class="n">start</span><span class="p">)</span>
+    <span class="err">启动ＸＸ服务</span>
+    <span class="p">;;</span>
+<span class="n">stop</span><span class="p">)</span>
+    <span class="err">停止ＸＸ服务</span>
+    <span class="p">;;</span>
+    <span class="p">......</span>
+<span class="o">*</span><span class="p">)</span>
+    <span class="err">显示服务脚本的用法</span>
+<span class="n">esac</span>
+<span class="p">}}}</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>例子
+    {{{
+    #!/bin/bash
+    read -p "请输入一个字符，并按回车确认：" KEY
+    case "$KEY" in
+    [a-z]|[A-Z])
+        echo "您输入的是字母。"
+        ;;
+    [0-9])
+        echo "您输入的是数字。"
+        ;;
+    *)
+        echo "您输入的是空格、功能键或控制字母。"
+    esac</p>
+<h1>!/bin/bash</h1>
+<p>case "$1" in
+start)
+    sleep 3600 &amp;
+    ;;
+stop)
+    pkill -x "sleep"
+    ;;
+*)
+    echo "用法： $0 (start|stop|"
+esac
+}}}
+运行：
+{{{
+l@x201i:~/tmp/bash$ ./sleep.sh start
+l@x201i:~/tmp/bash$ pgrep -lx "sleep"
+6788 sleep
+l@x201i:~/tmp/bash$ ./sleep.sh stop
+l@x201i:~/tmp/bash$ pgrep -lx "sleep"
+l@x201i:~/tmp/bash$ ./sleep.sh 
+用法： ./sleep.sh (start|stop|
+}}}</p>
+</li>
+<li>
+<p>添加为系统服务
+    在脚本开头设置chkconfig参数</p>
+<p>checkconfig： - 90 10
+告诉checkconfig需要哪几个运行级别。切换运行级别时启动进程顺序是９０，停止顺序是１０
+description: Daemon script for sleepd Server
+说明</p>
+<p>系统服务文件放在/etc/init.d目录下
+{{{</p>
+<h1>cat /etc/init.d/sleepd</h1>
+<h1>!/bin/bash</h1>
+<p>checkconfig： - 90 10
+description: Daemon script for sleepd Server
+case "$1" in
+start)
+    sleep 3600 &amp;
+    ;;
+stop)
+    pkill -x "sleep"
+    ;;
+*)
+    echo "用法： $0 (start|stop|"
+esac</p>
+<h1>chkconfig --add sleepd　／／设置开机自动运行</h1>
+<p>}}}</p>
+</li>
+</ul>
+<p>=== １０  awk 文本处理工具 ===
+ * awk基本命令格式
+    awk '模式  {操作}' 文件１  文件２
+    NR  当前处理行的序数（行号）
+    FS  字段间隔，缺省为空格或ＴＡＢ
+    $n  当前行的第n个字段
+    $0  当前行的所有文本内容</p>
+<ul>
+<li>
+<p>常见用法示例
+    awk 'NR==1{print}' /etc/hosts
+    head -1 /etc/hosts</p>
+<p>NR指行号,相当于head,但输出第３行head做不到
+{{{
+l@x201i:~/tmp/bash$ cat file.txt 
+1 This is the first line.
+2 Hello, Everybody!
+3 192.168.4.2 w2k8.benet.com
+4 hunter:x:504:504::/home/hunter:/bin/bash
+}}}
+. awk 'NR==1,NR==3{print}' file.txt    输出第１至３行</p>
+<p>. awk '(NR==1)||(NR==3){print}' file.txt    输出第一行和第三行</p>
+<p>. awk '(NR%2)==1{print}' file.txt    输出奇数行</p>
+<p>. awk '(NR%2)==0{print}' file.txt    输出偶数行</p>
+<p>. awk '/2/{print}' file.txt</p>
+<p>. awk '/bash$/{print}' file.txt     正则表达式</p>
+<p>. awk "NR==2,NR==3{print $1,$3}' file.txt    输出第二行到第三行的第１，３列 </p>
+<p>. awk -F. '$5=="benet"{print $0}' file.txt    点分隔，第五字段等于benet的行</p>
+<p>{{{
+l@x201i:~/tmp/bash$ awk '(NR==1)||(NR==3){print}' file.txt
+1 This is the first line.
+3 192.168.4.2 w2k8.benet.com
+l@x201i:~/tmp/bash$ awk 'NR==1,NR==3{print}' file.txt
+1 This is the first line.
+2 Hello, Everybody!
+3 192.168.4.2 w2k8.benet.com
+}}}</p>
+</li>
+</ul>
+<p>=== sed 替换文本内容 ===
+ * 语法格式
+  . sed '编辑指令' 文件１　文件２　......
+  . sed -n '编辑指令' 文件１　文件２　......
+  . sed -i '编辑指令' 文件１　文件２　......
+  . -n 只输出编辑指令影响的行
+  . -i 直接修改源文件内容。不加-i,修改结果输出，不会修改有源文件
+  . sed -n '3,5p' /etc/host //p 相当于awk中的print,第３到５行
+  . 格式：[地址１[,地址２]操作类型
+  . 多条指令之间以分号隔开
+  　{{{
+  　sed -n '3p;5p' /etc/host
+  　打印第３行；打印第５行
+  　}}}
+  . p 输出/打印文件行
+  . n 取下一行文本（跳过当前行)
+  . d 删除
+  . s 字符串替换
+  . a 追加新文本
+  . sed -n 'p;n' file.txt //隔行输出, 奇数行
+  . sed -n 'n;p' file.txt //偶数行
+  . sed -n '/w2k8/.$p' file.txt //正则 从包含w2k8的行开始到最后，输出。$最后一行
+  . sed -n '/\&lt;This>/p' file.txt 包含单词This的行
+  . sed '2,3d' file.txt //输出删除第２到第三行文本后的结果，没有-i 不影响原文件
+  . sed '/w2k8/d;$d' file.txt //删除包含w2k8的行，删除最后一行
+  . sed '/ne/!d' file.txt //删除不符合条件的行
+  . sed '3,4s/hunter/BADBOY/g' file.txt //g 替换所有的，否则替换每行第一个。替换第３到第４行。行数省略，默认所有行。
+  . sed '1,2s/^/#/g' file.txt　//第１到２行，添加＃号
+  . sed 's/ter//g' file.txt //删除所有ter</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "describe-linuxbash-bi-ji-here.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

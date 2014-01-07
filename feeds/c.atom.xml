@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/c.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-08-09T00:00:00+02:00</updated><entry><title>Describe c/c语言连接mysql here.</title><link href="http://liugehao.github.io/describe-ccyu-yan-lian-jie-mysql-here.html" rel="alternate"></link><updated>2013-08-09T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-08-09:describe-ccyu-yan-lian-jie-mysql-here.html</id><summary type="html">&lt;p&gt;{{{
+apt-get install libmysqlclient-dev
+}}}
+{{{#!highlight sql
+create table t1( id integer auto_increment primary key ,name varchar(20), sex char[1]);
+}}}
+mysql.c文件：
+{{{#!highlight c&lt;/p&gt;
+&lt;h1&gt;include &lt;stdio.h&gt;&lt;/h1&gt;
+&lt;h1&gt;include &lt;stdlib.h&gt;&lt;/h1&gt;
+&lt;h1&gt;include &lt;string.h&gt;&lt;/h1&gt;
+&lt;h1&gt;include &lt;mysql/mysql.h&gt;&lt;/h1&gt;
+&lt;h1&gt;define MAX_COLUMN_LEN 32&lt;/h1&gt;
+&lt;p&gt;int main(int argc, char &lt;em&gt;argv[])
+{
+    MYSQL my_connection;
+    MYSQL_RES &lt;/em&gt;result;
+    MYSQL_ROW sql_row;
+    MYSQL_FIELD &lt;em&gt;fd;
+    char column[MAX_COLUMN_LEN][MAX_COLUMN_LEN];
+    int res;
+    mysql_init(&amp;amp;my_connection);
+    if(mysql_real_connect(&amp;amp;my_connection, "127.0.0.1", "root", "liuyou", "test1", 3306, NULL, 0))
+    {
+        perror("Connect");
+        res = mysql_query(&amp;amp;my_connection, "select * from t1");
+        if(!res)
+        {
+            result = mysql_store_result(&amp;amp;my_connection);
+            if(result)
+            {
+                int i,j;
+                printf("the result nuber is %lu\n", (unsigned long)mysql_num_rows(result));
+                for(i=0;fd=mysql_fetch_field(result);i++)
+                {
+                    bzero(column[i], sizeof(column[i]));
+                    strcpy(column[i], fd-&amp;gt;name);
+                }
+                j = mysql_num_fields(result);
+                for(i=0;i&amp;lt;j;i++)
+                {
+                    printf("%s\t", column[i]);
+                }
+                printf("\n");
+                while(sql_row=mysql_fetch_row(result))
+                {
+                    for(i=0;i&amp;lt;j;i++)
+                    {
+                        printf("%s\t",sql_row[i]);
+                    }
+                    printf("\n");
+                }
+            }
+        }
+        else
+        {
+            perror("select");
+        }
+    }
+    else
+    {
+        perror("connect:error");
+    }
+    //mysql_free_result(MYSQL_RES &lt;/em&gt;result);//释放结果资源
+    mysql_free_result(result); //先释放，后插入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;malloc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;请输入名字:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;gets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;性别:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;gets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="n"&gt;sprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;insert into test1.t1 values (null,&amp;#39;%s&amp;#39;, &amp;#39;%c&amp;#39;);&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sex&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;mysql_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;my_connection&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;mysql_commit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;my_connection&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="n"&gt;mysql_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;my_connection&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}
+}}}&lt;/p&gt;
+&lt;p&gt;编译：
+{{{
+l@x201i:~/tmp/gcc$ gcc mysql.c   &amp;amp;&amp;amp; ./a.out
+/tmp/ccdPMZug.o: In function &lt;code&gt;main':
+mysql.c:(.text+0x23): undefined reference to&lt;/code&gt;mysql_init'
+mysql.c:(.text+0x5e): undefined reference to &lt;code&gt;mysql_real_connect'
+mysql.c:(.text+0x85): undefined reference to&lt;/code&gt;mysql_query'
+mysql.c:(.text+0xa1): undefined reference to &lt;code&gt;mysql_store_result'
+mysql.c:(.text+0xbc): undefined reference to&lt;/code&gt;mysql_num_rows'
+mysql.c:(.text+0x12e): undefined reference to &lt;code&gt;mysql_fetch_field'
+mysql.c:(.text+0x145): undefined reference to&lt;/code&gt;mysql_num_fields'
+mysql.c:(.text+0x1e3): undefined reference to &lt;code&gt;mysql_fetch_row'
+mysql.c:(.text+0x212): undefined reference to&lt;/code&gt;mysql_free_result'
+mysql.c:(.text+0x2ad): undefined reference to &lt;code&gt;mysql_query'
+mysql.c:(.text+0x2bc): undefined reference to&lt;/code&gt;mysql_commit'
+mysql.c:(.text+0x2cb): undefined reference to `mysql_close'
+collect2: error: ld returned 1 exit status&lt;/p&gt;
+&lt;p&gt;}}}
+出错，增加　-l mysqlclient
+{{{
+l@x201i:~/tmp/gcc$ gcc mysql.c -l mysqlclient  &amp;amp;&amp;amp; ./a.out
+}}}&lt;/p&gt;</summary></entry></feed>

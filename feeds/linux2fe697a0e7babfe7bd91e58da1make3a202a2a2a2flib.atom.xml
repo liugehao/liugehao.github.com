@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-07-29T00:00:00+02:00</updated><entry><title>Describe linux/无线网卡make: ***/lib/modules/3.2.0-4-amd64/build: No such file or directory here.</title><link href="http://liugehao.github.io/describe-linuxwu-xian-wang-qia-make-libmodules320-4-amd64build-no-such-file-or-directory-here.html" rel="alternate"></link><updated>2013-07-29T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-07-29:describe-linuxwu-xian-wang-qia-make-libmodules320-4-amd64build-no-such-file-or-directory-here.html</id><summary type="html">&lt;p&gt;安装tp-link wn722n usb无线网卡时出错
+{{{
+wget wireless.kernel.org/download/compat-wireless-2.6/compat-wireless-2.6.tar.bz2
+tar -jxf compat*.bz2
+cd compat-wireless-2012-05-10
+apt-get install gcc make
+ ./scripts/driver-select ath9k_htc 
+make
+}}}
+出错：
+{{{
+root@x201i:/home/l/software/tp-link_wn722n/compat-wireless-2012-05-10# make
+make -C /lib/modules/3.2.0-4-amd64/build M=/home/l/software/tp-link_wn722n/compat-wireless-2012-05-10 modules
+make: &lt;strong&gt;&lt;em&gt; /lib/modules/3.2.0-4-amd64/build: No such file or directory.  Stop.
+make: &lt;/em&gt;&lt;/strong&gt; [modules] Error 2
+}}}&lt;/p&gt;
+&lt;p&gt;{{{&lt;/p&gt;
+&lt;p&gt;apt-get install linux-headers-3.2.0-4-amd64
+}}}
+[[linux/debian安装wn722n(ath9k-htc)]]&lt;/p&gt;</summary></entry></feed>

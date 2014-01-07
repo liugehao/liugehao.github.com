@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Describe .net/陈键的短信api调用 here.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Describe .net/陈键的短信api调用 here.">
+                                        Describe .net/陈键的短信api调用 here.
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-13T00:00:00">
+        <i class="icon-calendar"></i>二 13 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/others.html"><i class="icon-folder-open"></i>Others</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>== 余额查看 ==
+{{{#!highlight c#
+using System.Text;
+using System.Net;
+using System.IO;
+using System.Web;
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string linkUrl = "https://sms-api.luosimao.com/v1/status.json",
+                username = "api", 
+                password = "key-b2652cf62f07dd09a4d561dcb4528041"; //api key</p>
+<div class="highlight"><pre>        <span class="n">HttpWebRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">HttpWebRequest</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">linkUrl</span><span class="p">);</span>
+        <span class="n">string</span> <span class="n">auth</span> <span class="o">=</span> <span class="s">&quot;Basic &quot;</span> <span class="o">+</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToBase64String</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">username</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">password</span><span class="p">));</span>
+        <span class="n">request</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="p">);</span>
+
+        <span class="n">HttpWebResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">request</span><span class="p">.</span><span class="n">GetResponse</span><span class="p">();</span>
+        <span class="n">StreamReader</span> <span class="n">respStream</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StreamReader</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">GetResponseStream</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">respStream</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">Read</span><span class="p">();</span>
+    <span class="p">}</span>
+
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>}</p>
+<p>}}}
+== 发送短信 ==
+{{{#!highlight c#
+using System.Net;
+using System.IO;
+using System.Text;
+using System;</p>
+<p>namespace ConsoleApplication1
+{
+    class Class1
+    {
+        static void Main(string[] args)
+        {
+            string mobile = "18602112511",
+                message = "Test send message use luosimao!【luosimao】",
+                username = "api",
+                password = "key-b2652cf62f07dd09a4d561dcb4528041",
+                url = "https://sms-api.luosimao.com/v1/send.json";</p>
+<div class="highlight"><pre>        <span class="n">byte</span><span class="p">[]</span> <span class="n">byteArray</span> <span class="o">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="s">&quot;mobile=&quot;</span> <span class="o">+</span> <span class="n">mobile</span> <span class="o">+</span> <span class="s">&quot;&amp;message=&quot;</span> <span class="o">+</span> <span class="n">message</span><span class="p">);</span>
+        <span class="n">HttpWebRequest</span> <span class="n">webRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">url</span><span class="p">));</span>
+        <span class="n">string</span> <span class="n">auth</span> <span class="o">=</span> <span class="s">&quot;Basic &quot;</span> <span class="o">+</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToBase64String</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">username</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">password</span><span class="p">));</span>
+        <span class="n">webRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="p">);</span>
+        <span class="n">webRequest</span><span class="p">.</span><span class="n">Method</span> <span class="o">=</span> <span class="s">&quot;POST&quot;</span><span class="p">;</span>
+        <span class="n">webRequest</span><span class="p">.</span><span class="n">ContentType</span> <span class="o">=</span> <span class="s">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">;</span>
+        <span class="n">webRequest</span><span class="p">.</span><span class="n">ContentLength</span> <span class="o">=</span> <span class="n">byteArray</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+
+        <span class="n">Stream</span> <span class="n">newStream</span> <span class="o">=</span> <span class="n">webRequest</span><span class="p">.</span><span class="n">GetRequestStream</span><span class="p">();</span>
+        <span class="n">newStream</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">byteArray</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">byteArray</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+        <span class="n">newStream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+
+
+        <span class="n">HttpWebResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">webRequest</span><span class="p">.</span><span class="n">GetResponse</span><span class="p">();</span>
+        <span class="n">StreamReader</span> <span class="n">php</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StreamReader</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">GetResponseStream</span><span class="p">(),</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">Default</span><span class="p">);</span>
+        <span class="n">string</span> <span class="n">Message</span> <span class="o">=</span> <span class="n">php</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">Message</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">Read</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>}</p>
+<p>}}}</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "describe-netchen-jian-de-duan-xin-apidiao-yong-here.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>smb.conf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to smb.conf">
+                                        smb.conf
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-06-13T00:00:00">
+        <i class="icon-calendar"></i>四 13 六月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>{{{</p>
+<h1></h1>
+<h1>Sample configuration file for the Samba suite for Debian GNU/Linux.</h1>
+<h1></h1>
+<h1></h1>
+<h1>This is the main Samba configuration file. You should read the</h1>
+<h1>smb.conf(5) manual page in order to understand the options listed</h1>
+<h1>here. Samba has a huge number of configurable options most of which</h1>
+<h1>are not shown in this example</h1>
+<h1></h1>
+<h1>Some options that are often worth tuning have been included as</h1>
+<h1>commented-out examples in this file.</h1>
+<h1>- When such options are commented with ";", the proposed setting</h1>
+<h1>differs from the default Samba behaviour</h1>
+<h1>- When commented with "#", the proposed setting is the default</h1>
+<h1>behaviour of Samba but the option is considered important</h1>
+<h1>enough to be mentioned here</h1>
+<h1></h1>
+<h1>NOTE: Whenever you modify this file you should run the command</h1>
+<h1>"testparm" to check that you have not made any basic syntactic</h1>
+<h1>errors.</h1>
+<h1>A well-established practice is to name the original file</h1>
+<h1>"smb.conf.master" and create the "real" config file with</h1>
+<h1>testparm -s smb.conf.master &gt;smb.conf</h1>
+<h1>This minimizes the size of the really used smb.conf file</h1>
+<h1>which, according to the Samba Team, impacts performance</h1>
+<h1>However, use this with caution if your smb.conf file contains nested</h1>
+<h1>"include" statements. See Debian bug #483187 for a case</h1>
+<h1>where using a master file is not a good idea.</h1>
+<h1></h1>
+<h1>======================= Global Settings =======================</h1>
+<p>[global]</p>
+<h2>Browsing/Identification</h2>
+<h1>Change this to the workgroup/NT-domain name your Samba server will part of</h1>
+<p>workgroup = WORKGROUP
+   display charset =UTF-8
+   unix charset=UTF-8
+   doc charset = cp936
+   client lanman auth = yes
+   lanman auth = yes</p>
+<h1>server string is the equivalent of the NT Description field</h1>
+<p>server string = %h server (Samba, Ubuntu)</p>
+<h1>Windows Internet Name Serving Support Section:</h1>
+<h1>WINS Support - Tells the NMBD component of Samba to enable its WINS Server</h1>
+<h1>wins support = no</h1>
+<h1>WINS Server - Tells the NMBD components of Samba to be a WINS Client</h1>
+<h1>Note: Samba can be either a WINS Server, or a WINS Client, but NOT both</h1>
+<p>;   wins server = w.x.y.z</p>
+<h1>This will prevent nmbd to search for NetBIOS names through DNS.</h1>
+<p>dns proxy = no</p>
+<h1>What naming service and in what order should we use to resolve host names</h1>
+<h1>to IP addresses</h1>
+<p>;   name resolve order = lmhosts host wins bcast</p>
+<h4>Networking</h4>
+<h1>The specific set of interfaces / networks to bind to</h1>
+<h1>This can be either the interface name or an IP address/netmask;</h1>
+<h1>interface names are normally preferred</h1>
+<p>;   interfaces = 127.0.0.0/8 eth0</p>
+<h1>Only bind to the named interfaces and/or networks; you must use the</h1>
+<h1>'interfaces' option above to use this.</h1>
+<h1>It is recommended that you enable this feature if your Samba machine is</h1>
+<h1>not protected by a firewall or is a firewall itself.  However, this</h1>
+<h1>option cannot handle dynamic or non-broadcast interfaces correctly.</h1>
+<p>;   bind interfaces only = yes</p>
+<h4>Debugging/Accounting</h4>
+<h1>This tells Samba to use a separate log file for each machine</h1>
+<h1>that connects</h1>
+<p>log file = /var/log/samba/log.%m</p>
+<h1>Cap the size of the individual log files (in KiB).</h1>
+<p>max log size = 1000</p>
+<h1>If you want Samba to only log through syslog then set the following</h1>
+<h1>parameter to 'yes'.</h1>
+<h1>syslog only = no</h1>
+<h1>We want Samba to log a minimum amount of information to syslog. Everything</h1>
+<h1>should go to /var/log/samba/log.{smbd,nmbd} instead. If you want to log</h1>
+<h1>through syslog you should set the following parameter to something higher.</h1>
+<p>syslog = 0</p>
+<h1>Do something sensible when Samba crashes: mail the admin a backtrace</h1>
+<p>panic action = /usr/share/samba/panic-action %d</p>
+<h6># Authentication</h6>
+<h1>"security = user" is always a good idea. This will require a Unix account</h1>
+<h1>in this server for every user accessing the server. See</h1>
+<h1>/usr/share/doc/samba-doc/htmldocs/Samba3-HOWTO/ServerType.html</h1>
+<h1>in the samba-doc package for details.</h1>
+<p>security = share
+   username map =/etc/samba/smbusers</p>
+<h1>You may wish to use password encryption.  See the section on</h1>
+<h1>'encrypt passwords' in the smb.conf(5) manpage before enabling.</h1>
+<p>encrypt passwords = true</p>
+<h1>If you are using encrypted passwords, Samba will need to know what</h1>
+<h1>password database type you are using.</h1>
+<p>passdb backend = tdbsam
+   obey pam restrictions = yes</p>
+<h1>This boolean parameter controls whether Samba attempts to sync the Unix</h1>
+<h1>password with the SMB password when the encrypted SMB password in the</h1>
+<h1>passdb is changed.</h1>
+<p>unix password sync = yes</p>
+<h1>For Unix password sync to work on a Debian GNU/Linux system, the following</h1>
+<h1>parameters must be set (thanks to Ian Kahan <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#60;&#107;&#97;&#104;&#97;&#110;&#64;&#105;&#110;&#102;&#111;&#114;&#109;&#97;&#116;&#105;&#107;&#46;&#116;&#117;&#45;&#109;&#117;&#101;&#110;&#99;&#104;&#101;&#110;&#46;&#100;&#101;">&lt;&#107;&#97;&#104;&#97;&#110;&#64;&#105;&#110;&#102;&#111;&#114;&#109;&#97;&#116;&#105;&#107;&#46;&#116;&#117;&#45;&#109;&#117;&#101;&#110;&#99;&#104;&#101;&#110;&#46;&#100;&#101;</a> for</h1>
+<h1>sending the correct chat script for the passwd program in Debian Sarge).</h1>
+<p>passwd program = /usr/bin/passwd %u
+   passwd chat = <em>Enter\snew\s</em>\spassword:<em> %n\n </em>Retype\snew\s<em>\spassword:</em> %n\n <em>password\supdated\ssuccessfully</em> .</p>
+<h1>This boolean controls whether PAM will be used for password changes</h1>
+<h1>when requested by an SMB client instead of the program listed in</h1>
+<h1>'passwd program'. The default is 'no'.</h1>
+<p>pam password change = yes</p>
+<h1>This option controls how unsuccessful authentication attempts are mapped</h1>
+<h1>to anonymous connections</h1>
+<p>map to guest = bad user</p>
+<h6>#### Domains</h6>
+<h1>Is this machine able to authenticate users. Both PDC and BDC</h1>
+<h1>must have this setting enabled. If you are the BDC you must</h1>
+<h1>change the 'domain master' setting to no</h1>
+<h1></h1>
+<p>;   domain logons = yes</p>
+<h1></h1>
+<h1>The following setting only takes effect if 'domain logons' is set</h1>
+<h1>It specifies the location of the user's profile directory</h1>
+<h1>from the client point of view)</h1>
+<h1>The following required a [profiles] share to be setup on the</h1>
+<h1>samba server (see below)</h1>
+<p>;   logon path = \%N\profiles\%U</p>
+<h1>Another common choice is storing the profile in the user's home directory</h1>
+<h1>(this is Samba's default)</h1>
+<h1>logon path = \%N\%U\profile</h1>
+<h1>The following setting only takes effect if 'domain logons' is set</h1>
+<h1>It specifies the location of a user's home directory (from the client</h1>
+<h1>point of view)</h1>
+<p>;   logon drive = H:</p>
+<h1>logon home = \%N\%U</h1>
+<h1>The following setting only takes effect if 'domain logons' is set</h1>
+<h1>It specifies the script to run during logon. The script must be stored</h1>
+<h1>in the [netlogon] share</h1>
+<h1>NOTE: Must be store in 'DOS' file format convention</h1>
+<p>;   logon script = logon.cmd</p>
+<h1>This allows Unix users to be created on the domain controller via the SAMR</h1>
+<h1>RPC pipe.  The example command creates a user account with a disabled Unix</h1>
+<h1>password; please adapt to your needs</h1>
+<p>; add user script = /usr/sbin/adduser --quiet --disabled-password --gecos "" %u</p>
+<h1>This allows machine accounts to be created on the domain controller via the</h1>
+<h1>SAMR RPC pipe.</h1>
+<h1>The following assumes a "machines" group exists on the system</h1>
+<p>; add machine script  = /usr/sbin/useradd -g machines -c "%u machine account" -d /var/lib/samba -s /bin/false %u</p>
+<h1>This allows Unix groups to be created on the domain controller via the SAMR</h1>
+<h1>RPC pipe.</h1>
+<p>; add group script = /usr/sbin/addgroup --force-badname %g</p>
+<h6>#### Printing</h6>
+<h1>If you want to automatically load your printer list rather</h1>
+<h1>than setting them up individually then you'll need this</h1>
+<h1>load printers = yes</h1>
+<h1>lpr(ng) printing. You may wish to override the location of the</h1>
+<h1>printcap file</h1>
+<p>;   printing = bsd
+;   printcap name = /etc/printcap</p>
+<h1>CUPS printing.  See also the cupsaddsmb(8) manpage in the</h1>
+<h1>cupsys-client package.</h1>
+<p>;   printing = cups
+;   printcap name = cups</p>
+<h6>###### Misc</h6>
+<h1>Using the following line enables you to customise your configuration</h1>
+<h1>on a per machine basis. The %m gets replaced with the netbios name</h1>
+<h1>of the machine that is connecting</h1>
+<p>;   include = /home/samba/etc/smb.conf.%m</p>
+<h1>Most people will find that this option gives better performance.</h1>
+<h1>See smb.conf(5) and /usr/share/doc/samba-doc/htmldocs/Samba3-HOWTO/speed.html</h1>
+<h1>for details</h1>
+<h1>You may want to add the following on a Linux system:</h1>
+<h1>SO_RCVBUF=8192 SO_SNDBUF=8192</h1>
+<h1>socket options = TCP_NODELAY</h1>
+<h1>The following parameter is useful only if you have the linpopup package</h1>
+<h1>installed. The samba maintainer and the linpopup maintainer are</h1>
+<h1>working to ease installation and configuration of linpopup and samba.</h1>
+<p>;   message command = /bin/sh -c '/usr/bin/linpopup "%f" "%m" %s; rm %s' &amp;</p>
+<h1>Domain Master specifies Samba to be the Domain Master Browser. If this</h1>
+<h1>machine will be configured as a BDC (a secondary logon server), you</h1>
+<h1>must set this to 'no'; otherwise, the default behavior is recommended.</h1>
+<h1>domain master = auto</h1>
+<h1>Some defaults for winbind (make sure you're not using the ranges</h1>
+<h1>for something else.)</h1>
+<p>;   idmap uid = 10000-20000
+;   idmap gid = 10000-20000
+;   template shell = /bin/bash</p>
+<h1>The following was the default behaviour in sarge,</h1>
+<h1>but samba upstream reverted the default because it might induce</h1>
+<h1>performance issues in large organizations.</h1>
+<h1>See Debian bug #368251 for some of the consequences of <em>not</em></h1>
+<h1>having this setting and smb.conf(5) for details.</h1>
+<p>;   winbind enum groups = yes
+;   winbind enum users = yes</p>
+<h1>Setup usershare options to enable non-root users to share folders</h1>
+<h1>with the net usershare command.</h1>
+<h1>Maximum number of usershare. 0 (default) means that usershare is disabled.</h1>
+<p>;   usershare max shares = 100</p>
+<h1>Allow users who've been granted usershare privileges to create</h1>
+<h1>public shares, not just authenticated ones</h1>
+<p>usershare allow guests = yes</p>
+<h1>======================= Share Definitions =======================</h1>
+<h1>Un-comment the following (and tweak the other settings below to suit)</h1>
+<h1>to enable the default home directory shares.  This will share each</h1>
+<h1>user's home directory as \server\username</h1>
+<p>;[homes]
+;   comment = Home Directories
+;   browseable = no</p>
+<h1>By default, the home directories are exported read-only. Change the</h1>
+<h1>next parameter to 'no' if you want to be able to write to them.</h1>
+<p>;   read only = yes</p>
+<h1>File creation mask is set to 0700 for security reasons. If you want to</h1>
+<h1>create files with group=rw permissions, set next parameter to 0775.</h1>
+<p>;   create mask = 0700</p>
+<h1>Directory creation mask is set to 0700 for security reasons. If you want to</h1>
+<h1>create dirs. with group=rw permissions, set next parameter to 0775.</h1>
+<p>;   directory mask = 0700</p>
+<h1>By default, \server\username shares can be connected to by anyone</h1>
+<h1>with access to the samba server.  Un-comment the following parameter</h1>
+<h1>to make sure that only "username" can connect to \server\username</h1>
+<h1>This might need tweaking when using external authentication schemes</h1>
+<p>;   valid users = %S</p>
+<h1>Un-comment the following and create the netlogon directory for Domain Logons</h1>
+<h1>(you need to configure Samba to act as a domain controller too.)</h1>
+<p>;[netlogon]
+;   comment = Network Logon Service
+;   path = /home/samba/netlogon
+;   guest ok = yes
+;   read only = yes
+;   share modes = no</p>
+<h1>Un-comment the following and create the profiles directory to store</h1>
+<h1>users profiles (see the "logon path" option above)</h1>
+<h1>(you need to configure Samba to act as a domain controller too.)</h1>
+<h1>The path below should be writable by all users so that their</h1>
+<h1>profile directory may be created the first time they log on</h1>
+<p>;[profiles]
+;   comment = Users profiles
+;   path = /home/samba/profiles
+;   guest ok = no
+;   browseable = no
+;   create mask = 0600
+;   directory mask = 0700</p>
+<p>[printers]
+   comment = All Printers
+   browseable = no
+   path = /var/spool/samba
+   printable = yes
+   guest ok = no
+   read only = yes
+   create mask = 0700</p>
+<h1>Windows clients look for this share name as a source of downloadable</h1>
+<h1>printer drivers</h1>
+<p>[print$]</p>
+<p>comment = Printer Drivers
+   path = /var/lib/samba/printers
+   browseable = yes
+   read only = yes
+   guest ok = no</p>
+<h1>Uncomment to allow remote administration of Windows print drivers.</h1>
+<h1>You may need to replace 'lpadmin' with the name of the group your</h1>
+<h1>admin users are members of.</h1>
+<h1>Please note that you also need to set appropriate Unix permissions</h1>
+<h1>to the drivers directory for these users to have write rights in it</h1>
+<p>;   write list = root, @lpadmin</p>
+<h1>A sample share for sharing your CD-ROM with others.</h1>
+<p>;[cdrom]
+;   comment = Samba server's CD-ROM
+;   read only = yes
+;   locking = no
+;   path = /cdrom
+;   guest ok = yes</p>
+<h1>The next two parameters show how to auto-mount a CD-ROM when the</h1>
+<h1>cdrom share i/s accesed. For this to work /etc/fstab must contain</h1>
+<h1>an entry like this:</h1>
+<h1></h1>
+<h1>/dev/scd0   /cdrom  iso9660 defaults,noauto,ro,user   0 0</h1>
+<h1></h1>
+<h1>The CD-ROM gets unmounted automatically after the connection to the</h1>
+<h1></h1>
+<h1>If you don't want to use auto-mounting/unmounting make sure the CD</h1>
+<h1>is mounted on /cdrom</h1>
+<h1></h1>
+<p>;   preexec = /bin/mount /cdrom
+;   postexec = /bin/umount /cdrom</p>
+<p>[share]</p>
+<p>comment=/home/ggjjlldd
+browseable=yes
+writeable=yes
+public = yes
+path=/</p>
+<h1>valid users=ggjjlldd</h1>
+<p>guest ok = yes
+client lanman auth = yes
+lanman auth = yes
+}}}</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "smbconf.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

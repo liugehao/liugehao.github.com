@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/php.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-11-05T00:00:00+01:00</updated><entry><title>在这里详述 php/php javascript rc4 base64 兼容</title><link href="http://liugehao.github.io/zai-zhe-li-xiang-shu-phpphp-javascript-rc4-base64-jian-rong.html" rel="alternate"></link><updated>2013-11-05T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-11-05:zai-zhe-li-xiang-shu-phpphp-javascript-rc4-base64-jian-rong.html</id><summary type="html">&lt;p&gt;php的处理方法默认按字节处理RC4，javascript默认是按UTF-8处理。 &lt;/p&gt;
+&lt;p&gt;javascript的base64为了和PHP兼容，也可更改字符集。&lt;/p&gt;
+&lt;p&gt;附代码文件&lt;/p&gt;
+&lt;p&gt;https://github.com/cotdp/php-rc4&lt;/p&gt;
+&lt;p&gt;[[attachment:index.php]]&lt;/p&gt;
+&lt;p&gt;[[attachment:rc4.php]]&lt;/p&gt;</summary></entry></feed>

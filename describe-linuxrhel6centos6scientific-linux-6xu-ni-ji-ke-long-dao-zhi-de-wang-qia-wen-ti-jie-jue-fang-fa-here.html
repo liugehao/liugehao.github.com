@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Describe linux/RHEL6/CentOS6/Scientific Linux 6虚拟机克隆导致的网卡问题解决方法 here.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Describe linux/RHEL6/CentOS6/Scientific Linux 6虚拟机克隆导致的网卡问题解决方法 here.">
+                                        Describe linux/RHEL6/CentOS6/Scientific Linux 6虚拟机克隆导致的网卡问题解决方法 here.
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-08-13T00:00:00">
+        <i class="icon-calendar"></i>二 13 八月 2013
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>刚才在VM虚拟机里测试Scientific Linux 6（RHEL6的重编译版，相当于CentOS 6），看看是否可用于生产环境。因为镜像是在家里的电脑安装的，复制过来启动系统发现网卡启动失败，提示：</p>
+<p>Bringing up interface eth0: Device eth0 does not seem to be present, delaying initialization.   [FAILED]</p>
+<p>Google了一下，发现是网卡mac地址写入硬件问题导致。</p>
+<div class="highlight"><pre><span class="err">环境：</span><span class="n">Virtualbox</span><span class="o">+</span><span class="n">RHEL</span> <span class="mi">6</span> <span class="n">x64</span>
+<span class="err">用</span><span class="n">VirtualBox</span><span class="err">的</span><span class="n">vboxmanager</span><span class="err">克隆的虚拟机，操作系统</span><span class="n">RHEL6</span><span class="err">，启动后发现网卡不能用了。重启网络服务，报以下错误</span><span class="o">:</span>
+<span class="n">Bringing</span> <span class="n">up</span> <span class="n">interface</span> <span class="n">eth0</span><span class="o">:</span> <span class="n">Device</span> <span class="n">eth0</span> <span class="n">does</span> <span class="n">not</span> <span class="n">seem</span> <span class="n">to</span> <span class="n">be</span> <span class="n">present</span><span class="p">,</span> <span class="n">delaying</span> <span class="n">initialization</span><span class="p">.</span> <span class="p">[</span><span class="n">FAILED</span><span class="p">]</span>
+
+<span class="err">在</span><span class="n">RHEL5</span><span class="err">里也发生类似事情，因为复制虚拟机</span><span class="n">MAC</span><span class="err">会重新生成，但是操作系统的</span><span class="n">MAC</span><span class="err">却写在</span><span class="n">ifcfg</span><span class="o">-</span><span class="n">ethx</span><span class="err">里，造成了不一致，所以不能启动网络接口，在</span><span class="n">RHEL5</span><span class="err">里可以使用</span><span class="n">kudzu</span><span class="err">或者注释网卡配置文件的</span><span class="n">MAC</span><span class="err">字段来解决这个问题。但是在</span><span class="n">RHEL6</span><span class="err">里，</span><span class="n">kudzu</span><span class="err">已经被</span><span class="n">hal</span><span class="err">服务取代了。虽然</span><span class="n">lspci</span><span class="err">能够正常认到网卡，但是却无法使用</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">network</span> <span class="n">restart</span><span class="err">来启动服务。尝试注释</span><span class="n">ifcfg</span><span class="o">-</span><span class="n">eth0</span><span class="err">的</span><span class="n">MAC</span><span class="err">字段，还是报错。查看了下</span><span class="n">udev</span><span class="err">的规则，发现了问题的所在。</span>
+</pre></div>
+
+
+<p>{{{
+    [root@Oracle ~]# cat /etc/udev/rules.d/70-persistent-net.rules
+    # This file was automatically generated by the /lib/udev/write_net_rules
+    # program, run by the persistent-net-generator.rules rules file.
+    #
+    # You can modify it, as long as you keep each rule on a single
+    # line, and change only the value of the NAME= key.</p>
+<div class="highlight"><pre><span class="cp"># net device () (custom name provided by external tool)</span>
+<span class="n">SUBSYSTEM</span><span class="o">==</span><span class="err">”</span><span class="n">net</span><span class="err">”</span><span class="p">,</span> <span class="n">ACTION</span><span class="o">==</span><span class="err">”</span><span class="n">add</span><span class="err">”</span><span class="p">,</span> <span class="n">DRIVERS</span><span class="o">==</span><span class="err">”</span><span class="o">?*</span><span class="err">”</span><span class="p">,</span> <span class="n">ATTR</span><span class="p">{</span><span class="n">address</span><span class="p">}</span><span class="o">==</span><span class="err">”</span><span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="mi">16</span><span class="o">:</span><span class="mi">31</span><span class="o">:</span><span class="mi">11</span><span class="err">″</span><span class="p">,</span> <span class="n">ATTR</span><span class="p">{</span><span class="n">type</span><span class="p">}</span><span class="o">==</span><span class="err">”</span><span class="mi">1</span><span class="err">″</span><span class="p">,</span> <span class="n">KERNEL</span><span class="o">==</span><span class="err">”</span><span class="n">eth</span><span class="o">*</span><span class="err">”</span><span class="p">,</span> <span class="n">NAME</span><span class="o">=</span><span class="err">”</span><span class="n">eth0</span><span class="err">″</span>
+
+<span class="cp"># net device ()</span>
+<span class="n">SUBSYSTEM</span><span class="o">==</span><span class="err">”</span><span class="n">net</span><span class="err">”</span><span class="p">,</span> <span class="n">ACTION</span><span class="o">==</span><span class="err">”</span><span class="n">add</span><span class="err">”</span><span class="p">,</span> <span class="n">DRIVERS</span><span class="o">==</span><span class="err">”</span><span class="o">?*</span><span class="err">”</span><span class="p">,</span> <span class="n">ATTR</span><span class="p">{</span><span class="n">address</span><span class="p">}</span><span class="o">==</span><span class="err">”</span><span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="mi">32</span><span class="o">:</span><span class="mi">66</span><span class="o">:</span><span class="mi">63</span><span class="err">″</span><span class="p">,</span> <span class="n">ATTR</span><span class="p">{</span><span class="n">type</span><span class="p">}</span><span class="o">==</span><span class="err">”</span><span class="mi">1</span><span class="err">″</span><span class="p">,</span> <span class="n">KERNEL</span><span class="o">==</span><span class="err">”</span><span class="n">eth</span><span class="o">*</span><span class="err">”</span><span class="p">,</span> <span class="n">NAME</span><span class="o">=</span><span class="err">”</span><span class="n">eth1</span><span class="err">″</span>
+<span class="p">[</span><span class="n">root</span><span class="err">@</span><span class="n">Oracle</span> <span class="o">~</span><span class="p">]</span><span class="err">#</span>
+</pre></div>
+
+
+<p>}}}
+    原来UDEV这里把克隆前的MAC当成了当前虚拟机的eth0 MAC，而重新生成的08:00:27:32:66:63是eth1的MAC。</p>
+<div class="highlight"><pre><span class="err">解决这个问题，只要删除旧的</span><span class="n">UDEV</span><span class="err">配置，修改为：</span>
+</pre></div>
+
+
+<p>{{{
+    [root@Oracle ~]# cat /etc/udev/rules.d/70-persistent-net.rules
+    # This file was automatically generated by the /lib/udev/write_net_rules
+    # program, run by the persistent-net-generator.rules rules file.
+    #
+    # You can modify it, as long as you keep each rule on a single
+    # line, and change only the value of the NAME= key.</p>
+<div class="highlight"><pre><span class="cp"># net device () (custom name provided by external tool)</span>
+<span class="n">SUBSYSTEM</span><span class="o">==</span><span class="err">”</span><span class="n">net</span><span class="err">”</span><span class="p">,</span> <span class="n">ACTION</span><span class="o">==</span><span class="err">”</span><span class="n">add</span><span class="err">”</span><span class="p">,</span> <span class="n">DRIVERS</span><span class="o">==</span><span class="err">”</span><span class="o">?*</span><span class="err">”</span><span class="p">,</span> <span class="n">ATTR</span><span class="p">{</span><span class="n">address</span><span class="p">}</span><span class="o">==</span><span class="err">”</span><span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="mi">32</span><span class="o">:</span><span class="mi">66</span><span class="o">:</span><span class="mi">63</span><span class="err">″</span><span class="p">,</span> <span class="n">ATTR</span><span class="p">{</span><span class="n">type</span><span class="p">}</span><span class="o">==</span><span class="err">”</span><span class="mi">1</span><span class="err">″</span><span class="p">,</span> <span class="n">KERNEL</span><span class="o">==</span><span class="err">”</span><span class="n">eth</span><span class="o">*</span><span class="err">”</span><span class="p">,</span> <span class="n">NAME</span><span class="o">=</span><span class="err">”</span><span class="n">eth0</span><span class="err">″</span>
+
+<span class="err">重启</span><span class="n">network</span><span class="err">服务有时可以有时不行，重启系统就一切</span><span class="n">OK</span><span class="err">！试过多次！</span>
+<span class="p">[</span><span class="n">root</span><span class="err">@</span><span class="n">Oracle</span> <span class="o">~</span><span class="p">]</span><span class="err">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">network</span> <span class="n">restart</span>
+<span class="n">Shutting</span> <span class="n">down</span> <span class="n">interface</span> <span class="n">eth0</span><span class="o">:</span> <span class="p">[</span> <span class="n">OK</span> <span class="p">]</span>
+<span class="n">Shutting</span> <span class="n">down</span> <span class="n">loopback</span> <span class="n">interface</span><span class="o">:</span> <span class="p">[</span> <span class="n">OK</span> <span class="p">]</span>
+<span class="n">Bringing</span> <span class="n">up</span> <span class="n">loopback</span> <span class="n">interface</span><span class="o">:</span> <span class="p">[</span> <span class="n">OK</span> <span class="p">]</span>
+<span class="n">Bringing</span> <span class="n">up</span> <span class="n">interface</span> <span class="n">eth0</span><span class="o">:</span> <span class="p">[</span> <span class="n">OK</span> <span class="p">]</span>
+<span class="p">[</span><span class="n">root</span><span class="err">@</span><span class="n">Oracle</span> <span class="o">~</span><span class="p">]</span><span class="err">#</span> <span class="n">ifconfig</span> <span class="n">eth0</span>
+<span class="n">eth0</span> <span class="n">Link</span> <span class="n">encap</span><span class="o">:</span><span class="n">Ethernet</span> <span class="n">HWaddr</span> <span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="mi">32</span><span class="o">:</span><span class="mi">66</span><span class="o">:</span><span class="mi">63</span>
+<span class="n">inet</span> <span class="n">addr</span><span class="o">:</span><span class="mf">172.16.100.3</span> <span class="n">Bcast</span><span class="o">:</span><span class="mf">172.16.100.255</span> <span class="n">Mask</span><span class="o">:</span><span class="mf">255.255.255.0</span>
+<span class="n">inet6</span> <span class="n">addr</span><span class="o">:</span> <span class="n">fe80</span><span class="o">::</span><span class="n">a00</span><span class="o">:</span><span class="mf">27ff</span><span class="o">:</span><span class="n">fe32</span><span class="o">:</span><span class="mi">6663</span><span class="o">/</span><span class="mi">64</span> <span class="n">Scope</span><span class="o">:</span><span class="n">Link</span>
+<span class="n">UP</span> <span class="n">BROADCAST</span> <span class="n">RUNNING</span> <span class="n">MULTICAST</span> <span class="n">MTU</span><span class="o">:</span><span class="mi">1500</span> <span class="n">Metric</span><span class="o">:</span><span class="mi">1</span>
+<span class="n">RX</span> <span class="n">packets</span><span class="o">:</span><span class="mi">206</span> <span class="n">errors</span><span class="o">:</span><span class="mi">0</span> <span class="n">dropped</span><span class="o">:</span><span class="mi">0</span> <span class="n">overruns</span><span class="o">:</span><span class="mi">0</span> <span class="n">frame</span><span class="o">:</span><span class="mi">0</span>
+<span class="n">TX</span> <span class="n">packets</span><span class="o">:</span><span class="mi">203</span> <span class="n">errors</span><span class="o">:</span><span class="mi">0</span> <span class="n">dropped</span><span class="o">:</span><span class="mi">0</span> <span class="n">overruns</span><span class="o">:</span><span class="mi">0</span> <span class="n">carrier</span><span class="o">:</span><span class="mi">0</span>
+<span class="nl">collisions:</span><span class="mi">0</span> <span class="n">txqueuelen</span><span class="o">:</span><span class="mi">1000</span>
+<span class="n">RX</span> <span class="n">bytes</span><span class="o">:</span><span class="mi">21157</span> <span class="p">(</span><span class="mf">20.6</span> <span class="n">KiB</span><span class="p">)</span> <span class="n">TX</span> <span class="n">bytes</span><span class="o">:</span><span class="mi">24515</span> <span class="p">(</span><span class="mf">23.9</span> <span class="n">KiB</span><span class="p">)</span>
+</pre></div>
+
+
+<p>}}}
+参考：http://bbs.chinaunix.net/viewthread.php?tid=1918368</p>
+<p>我的测试环境是VMware Workstation 7.1 + SL 6 x64
+最简单的解决办法是直接删除70-persistent-net.rules配置文件
+{{{
+rm -fr /etc/udev/rules.d/70-persistent-net.rules
+reboot
+}}}
+重启系统就ok了，系统会自动生成一个新的。</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "describe-linuxrhel6centos6scientific-linux-6xu-ni-ji-ke-long-dao-zhi-de-wang-qia-wen-ti-jie-jue-fang-fa-here.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

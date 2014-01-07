@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/python.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-11-07T00:00:00+01:00</updated><entry><title>在这里详述 python/import data to postgresql from mysql。</title><link href="http://liugehao.github.io/zai-zhe-li-xiang-shu-pythonimport-data-to-postgresql-from-mysql.html" rel="alternate"></link><updated>2013-11-07T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-11-07:zai-zhe-li-xiang-shu-pythonimport-data-to-postgresql-from-mysql.html</id><summary type="html">&lt;p&gt;{{{#!highlight python&lt;/p&gt;
+&lt;h1&gt;!/usr/bin/env python&lt;/h1&gt;
+&lt;h1&gt;coding=utf-8&lt;/h1&gt;
+&lt;p&gt;import MySQLdb, psycopg2
+import sys&lt;/p&gt;
+&lt;h1&gt;psycopg2.paramstyle='qmark' #psycopg2.paramstyle 失效 ，全用%s&lt;/h1&gt;
+&lt;p&gt;pconn = psycopg2.connect(host='172.16.147.133', user='postgres', password='l', database='address')
+pc = pconn.cursor()&lt;/p&gt;
+&lt;p&gt;def insert(row, table):
+    lens = len(row)
+    str = "insert into %s values (%s);" % (table, (', %s' * lens)[1:] )
+    try:
+        pc.execute(str, row)
+    except:
+        pass&lt;/p&gt;
+&lt;p&gt;if &lt;strong&gt;name&lt;/strong&gt; == "&lt;strong&gt;main&lt;/strong&gt;":
+    table = sys.argv[1]
+    mconn = MySQLdb.connect(charset = 'gbk', host="192.168.1.16", user='caiwu', passwd='cai_xxxx', db='exp_address')
+    mc = mconn.cursor()
+    mc.arraysize = 10000
+    mc.execute("select * from %s" % table)
+    while 1:
+        rows = mc.fetchmany()
+        if not len(row):
+            break
+        for row in rows:
+            insert(row, table)
+    pconn.commit()
+}}}&lt;/p&gt;</summary></entry><entry><title>python webkit scrapy</title><link href="http://liugehao.github.io/python-webkit-scrapy.html" rel="alternate"></link><updated>2013-11-01T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-11-01:python-webkit-scrapy.html</id><summary type="html">&lt;p&gt;ubuntu apt-get 安装pythonwebkit,jswebkit
+{{{
+apt-get install python-webkit jswebkit
+}}}
+debian
+{{{
+apt-get install python-jswebkit python-webkit
+}}}
+在scrapy的settings.py中加入：
+{{{#!highlight python&lt;/p&gt;
+&lt;h1&gt;which spider should use WEBKIT&lt;/h1&gt;
+&lt;p&gt;WEBKIT_DOWNLOADER=['jxydt']
+DOWNLOADER_MIDDLEWARES = {
+'jx.dowloader.WebkitDownloader': 543,
+}&lt;/p&gt;
+&lt;p&gt;import os
+os.environ["DISPLAY"] = ":0"
+}}}
+dowloader.py
+{{{#!highlight python&lt;/p&gt;
+&lt;h1&gt;!/usr/bin/env python&lt;/h1&gt;
+&lt;h1&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;/h1&gt;
+&lt;p&gt;from scrapy.http import Request, FormRequest, HtmlResponse&lt;/p&gt;
+&lt;p&gt;import gtk
+import webkit
+import jswebkit
+import settings&lt;/p&gt;
+&lt;p&gt;class WebkitDownloader( object ):
+    def process_request( self, request, spider ):
+        if spider.name in settings.WEBKIT_DOWNLOADER:
+            if( type(request) is not FormRequest ):
+                webview = webkit.WebView()
+                webview.connect( 'load-finished', lambda v,f: gtk.main_quit() )
+                webview.load_uri( request.url )
+                gtk.main()
+                webview.execute_script("ShowMeResult();")
+                js = jswebkit.JSContext( webview.get_main_frame().get_global_context() )
+                renderedBody = str( js.EvaluateScript( 'document.body.innerHTML' ) )
+                #print renderedBody
+                return HtmlResponse( request.url, body=renderedBody )
+}}}
+爬虫
+{{{#!highlight python
+from scrapy.selector import HtmlXPathSelector
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from jx.items import JxItem&lt;/p&gt;
+&lt;p&gt;class JxydtSpider(CrawlSpider):
+    name = 'jxydt'
+    allowed_domains = ['jxydt.net.cn']
+    start_urls = ['http://www.jxydt.net.cn/']&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rules&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;Rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SgmlLinkExtractor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;allow&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Itemssdafdsfa1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;callback&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;parse_item&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;follow&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;False&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;hxs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HtmlXPathSelector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;JxItem&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hxs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="c1"&gt;//*[@id=&amp;quot;defen&amp;quot;]/center[1]/b/font/text()&amp;#39;).extract()[0]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}}}
+启动 Xvfb (假设DISPLAY=:0) Xvfb (用于非Xwindow环境)&lt;/p&gt;
+&lt;p&gt;要与settings.py中的DISPLAY对应（本例中是:0)。
+{{{
+scrapy crawl jxydt
+}}}&lt;/p&gt;</summary></entry><entry><title>Describe python/virtualenv pip 技巧 here.</title><link href="http://liugehao.github.io/describe-pythonvirtualenv-pip-ji-qiao-here.html" rel="alternate"></link><updated>2013-09-04T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-09-04:describe-pythonvirtualenv-pip-ji-qiao-here.html</id><summary type="html">&lt;p&gt;== virtualenv ==
+这里是导言吗？
+用过Python的同学，肯定会对Python及程序的版本之间经常更换的api感到痛苦不以。就拿我折腾的Django来说吧，公司服务器上跑的是Django1.3、同事也是用1.3开发，但是因为我是新来，一个
+pip install django
+下去，就是1.4.2。好了，你自己写的Django Project自然没有问题，自己本地测试也没有问题。但是要和其他人交流的时候就蛋疼了，因为你的1.4.2跑不了1.3的程序……当然，这时，你可以选择卸载自己本地的Django，换成1.3，等你要重新测试自己的Django，怎么样，扯着蛋了吧。为了解决以上问题，virtualenv横空出世了。
+正文
+为了解决以上蛋疼问题，我们需要安装virtualenv。
+{{{
+sudo pip install virtualenv
+}}}
+安装好了以后，就可以在任何目录下新建一个virtual-environment（我更喜欢叫：盗梦空间），当然一般我习惯在项目的边上创建一个$project_name-env。例如：
+{{{
+virtualenv demo-env
+}}}
+这下，只需要
+{{{
+source demo-env/bin/activate
+}}}
+就可以激活这个虚拟环境了。如下图所示：&lt;/p&gt;
+&lt;p&gt;注意到括号里的(demo-env)了没？对，我们已经进入了第一层梦境demo-env。
+回到导言里的问题，我们需要在这里建立一个使用django1.3的环境，不让它干扰我们的本地环境。&lt;/p&gt;
+&lt;p&gt;{{{
+pip install Django==1.3
+}}}
+就可以了，然后在里面运行别人的Django程序，没有问题！装很多python程序，没有问题，这些都不会干扰你的本地环境，放心破坏吧！&lt;/p&gt;
+&lt;p&gt;== PIP ==
+刚才的virtualenv的介绍里已经说了pip的安装命令了。但你当pip只是个安装工具的话，那就大错特错了。pip还有一个更重要的功能——冻结当前梦境开发环境版本（freeze）。
+{{{
+(env1)l@x201i:~/pyproject/yuer$ pip freeze
+argparse==1.2.1
+bottle==0.11.6
+bottle-sqlalchemy==0.4
+psycopg2==2.5.1
+wsgiref==0.1.2&lt;/p&gt;
+&lt;p&gt;}}}
+看到了刚才安装的django 1.3了没有？这就是我们目前的生产环境，把这输出结果写到requirement.txt里，别的程序猿们就知道你的程序至少在这个环境下可以跑，这时他们拿着requirement.txt，新建个virtualenv，
+{{{
+pip install -r requirement.txt
+}}}
+就可以运行你的程序了。
+pip加速安装
+通过pip安装程序，还可以用git和svn的方式，具体操作网上也有。但是对于懒人来说，直接用pip是最好不过的了，但是，有时这会很慢！！！慢到你抓狂。当然，和apt-get一样，pip也可以换源，或者叫添加镜像。
+新建一个~/.pip/pip.conf，往里面写入
+{{{
+[global]
+index-url=http://e.pypi.python.org/simple
+timeout = 30
+require-virtualenv = true
+download-cache = /tmp&lt;/p&gt;
+&lt;p&gt;[install]
+use-mirrors = true
+mirrors =&lt;/p&gt;
+&lt;p&gt;http://d.pypi.python.org&lt;/p&gt;
+&lt;p&gt;http://b.pypi.python.org&lt;/p&gt;
+&lt;p&gt;http://c.pypi.python.org&lt;/p&gt;
+&lt;p&gt;}}}
+下载应该就会像飞了一样，配置文件过于清晰，所以我也不用多说了吧 ：）&lt;/p&gt;</summary></entry><entry><title>== python/Python 排列,组合生成器 yield ==</title><link href="http://liugehao.github.io/pythonpython-pai-lie-zu-he-sheng-cheng-qi-yield.html" rel="alternate"></link><updated>2013-08-30T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-08-30:pythonpython-pai-lie-zu-he-sheng-cheng-qi-yield.html</id><summary type="html">&lt;p&gt;参数数字，固定排列和组合字符串的长度&lt;/p&gt;
+&lt;p&gt;f=perm('abcdefghijklmnopqrstuvwxyz01234567890', 4)&lt;/p&gt;
+&lt;p&gt;{{{#!highlight python&lt;/p&gt;
+&lt;h1&gt;生成全排列&lt;/h1&gt;
+&lt;p&gt;def perm(items, n=None):
+    if n is None:
+        n = len(items)
+    for i in range(len(items)):
+        v = items[i:i+1]
+        if n == 1:
+            yield v
+        else:
+            rest = items[:i] + items[i+1:]
+            for p in perm(rest, n-1):
+                yield v + p&lt;/p&gt;
+&lt;h1&gt;生成组合&lt;/h1&gt;
+&lt;p&gt;def comb(items, n=None):
+    if n is None:
+        n = len(items)  &lt;br /&gt;
+    for i in range(len(items)):
+        v = items[i:i+1]
+        if n == 1:
+            yield v
+        else:
+            rest = items[i+1:]
+            for c in comb(rest, n-1):
+                yield v + c&lt;/p&gt;
+&lt;p&gt;a = perm('abc')
+for b in a:
+    print b
+    break
+print '-'*20
+for b in a:
+    print b 
+}}}&lt;/p&gt;</summary></entry><entry><title>Describe python/PIL decoder jpeg not available here.</title><link href="http://liugehao.github.io/describe-pythonpil-decoder-jpeg-not-available-here.html" rel="alternate"></link><updated>2013-07-28T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-07-28:describe-pythonpil-decoder-jpeg-not-available-here.html</id><summary type="html">&lt;p&gt;{{{#!highlight bash
+apt-get install libjpeg-dev&lt;/p&gt;
+&lt;p&gt;pt-get install libfreetype6-dev
+}}}&lt;/p&gt;
+&lt;p&gt;Ubuntu11.10上，libjpeg.so、libz.so和libfreetype.so都在路径/usr/lib/x86_64-linux-gnu下，在/usr/lib下为这3个包创建软链接后执行ldconfig&lt;/p&gt;
+&lt;p&gt;在路径/usr/lib和/usr/local下查找PIL相关文件和目录，全部删除&lt;/p&gt;
+&lt;p&gt;Ubuntu11.10上，libjpeg.so、libz.so和libfreetype.so都在路径/usr/lib/x86_64-linux-gnu下，在/usr/lib下为这3个包创建软链接后执行ldconfig&lt;/p&gt;
+&lt;p&gt;删除PIL解压后的安装包Imaging-1.1.7，重新解压，并修改setup.py，或者pip安装
+{{{#!highlight bash
+rm -rf /usr/local/lib/python2.7/dist-packages/PIL&lt;em&gt;
+rm -rf /tmp/pip-&lt;/em&gt;
+pip install PIL
+}}}&lt;/p&gt;</summary></entry><entry><title>Describe python/scrapy error TypeError: __init__() got an unexpected keyword argument ‘_job’ here.</title><link href="http://liugehao.github.io/describe-pythonscrapy-error-typeerror-__init__-got-an-unexpected-keyword-argument-_job-here.html" rel="alternate"></link><updated>2013-07-28T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-07-28:describe-pythonscrapy-error-typeerror-__init__-got-an-unexpected-keyword-argument-_job-here.html</id><summary type="html">&lt;p&gt;{{{
+2012-12-28 05:57:33+0800 [Launcher,29590/stderr] main()
+File “/usr/local/lib/python2.7/dist-packages/scrapyd/runner.py”, line 36, in main
+execute()
+File “/usr/local/lib/python2.7/dist-packages/scrapy/cmdline.py”, line 131, in execute
+_run_print_help(parser, _run_command, cmd, args, opts)
+File “/usr/local/lib/python2.7/dist-packages/scrapy/cmdline.py”, line 76, in _run_print_help
+func(&lt;em&gt;a, &lt;strong&gt;kw)
+File “/usr/local/lib/python2.7/dist-packages/scrapy/cmdline.py”, line 138, in _run_command
+cmd.run(args, opts)
+File “/usr/local/lib/python2.7/dist-packages/scrapy/commands/crawl.py”, line 43, in run
+spider = self.crawler.spiders.create(spname, &lt;/strong&gt;opts.spargs)
+File “/usr/local/lib/python2.7/dist-packages/scrapy/spidermanager.py”, line 44, in create
+return spcls(&lt;/em&gt;*spider_kwargs)
+TypeError: &lt;strong&gt;init&lt;/strong&gt;() got an unexpected keyword argument ‘_job’
+}}}&lt;/p&gt;
+&lt;p&gt;这是因为spider的__init__函数没有加&lt;strong&gt;kwargs参数，不能接受相应的参数。
+{{{#!highlight python
+def &lt;strong&gt;init&lt;/strong&gt;(self,&lt;/strong&gt;kwargs):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ProductSpider&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}}}
+另外，需添加__str__函数，否则也会报错&lt;/p&gt;
+&lt;p&gt;{{{#!highlight python
+def &lt;strong&gt;str&lt;/strong&gt;(self):
+   return “ProductSpider”
+}}}&lt;/p&gt;</summary></entry><entry><title>Describe python/scrapy及PIL安装 here.</title><link href="http://liugehao.github.io/describe-pythonscrapyji-pilan-zhuang-here.html" rel="alternate"></link><updated>2013-07-28T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-07-28:describe-pythonscrapyji-pilan-zhuang-here.html</id><summary type="html">&lt;p&gt;{{{
+aptitude install python-setuptools python2.7-dev
+easy_install pip
+aptitude install libxslt-dev
+aptitude install libxml2-dev&lt;/p&gt;
+&lt;p&gt;pip install scrapy&lt;/p&gt;
+&lt;p&gt;pip instlal sqlalchemy&lt;/p&gt;
+&lt;p&gt;pip install PIL&lt;/p&gt;
+&lt;p&gt;}}}
+Ubuntu11.10上，libjpeg.so、libz.so和libfreetype.so都在路径/usr/lib/x86_64-linux-gnu下，在/usr/lib下为这3个包创建软链接后执行ldconfig&lt;/p&gt;</summary></entry><entry><title>Scrapy imagePipelines 图片保存路径重写</title><link href="http://liugehao.github.io/scrapy-imagepipelines-tu-pian-bao-cun-lu-jing-zhong-xie.html" rel="alternate"></link><updated>2013-07-28T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-07-28:scrapy-imagepipelines-tu-pian-bao-cun-lu-jing-zhong-xie.html</id><summary type="html">&lt;p&gt;只需要重写image_key方法即可
+{{{#!highlight python
+from scrapy.contrib.pipeline.images import ImagesPipeline
+import hashlib
+from datetime import datetime
+class MyImagesPipeline(ImagesPipeline):
+    def image_key(self, url):
+        image_guid = hashlib.sha1(url).hexdigest()
+        #return 'full/%s.jpg' % (image_guid)
+        path = datetime.now().strftime("%Y/%m/%d")
+        return '%s/%s.jpg' % (path, image_guid)&lt;/p&gt;
+&lt;p&gt;}}}&lt;/p&gt;</summary></entry><entry><title>moinmoin ubuntu nginx</title><link href="http://liugehao.github.io/moinmoin-ubuntu-nginx.html" rel="alternate"></link><updated>2013-05-18T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-05-18:moinmoin-ubuntu-nginx.html</id><summary type="html">&lt;p&gt;vi /etc/rc.local ，在exit 0 前面添加
+{{{
+uwsgi -x /www/moin/uwsgi.xml &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;
+}}}&lt;/p&gt;
+&lt;p&gt;cat /etc/nginx/sites-enabled/wiki
+{{{
+server {
+    listen 4081;
+    access_log /dev/null;
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:///www/moin/moin.sock;
+        uwsgi_modifier1 30;
+    }
+}&lt;/p&gt;
+&lt;p&gt;}}}&lt;/p&gt;
+&lt;p&gt;cat moin/uwsgi.xml 
+{{{
+&lt;uwsgi&gt;
+    &lt;uid&gt;www-data&lt;/uid&gt;
+    &lt;gid&gt;www-data&lt;/gid&gt;
+    &lt;plugin&gt;python&lt;/plugin&gt;
+    &lt;socket&gt;/www/moin/moin.sock&lt;/socket&gt;
+    &lt;wsgi-file&gt;/www/moin/wiki/moin.wsgi&lt;/wsgi-file&gt;
+    &lt;limit-as&gt;256&lt;/limit-as&gt;
+    &lt;processes&gt;1&lt;/processes&gt;
+    &lt;memory-report/&gt;
+    &lt;vhost/&gt;
+    &lt;no-site/&gt;
+&lt;/uwsgi&gt;
+}}}&lt;/p&gt;</summary></entry><entry><title>python用abiword将doc转换成html,rtf,pdf...</title><link href="http://liugehao.github.io/pythonyong-abiwordjiang-doczhuan-huan-cheng-htmlrtfpdf.html" rel="alternate"></link><updated>2013-01-04T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-01-04:pythonyong-abiwordjiang-doczhuan-huan-cheng-htmlrtfpdf.html</id><summary type="html">&lt;p&gt;{{{
+sudo apt-get install abiword -y
+abiword -t output.html resume.doc # 将word转换成html
+}}}&lt;/p&gt;
+&lt;p&gt;{{{#!highlight python
+    import subprocess&lt;br /&gt;
+    import os&lt;br /&gt;
+    import uuid  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;document_to_html&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;  
+    &lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/tmp&amp;quot;&lt;/span&gt;  
+    &lt;span class="n"&gt;guid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;uuid&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uuid1&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;  
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;convert&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;temporary&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;  
+    &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;abiword -t %(tmp)s/%(guid)s.html %(file_path)s; cat %(tmp)s/%(guid)s.html&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;      
+    &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Popen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PIPE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PIPE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cwd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PROJECT_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;website/templates&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+    &lt;span class="n"&gt;error&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;      
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;  
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+    &lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}}}&lt;/p&gt;</summary></entry><entry><title>setting up Django with Scrapy</title><link href="http://liugehao.github.io/setting-up-django-with-scrapy.html" rel="alternate"></link><updated>2012-11-30T00:00:00+01:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-11-30:setting-up-django-with-scrapy.html</id><summary type="html">&lt;p&gt;Setting up Django with Scrapy&lt;/p&gt;
+&lt;p&gt;This guide is about using Django, the most popular Python web framework, and Scrapy, the most popular Python scraping framework. Both of the frameworks are awesome, and they work very well standalone.&lt;/p&gt;
+&lt;p&gt;Before you continue reading, make sure you are already beyond “Getting Started” stage for both the frameworks.&lt;/p&gt;
+&lt;p&gt;At the end of the guide, what you can achieve is:&lt;/p&gt;
+&lt;p&gt;Run scrapy, and auto save the crawled items in Django ORM
+1) Scrapy’s settings.py
+{{{#!highlight python
+def setup_django_env(path):
+    import imp, os
+    from django.core.management import setup_environ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;imp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;imp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;desc&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;setup_environ&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="cp"&gt;# Add django project to sys.path&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pardir&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;setup_django_env('/path/to/django/myproject/myproject/')
+}}}
+2) Scrapy’s items.py
+{{{#!highlight python
+from scrapy.contrib_exp.djangoitem import DjangoItem
+from myapp.models import Poll&lt;/p&gt;
+&lt;p&gt;class PollItem(DjangoItem):
+    django_model = Poll
+}}}
+3) Scrapy’s pipelines.py
+{{{#!highlight python
+from myapp.models import Poll&lt;/p&gt;
+&lt;p&gt;class PollPipeline(object):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;process_item&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;spider&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}}}
+Done!&lt;/p&gt;
+&lt;p&gt;That’s all to run scrapy and auto save the items to Django ORM. You can now run your regular
+{{{#!highlight bash
+scrapy crawl myspider
+}}}
+PS: This guide serves to be complete. It adds to a popular Stackoverflow answer, and completes the picture for Django 1.4, which Django adopts a new layout. And also provide the code for the experimental DjangoItem (rare!).&lt;/p&gt;
+&lt;p&gt;== 另外一个 ==&lt;/p&gt;
+&lt;p&gt;{{{#!highlight python&lt;/p&gt;
+&lt;h1&gt;# django-admin.py startproject djangoapp&lt;/h1&gt;
+&lt;h1&gt;# Create your django model: django startapp website&lt;/h1&gt;
+&lt;h1&gt;# Edit scrapy settings.py with method to point to Django environment&lt;/h1&gt;
+&lt;h1&gt;# Create a pipeline that accesses Django using the model.save() method&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;settings.py&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;import os
+ITEM_PIPELINES = ['myapp.pipelines.DjangoPipeline']&lt;/p&gt;
+&lt;h1&gt;http://stackoverflow.com/questions/4271975/access-django-models-inside-of-scrapy&lt;/h1&gt;
+&lt;p&gt;def setup_django_env(path):
+    import imp, os
+    from django.core.management import setup_environ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;imp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;imp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_module&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;desc&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;setup_environ&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;current_dir = os.path.abspath(os.path.dirname(os.path.dirname(&lt;strong&gt;file&lt;/strong&gt;)))
+setup_django_env(os.path.join(current_dir, '../djangoapp/')) #注意此处　djangoapp，不是project目录，应该'/djangoproject/djangoapp/'。确切的说是django的settings.py所在目录。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pipelines.py&lt;/em&gt;&lt;/strong&gt;
+from djangoapp.websites.models import Website
+from django.db.utils import IntegrityError&lt;/p&gt;
+&lt;p&gt;class DjangoPipeline(object):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;process_item&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;spider&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Website&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+            &lt;span class="n"&gt;created&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nl"&gt;try:&lt;/span&gt;
+      &lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;except&lt;/span&gt; &lt;span class="n"&gt;IntegrityError&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+      &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;DropItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Contains duplicate domain: %s&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;djangoapp model&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;from django.db import models&lt;/p&gt;
+&lt;p&gt;class Website(models.Model):
+    link = models.CharField(max_length=200, unique=True)
+    created = models.DateTimeField('date created')&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__unicode__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%s&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Snippet imported from snippets.scrapy.org (which no longer works)&lt;/h1&gt;
+&lt;h1&gt;author: redtricycle&lt;/h1&gt;
+&lt;h1&gt;date  : Nov 27, 2011&lt;/h1&gt;
+&lt;p&gt;}}}&lt;/p&gt;</summary></entry><entry><title>python/lxml比xml.dom.minidom的xml文件解析速度好太多</title><link href="http://liugehao.github.io/pythonlxmlbi-xmldomminidomde-xmlwen-jian-jie-xi-su-du-hao-tai-duo.html" rel="alternate"></link><updated>2012-10-16T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-10-16:pythonlxmlbi-xmldomminidomde-xmlwen-jian-jie-xi-su-du-hao-tai-duo.html</id><summary type="html">&lt;p&gt;第一个链接monidom解析要十几二十秒，第二个８Ｇ内存机器用守内存硬盘狂闪，机器基本停止响应。
+==== 而换成lxml，解析第二个，只要一秒。  ====
+{{{#!highlight python&lt;/p&gt;
+&lt;h1&gt;!/usr/bin/env python&lt;/h1&gt;
+&lt;h1&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;/h1&gt;
+&lt;p&gt;import urllib2
+import base64
+import cStringIO
+import zipfile
+from lxml import etree
+s = cStringIO.StringIO()&lt;/p&gt;
+&lt;h1&gt;http://192.168.1.31:82/ydec/service/datareport/getOmOrgList.action?datatype=xml&amp;amp;hucite=test&amp;amp;starttime=2012-09-04%2014:06:21&amp;amp;endtime=2012-09-04%2015:06:42&amp;amp;data=wwww&amp;amp;validation=b0bd9f607d355e38f1e35d662992f2b0&lt;/h1&gt;
+&lt;p&gt;s.write(base64.b64decode(urllib2.urlopen('http://192.168.1.31:82/ydec/service/datareport/getAcOperatorList.action?datatype=xml&amp;amp;hucite=test&amp;amp;validation=b0bd9f607d355e38f1e35d662992f2b0&amp;amp;data=wwww').read()))
+s.seek(0)&lt;/p&gt;
+&lt;p&gt;z = zipfile.ZipFile(s)
+s = cStringIO.StringIO()
+s.write(z.open('zip').read())
+s.seek(0)&lt;/p&gt;
+&lt;p&gt;xf = etree.parse(s)
+columns = []
+for n in xf.find('datas'):
+    print '-' * 80
+    values = []
+    if not len(columns):
+        for nc in n:
+            columns.append(nc.tag)
+    for nc in n:
+        values.append(nc.text and nc.text  or '')&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;%20s&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s"&gt;%s&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;break&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;""" 
+from xml.dom.minidom import parse, parseString
+xf = parse(s) #性能与lxml比超慢，甚至内存不够无法完成(lxml瞬间完成)
+columns = []
+for n in xf.documentElement.getElementsByTagName('datas')[0].childNodes:
+    print '-' * 80
+    values = []
+    if not len(columns):
+        for nc in n.childNodes:
+            columns.append(nc.nodeName)
+    for nc in n.childNodes:
+        values.append(nc.firstChild and nc.firstChild.toxml()  or '')&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;%20s&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s"&gt;%s&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;break&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;"""&lt;/p&gt;
+&lt;p&gt;}}}&lt;/p&gt;</summary></entry><entry><title>python自动提取页面正文</title><link href="http://liugehao.github.io/pythonzi-dong-ti-qu-ye-mian-zheng-wen.html" rel="alternate"></link><updated>2012-09-26T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2012-09-26:pythonzi-dong-ti-qu-ye-mian-zheng-wen.html</id><summary type="html">&lt;p&gt;用BeautifulSoup 库取页面中p标签，给每个p按“,"和"，"加权重分，去除无用节点。
+BeautifulSoup3下正常，BeautifulSoup4有点问题
+ [[attachment:readability.py]]&lt;/p&gt;</summary></entry></feed>

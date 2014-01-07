@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/nginx.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-05-16T00:00:00+02:00</updated><entry><title>moinmoin install nginx uwsgi</title><link href="http://liugehao.github.io/moinmoin-install-nginx-uwsgi.html" rel="alternate"></link><updated>2013-05-16T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-05-16:moinmoin-install-nginx-uwsgi.html</id><summary type="html">&lt;p&gt;=== Config nginx ===&lt;/p&gt;
+&lt;p&gt;{{{
+server {
+    #server_name wiki.example.com;
+    listen 4081;
+    #access_log /var/log/nginx/access.log;
+    #error_log /var/log/nginx/error.log;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="n"&gt;uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;uwsgi_pass&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;///srv/www/moin/moin.sock;&lt;/span&gt;
+    &lt;span class="n"&gt;uwsgi_modifier1&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;}
+}}}&lt;/p&gt;
+&lt;p&gt;vi /etc/init/moin.conf
+{{{
+description "moin uwsgi service"&lt;/p&gt;
+&lt;p&gt;start on runlevel [2345]
+stop on runlevel [!2345]&lt;/p&gt;
+&lt;p&gt;chdir /srv/www/moin/wiki/
+exec uwsgi -x /srv/www/moin/wiki/uwsgi.xml
+respawn
+}}}&lt;/p&gt;</summary></entry><entry><title>nginx/unavailable modifier requested 30 uwsgi</title><link href="http://liugehao.github.io/nginxunavailable-modifier-requested-30-uwsgi.html" rel="alternate"></link><updated>2013-05-16T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-05-16:nginxunavailable-modifier-requested-30-uwsgi.html</id><summary type="html">&lt;p&gt;{{{
+your server socket listen backlog is limited to 100 connections
+&lt;strong&gt;&lt;em&gt; Operational MODE: single process &lt;/em&gt;&lt;/strong&gt;
+&lt;strong&gt;&lt;em&gt; no app loaded. going in full dynamic mode &lt;/em&gt;&lt;/strong&gt;
+&lt;strong&gt;&lt;em&gt; uWSGI is running in multiple interpreter mode &lt;/em&gt;&lt;/strong&gt;
+spawned uWSGI worker 1 (and the only) (pid: 5207, cores: 1)
+-- unavailable modifier requested: 0 --
+-- unavailable modifier requested: 0 --
+-- unavailable modifier requested: 0 --
+-- unavailable modifier requested: 0 --&lt;/p&gt;
+&lt;p&gt;}}}
+apt-get install uwsgi-plugin-python&lt;/p&gt;</summary></entry></feed>

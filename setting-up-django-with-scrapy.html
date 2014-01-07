@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>setting up Django with Scrapy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to setting up Django with Scrapy">
+                                        setting up Django with Scrapy
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2012-11-30T00:00:00">
+        <i class="icon-calendar"></i>五 30 十一月 2012
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/python.html"><i class="icon-folder-open"></i>python</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>Setting up Django with Scrapy</p>
+<p>This guide is about using Django, the most popular Python web framework, and Scrapy, the most popular Python scraping framework. Both of the frameworks are awesome, and they work very well standalone.</p>
+<p>Before you continue reading, make sure you are already beyond “Getting Started” stage for both the frameworks.</p>
+<p>At the end of the guide, what you can achieve is:</p>
+<p>Run scrapy, and auto save the crawled items in Django ORM
+1) Scrapy’s settings.py
+{{{#!highlight python
+def setup_django_env(path):
+    import imp, os
+    from django.core.management import setup_environ</p>
+<div class="highlight"><pre><span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">imp</span><span class="p">.</span><span class="n">find_module</span><span class="p">(</span><span class="err">&#39;</span><span class="n">settings</span><span class="err">&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">path</span><span class="p">])</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">imp</span><span class="p">.</span><span class="n">load_module</span><span class="p">(</span><span class="err">&#39;</span><span class="n">settings</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">desc</span><span class="p">)</span>
+
+<span class="n">setup_environ</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+
+<span class="cp"># Add django project to sys.path</span>
+<span class="n">import</span> <span class="n">sys</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">pardir</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>setup_django_env('/path/to/django/myproject/myproject/')
+}}}
+2) Scrapy’s items.py
+{{{#!highlight python
+from scrapy.contrib_exp.djangoitem import DjangoItem
+from myapp.models import Poll</p>
+<p>class PollItem(DjangoItem):
+    django_model = Poll
+}}}
+3) Scrapy’s pipelines.py
+{{{#!highlight python
+from myapp.models import Poll</p>
+<p>class PollPipeline(object):</p>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">process_item</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">)</span><span class="o">:</span>
+
+    <span class="n">item</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+
+
+<p>}}}
+Done!</p>
+<p>That’s all to run scrapy and auto save the items to Django ORM. You can now run your regular
+{{{#!highlight bash
+scrapy crawl myspider
+}}}
+PS: This guide serves to be complete. It adds to a popular Stackoverflow answer, and completes the picture for Django 1.4, which Django adopts a new layout. And also provide the code for the experimental DjangoItem (rare!).</p>
+<p>== 另外一个 ==</p>
+<p>{{{#!highlight python</p>
+<h1># django-admin.py startproject djangoapp</h1>
+<h1># Create your django model: django startapp website</h1>
+<h1># Edit scrapy settings.py with method to point to Django environment</h1>
+<h1># Create a pipeline that accesses Django using the model.save() method</h1>
+<p><strong><em>settings.py</em></strong></p>
+<p>import os
+ITEM_PIPELINES = ['myapp.pipelines.DjangoPipeline']</p>
+<h1>http://stackoverflow.com/questions/4271975/access-django-models-inside-of-scrapy</h1>
+<p>def setup_django_env(path):
+    import imp, os
+    from django.core.management import setup_environ</p>
+<div class="highlight"><pre><span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">imp</span><span class="p">.</span><span class="n">find_module</span><span class="p">(</span><span class="err">&#39;</span><span class="n">settings</span><span class="err">&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">path</span><span class="p">])</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">imp</span><span class="p">.</span><span class="n">load_module</span><span class="p">(</span><span class="err">&#39;</span><span class="n">settings</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">desc</span><span class="p">)</span>
+
+<span class="n">setup_environ</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+</pre></div>
+
+
+<p>current_dir = os.path.abspath(os.path.dirname(os.path.dirname(<strong>file</strong>)))
+setup_django_env(os.path.join(current_dir, '../djangoapp/')) #注意此处　djangoapp，不是project目录，应该'/djangoproject/djangoapp/'。确切的说是django的settings.py所在目录。</p>
+<p><strong><em>pipelines.py</em></strong>
+from djangoapp.websites.models import Website
+from django.db.utils import IntegrityError</p>
+<p>class DjangoPipeline(object):</p>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">process_item</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">website</span> <span class="o">=</span> <span class="n">Website</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="err">&#39;</span><span class="n">link</span><span class="err">&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">created</span><span class="o">=</span><span class="n">datetime</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="p">)</span>
+    <span class="nl">try:</span>
+      <span class="n">website</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">except</span> <span class="n">IntegrityError</span><span class="o">:</span>
+      <span class="n">raise</span> <span class="n">DropItem</span><span class="p">(</span><span class="s">&quot;Contains duplicate domain: %s&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">[</span><span class="err">&#39;</span><span class="n">link</span><span class="err">&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+
+
+<p><strong><em>djangoapp model</em></strong></p>
+<p>from django.db import models</p>
+<p>class Website(models.Model):
+    link = models.CharField(max_length=200, unique=True)
+    created = models.DateTimeField('date created')</p>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">__unicode__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">u</span><span class="s">&quot;%s&quot;</span> <span class="o">%</span> <span class="n">self</span><span class="p">.</span><span class="n">link</span>
+</pre></div>
+
+
+<h1>Snippet imported from snippets.scrapy.org (which no longer works)</h1>
+<h1>author: redtricycle</h1>
+<h1>date  : Nov 27, 2011</h1>
+<p>}}}</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "setting-up-django-with-scrapy.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

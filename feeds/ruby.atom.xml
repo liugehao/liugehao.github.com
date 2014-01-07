@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>My Note Book</title><link href="http://liugehao.github.io/" rel="alternate"></link><link href="http://liugehao.github.io/feeds/ruby.atom.xml" rel="self"></link><id>http://liugehao.github.io/</id><updated>2013-10-17T00:00:00+02:00</updated><entry><title>在这里详述 ruby/custom_require.rb:36:in `require': cannot load such file -- mkmf (LoadError)。</title><link href="http://liugehao.github.io/zai-zhe-li-xiang-shu-rubycustom_requirerb36in-require-cannot-load-such-file-mkmf-loaderror.html" rel="alternate"></link><updated>2013-10-17T00:00:00+02:00</updated><author><name>liugehao</name></author><id>tag:liugehao.github.io,2013-10-17:zai-zhe-li-xiang-shu-rubycustom_requirerb36in-require-cannot-load-such-file-mkmf-loaderror.html</id><summary type="html">&lt;p&gt;{{{
+root@x201i:/home/l# gem install classifier
+Building native extensions.  This could take a while...
+ERROR:  Error installing classifier:
+    ERROR: Failed to build gem native extension.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ruby1&lt;/span&gt;&lt;span class="mf"&gt;.9.1&lt;/span&gt; &lt;span class="n"&gt;extconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rb&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;/usr/lib/ruby/1.9.1/rubygems/custom_require.rb:36:in &lt;code&gt;require': cannot load such file -- mkmf (LoadError)
+    from /usr/lib/ruby/1.9.1/rubygems/custom_require.rb:36:in&lt;/code&gt;require'
+    from extconf.rb:1:in `&lt;main&gt;'&lt;/p&gt;
+&lt;p&gt;Gem files will remain installed in /var/lib/gems/1.9.1/gems/fast-stemmer-1.0.2 for inspection.
+Results logged to /var/lib/gems/1.9.1/gems/fast-stemmer-1.0.2/ext/gem_make.out
+}}}&lt;/p&gt;
+&lt;p&gt;解决办法:
+{{{
+apt-get install ruby1.9.1-dev
+}}}&lt;/p&gt;</summary></entry></feed>

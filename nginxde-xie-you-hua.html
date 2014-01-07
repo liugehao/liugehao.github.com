@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nginx的一些优化</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="liugehao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://liugehao.github.io/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://liugehao.github.io/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://liugehao.github.io/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://liugehao.github.io/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://liugehao.github.io/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://liugehao.github.io/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://liugehao.github.io/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://liugehao.github.io/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://liugehao.github.io/" type="application/atom+xml" rel="alternate" title="My Note Book ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://liugehao.github.io/index.html">My Note Book </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/c.html">
+						<i class="icon-folder-open icon-large"></i>c
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/db.html">
+						<i class="icon-folder-open icon-large"></i>db
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://liugehao.github.io/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+						<i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/nginx.html">
+						<i class="icon-folder-open icon-large"></i>nginx
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/others.html">
+						<i class="icon-folder-open icon-large"></i>Others
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/php.html">
+						<i class="icon-folder-open icon-large"></i>php
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/python.html">
+						<i class="icon-folder-open icon-large"></i>python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/ruby.html">
+						<i class="icon-folder-open icon-large"></i>ruby
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://liugehao.github.io/category/tmp.html">
+						<i class="icon-folder-open icon-large"></i>tmp
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://liugehao.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Nginx的一些优化">
+                                        Nginx的一些优化
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2012-09-21T00:00:00">
+        <i class="icon-calendar"></i>五 21 九月 2012
+</abbr>
+<span class="label">By</span>
+<a href="http://liugehao.github.io/author/liugehao.html"><i class="icon-user"></i>liugehao</a>
+<span class="label">Category</span>
+<a href="http://liugehao.github.io/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>=== nginx指令中的优化（配置文件） ===</p>
+<p>{{{
+worker_processes 8;
+}}}
+nginx进程数，建议按照cpu数目来指定，一般为它的倍数。</p>
+<p>{{{
+worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000;
+}}}
+为每个进程分配cpu，上例中将8个进程分配到8个cpu，当然可以写多个，或者将一个进程分配到多个cpu。</p>
+<p>{{{
+worker_rlimit_nofile 102400;
+}}}
+这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n的值保持一致。</p>
+<p>{{{
+use epoll;
+}}}
+使用epoll的I/O模型，这个不用说了吧。</p>
+<p>{{{
+worker_connections 102400;
+}}}
+每个进程允许的最多连接数，理论上每台nginx服务器的最大连接数为worker_processes*worker_connections。</p>
+<p>{{{
+keepalive_timeout 60;
+}}}
+keepalive超时时间。</p>
+<p>{{{
+client_header_buffer_size 4k;
+}}}
+客户端请求头部的缓冲区大小，这个可以根据你的系统分页大小来设置，一般一个请求的头部大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。分页大小可以用命令getconf PAGESIZE取得。</p>
+<p>{{{
+open_file_cache max=102400 inactive=20s;
+}}}
+这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。</p>
+<p>{{{
+open_file_cache_valid 30s;
+}}}
+这个是指多长时间检查一次缓存的有效信息。</p>
+<p>{{{
+open_file_cache_min_uses 1;
+}}}
+open_file_cache指令中的inactive参数时间内文件的最少使用次数，如果超过这个数字，文件描述符一直是在缓存中打开的，如上例，如果有一个文件在inactive时间内一次没被使用，它将被移除。</p>
+<p>=== 内核参数的优化 ===
+{{{
+net.ipv4.tcp_max_tw_buckets = 6000
+}}}
+timewait的数量，默认是180000。</p>
+<p>{{{
+net.ipv4.ip_local_port_range = 1024    65000
+}}}
+允许系统打开的端口范围。</p>
+<p>{{{
+net.ipv4.tcp_tw_recycle = 1
+}}}
+启用timewait快速回收。</p>
+<p>{{{
+net.ipv4.tcp_tw_reuse = 1
+}}}
+开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接。</p>
+<p>{{{
+net.ipv4.tcp_syncookies = 1
+}}}
+开启SYN Cookies，当出现SYN等待队列溢出时，启用cookies来处理。</p>
+<p>{{{
+net.core.somaxconn = 262144
+}}}
+web应用中listen函数的backlog默认会给我们内核参数的net.core.somaxconn限制到128，而nginx定义的NGX_LISTEN_BACKLOG默认为511，所以有必要调整这个值。</p>
+<p>{{{
+net.core.netdev_max_backlog = 262144
+}}}
+每个网络接口接收数据包的速率比内核处理这些包的速率快时，允许送到队列的数据包的最大数目。</p>
+<p>{{{
+net.ipv4.tcp_max_orphans = 262144
+}}}
+系统中最多有多少个TCP套接字不被关联到任何一个用户文件句柄上。如果超过这个数字，孤儿连接将即刻被复位并打印出警告信息。这个限制仅仅是为了防止简单的DoS攻击，不能过分依靠它或者人为地减小这个值，更应该增加这个值(如果增加了内存之后)。</p>
+<p>{{{
+net.ipv4.tcp_max_syn_backlog = 262144
+}}}
+记录的那些尚未收到客户端确认信息的连接请求的最大值。对于有128M内存的系统而言，缺省值是1024，小内存的系统则是128。</p>
+<p>{{{
+net.ipv4.tcp_timestamps = 0
+}}}
+时间戳可以避免序列号的卷绕。一个1Gbps的链路肯定会遇到以前用过的序列号。时间戳能够让内核接受这种“异常”的数据包。这里需要将其关掉。</p>
+<p>{{{
+net.ipv4.tcp_synack_retries = 1
+}}}
+为了打开对端的连接，内核需要发送一个SYN并附带一个回应前面一个SYN的ACK。也就是所谓三次握手中的第二次握手。这个设置决定了内核放弃连接之前发送SYN+ACK包的数量。</p>
+<p>{{{
+net.ipv4.tcp_syn_retries = 1
+}}}
+在内核放弃建立连接之前发送SYN包的数量。</p>
+<p>{{{
+net.ipv4.tcp_fin_timeout = 1
+}}}
+如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间。对端可以出错并永远不关闭连接，甚至意外当机。缺省值是60秒。2.2 内核的通常值是180秒，你可以按这个设置，但要记住的是，即使你的机器是一个轻载的WEB服务器，也有因为大量的死套接字而内存溢出的风险，FIN- WAIT-2的危险性比FIN-WAIT-1要小，因为它最多只能吃掉1.5K内存，但是它们的生存期长些。</p>
+<p>{{{
+net.ipv4.tcp_keepalive_time = 30
+}}}
+当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时。</p>
+<p>=== 一个完整的内核优化配置 ===
+{{{
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+net.ipv4.tcp_syncookies = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmmax = 68719476736
+kernel.shmall = 4294967296
+net.ipv4.tcp_max_tw_buckets = 6000
+net.ipv4.tcp_sack = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_rmem = 4096        87380   4194304
+net.ipv4.tcp_wmem = 4096        16384   4194304
+net.core.wmem_default = 8388608
+net.core.rmem_default = 8388608
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.core.netdev_max_backlog = 262144
+net.core.somaxconn = 262144
+net.ipv4.tcp_max_orphans = 3276800
+net.ipv4.tcp_max_syn_backlog = 262144
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_synack_retries = 1
+net.ipv4.tcp_syn_retries = 1
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_mem = 94500000 915000000 927000000
+net.ipv4.tcp_fin_timeout = 1
+net.ipv4.tcp_keepalive_time = 30
+net.ipv4.ip_local_port_range = 1024    65000
+}}}
+=== 一个简单的nginx优化配置文件 ===
+{{{
+user  www www;
+worker_processes 8;
+worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000;
+error_log  /www/log/nginx_error.log  crit;
+pid        /usr/local/nginx/nginx.pid;
+worker_rlimit_nofile 204800;</p>
+<p 204800_="204800;
+" _="
+" epoll_="epoll;
+" use="use" worker_connections="worker_connections">events</p>
+<p>http
+{
+  include       mime.types;
+  default_type  application/octet-stream;</p>
+<p>charset  utf-8;</p>
+<p>server_names_hash_bucket_size 128;
+  client_header_buffer_size 2k;
+  large_client_header_buffers 4 4k;
+  client_max_body_size 8m;</p>
+<p>sendfile on;
+  tcp_nopush     on;</p>
+<p>keepalive_timeout 60;</p>
+<p>fastcgi_cache_path /usr/local/nginx/fastcgi_cache levels=1:2
+                keys_zone=TEST:10m
+                inactive=5m;
+  fastcgi_connect_timeout 300;
+  fastcgi_send_timeout 300;
+  fastcgi_read_timeout 300;
+  fastcgi_buffer_size 16k;
+  fastcgi_buffers 16 16k;
+  fastcgi_busy_buffers_size 16k;
+  fastcgi_temp_file_write_size 16k;
+  fastcgi_cache TEST;
+  fastcgi_cache_valid 200 302 1h;
+  fastcgi_cache_valid 301 1d;
+  fastcgi_cache_valid any 1m;
+  fastcgi_cache_min_uses 1;
+  fastcgi_cache_use_stale error timeout invalid_header http_500;</p>
+<p>open_file_cache max=204800 inactive=20s;
+  open_file_cache_min_uses 1;
+  open_file_cache_valid 30s;</p>
+<p>tcp_nodelay on;</p>
+<p>gzip on;
+  gzip_min_length  1k;
+  gzip_buffers     4 16k;
+  gzip_http_version 1.0;
+  gzip_comp_level 2;
+  gzip_types       text/plain application/x-javascript text/css application/xml;
+  gzip_vary on;</p>
+<p>server
+  {
+    listen       8080;
+    server_name  ad.test.com;
+    index index.php index.htm;
+    root  /www/html/;</p>
+<div class="highlight"><pre><span class="n">location</span> <span class="o">/</span><span class="n">status</span>
+<span class="p">{</span>
+    <span class="n">stub_status</span> <span class="n">on</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">location</span> <span class="o">~</span> <span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.(</span><span class="n">php</span><span class="o">|</span><span class="n">php5</span><span class="p">)</span><span class="o">?</span><span class="err">$</span>
+<span class="p">{</span>
+    <span class="n">fastcgi_pass</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">9000</span><span class="p">;</span>
+    <span class="n">fastcgi_index</span> <span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="p">;</span>
+    <span class="n">include</span> <span class="n">fcgi</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">location</span> <span class="o">~</span> <span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.(</span><span class="n">gif</span><span class="o">|</span><span class="n">jpg</span><span class="o">|</span><span class="n">jpeg</span><span class="o">|</span><span class="n">png</span><span class="o">|</span><span class="n">bmp</span><span class="o">|</span><span class="n">swf</span><span class="o">|</span><span class="n">js</span><span class="o">|</span><span class="n">css</span><span class="p">)</span><span class="err">$</span>
+<span class="p">{</span>
+  <span class="n">expires</span>      <span class="mi">30</span><span class="n">d</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">log_format</span>  <span class="n">access</span>  <span class="err">&#39;$</span><span class="n">remote_addr</span> <span class="o">-</span> <span class="err">$</span><span class="n">remote_user</span> <span class="p">[</span><span class="err">$</span><span class="n">time_local</span><span class="p">]</span> <span class="s">&quot;$request&quot;</span> <span class="err">&#39;</span>
+          <span class="err">&#39;$</span><span class="n">status</span> <span class="err">$</span><span class="n">body_bytes_sent</span> <span class="s">&quot;$http_referer&quot;</span> <span class="err">&#39;</span>
+          <span class="err">&#39;</span><span class="s">&quot;$http_user_agent&quot;</span> <span class="err">$</span><span class="n">http_x_forwarded_for</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="n">access_log</span>  <span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">access</span><span class="p">.</span><span class="n">log</span>  <span class="n">access</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<p>}
+}}}
+=== 关于FastCGI的几个指令 ===
+{{{
+fastcgi_cache_path /usr/local/nginx/fastcgi_cache levels=1:2 keys_zone=TEST:10m inactive=5m;
+}}}
+这个指令为FastCGI缓存指定一个路径，目录结构等级，关键字区域存储时间和非活动删除时间。</p>
+<p>{{{
+fastcgi_connect_timeout 300;
+}}}
+指定连接到后端FastCGI的超时时间。</p>
+<p>{{{
+fastcgi_send_timeout 300;
+}}}
+向FastCGI传送请求的超时时间，这个值是指已经完成两次握手后向FastCGI传送请求的超时时间。</p>
+<p>{{{
+fastcgi_read_timeout 300;
+}}}
+接收FastCGI应答的超时时间，这个值是指已经完成两次握手后接收FastCGI应答的超时时间。</p>
+<p>{{{
+fastcgi_buffer_size 16k;
+}}}
+指定读取FastCGI应答第一部分需要用多大的缓冲区，这里可以设置为fastcgi_buffers指令指定的缓冲区大小，上面的指令指定它将使用1个16k的缓冲区去读取应答的第一部分，即应答头，其实这个应答头一般情况下都很小（不会超过1k），但是你如果在fastcgi_buffers指令中指定了缓冲区的大小，那么它也会分配一个fastcgi_buffers指定的缓冲区大小去缓存。</p>
+<p>{{{
+fastcgi_buffers 16 16k;
+}}}
+指定本地需要用多少和多大的缓冲区来缓冲FastCGI的应答，如上所示，如果一个php脚本所产生的页面大小为256k，则会为其分配16个16k的缓冲区来缓存，如果大于256k，增大于256k的部分会缓存到fastcgi_temp指定的路径中，当然这对服务器负载来说是不明智的方案，因为内存中处理数据速度要快于硬盘，通常这个值的设置应该选择一个你的站点中的php脚本所产生的页面大小的中间值，比如你的站点大部分脚本所产生的页面大小为256k就可以把这个值设置为16 16k，或者4 64k 或者64 4k，但很显然，后两种并不是好的设置方法，因为如果产生的页面只有32k，如果用4 64k它会分配1个64k的缓冲区去缓存，而如果使用64 4k它会分配8个4k的缓冲区去缓存，而如果使用16 16k则它会分配2个16k去缓存页面，这样看起来似乎更加合理。</p>
+<p>{{{
+fastcgi_busy_buffers_size 32k;
+}}}
+这个指令我也不知道是做什么用，只知道默认值是fastcgi_buffers的两倍。</p>
+<p>{{{
+fastcgi_temp_file_write_size 32k;
+}}}
+在写入fastcgi_temp_path时将用多大的数据块，默认值是fastcgi_buffers的两倍。</p>
+<p>{{{
+fastcgi_cache TEST
+}}}
+开启FastCGI缓存并且为其制定一个名称。个人感觉开启缓存非常有用，可以有效降低CPU负载，并且防止502错误。但是这个缓存会引起很多问题，因为它缓存的是动态页面。具体使用还需根据自己的需求。</p>
+<p>{{{
+fastcgi_cache_valid 200 302 1h;
+fastcgi_cache_valid 301 1d;
+fastcgi_cache_valid any 1m;
+}}}
+为指定的应答代码指定缓存时间，如上例中将200，302应答缓存一小时，301应答缓存1天，其他为1分钟。</p>
+<p>{{{
+fastcgi_cache_min_uses 1;
+}}}
+缓存在fastcgi_cache_path指令inactive参数值时间内的最少使用次数，如上例，如果在5分钟内某文件1次也没有被使用，那么这个文件将被移除。</p>
+<p>{{{
+fastcgi_cache_use_stale error timeout invalid_header http_500;
+}}}
+不知道这个参数的作用，猜想应该是让nginx知道哪些类型的缓存是没用的。 以上为nginx中FastCGI相关参数，另外，FastCGI自身也有一些配置需要进行优化，如果你使用php-fpm来管理FastCGI，可以修改配置文件中的以下值：</p>
+<p>{{{
+<value name="max_children">60</value>
+}}}
+同时处理的并发请求数，即它将开启最多60个子线程来处理并发连接。</p>
+<p>{{{
+<value name="rlimit_files">102400</value>
+}}}
+最多打开文件数。</p>
+<p>{{{
+<value name="max_requests">204800</value>
+}}}
+每个进程在重置之前能够执行的最多请求数。</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "nginxde-xie-you-hua.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://liugehaonotebook.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="http://liugehao.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://liugehao.github.io/category/c.html">
+    <i class="icon-folder-open icon-large"></i>c
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/db.html">
+    <i class="icon-folder-open icon-large"></i>db
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/linux2fe697a0e7babfe7bd91e58da1make3a202a2a2a2flib.html">
+    <i class="icon-folder-open icon-large"></i>linux(2fe697a0e7babfe7bd91e58da1)make(3a202a2a2a2f)lib
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/nginx.html">
+    <i class="icon-folder-open icon-large"></i>nginx
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/others.html">
+    <i class="icon-folder-open icon-large"></i>Others
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/php.html">
+    <i class="icon-folder-open icon-large"></i>php
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/python.html">
+    <i class="icon-folder-open icon-large"></i>python
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/ruby.html">
+    <i class="icon-folder-open icon-large"></i>ruby
+</a>
+</li>
+<li>
+<a href="http://liugehao.github.io/category/tmp.html">
+    <i class="icon-folder-open icon-large"></i>tmp
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'liugehaonotebook';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://liugehao.github.io/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://liugehao.github.io/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
